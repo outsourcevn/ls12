@@ -1,0 +1,10 @@
+﻿@using WebTMDT.Models;
+@model IEnumerable<CatViewModel>
+
+@foreach (var menuitem in Model)
+{
+    <h1>@menuitem.CatName</h1>
+    @{
+    Html.RenderPartial("_CatPartial", menuitem.CatName);
+    }
+}

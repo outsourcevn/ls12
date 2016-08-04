@@ -1,0 +1,77 @@
+﻿@using WebTMDT.Models;
+@using WebTMDT.Controllers;
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="content-heading text-center">
+    <!-- Input Your Home Content Here -->
+    <div class="row text-center">
+        <!-- contact form outer row with centered text-->
+        <h2>Web đăng tin rao vặt thương mại điện tử</h2>
+        <div class="col-md-10 col-md-offset-1">
+            <!-- col 10 with offset 1 to centered -->
+            <form id="contact-form" class="form-horizontal" name="sentMessage" novalidate>
+                <!-- form wrapper -->                
+                <div class="row" style="background:#cecece;display:block;padding-top:14px;">                   
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
+                                    Chọn danh mục lớn <span class="caret pull-right" style="padding-top: 7px;"></span>
+                                </a>
+                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                    @{
+                                        var menusList = ViewBag.Category as IEnumerable<Category>;
+                                        foreach (var item in menusList.Where(x => x.F3 == null))
+                                        {                                           
+                                            HomeController a = new HomeController();
+                                            var menu1 = a.CreateVM(@item.F1, menusList);
+                                            if (menu1 != null)
+                                            {
+                                                <li class="dropdown-submenu">
+                                                    <a tabindex="-1" href="#" data-id="@item.F1">@item.F2</a>
+                                                    <ul class="dropdown-menu">
+                                                        @foreach (var item1 in menu1)
+                                                        {
+                                                            <li><a href="#" data-id="@item1.CatId">@item1.CatName</a></li>
+                                                        }
+                                                        <li></li>
+                                                    </ul>
+                                                </li>
+                                            }
+
+                                        }
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Input your email -->
+                    <div class="col-md-3">
+                        <div class="form-group">
+                           
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                          
+                        </div>
+                    </div>
+                    <!-- Input your Phone no. -->
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <!-- Your email input -->
+                            <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search"></i> Tìm Kiếm</button> <!-- Send button -->
+                        </div>
+                    </div>
+
+                </div><!-- end nested inner row -->
+
+
+
+            </form><!-- end form wrapper -->
+        </div><!-- end col 10 with offset 1 to centered -->
+    </div> <!-- end contact form outer row with centered text-->
+</div><!-- End Input Your Home Content Here -->
