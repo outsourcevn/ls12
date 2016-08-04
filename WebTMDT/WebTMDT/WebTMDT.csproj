@@ -59,8 +59,12 @@
     <Reference Include="System.Drawing">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData">
       <Private>True</Private>
     </Reference>
@@ -238,6 +242,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LangSonModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Local.cs">
+      <DependentUpon>LangSonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels.cs" />
@@ -504,6 +511,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\_CatPartial.cshtml" />
+    <Content Include="Views\Home\_LocalPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

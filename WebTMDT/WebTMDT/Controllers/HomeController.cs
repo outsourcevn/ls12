@@ -15,6 +15,8 @@ namespace WebTMDT.Controllers
         {
             var Cat = db.Categories.ToList();
             ViewBag.Category = Cat;
+            var LocalData = db.Locals.ToList();
+            ViewBag.LocalData = LocalData;
             return View();
         }
 
@@ -29,6 +31,21 @@ namespace WebTMDT.Controllers
                            CatName = men.F2
                            //// other properties
                            //ChildrenCat = CreateVM(men.F1, source)
+                       };
+            return data;
+        }
+
+        [ChildActionOnly]
+        public IEnumerable<LocalViewModel> CreateVMLocal(int parentid, IEnumerable<Local> source)
+        {
+            var data = from men in source
+                       where men.F3 == parentid
+                       select new LocalViewModel()
+                       {
+                           LocalId = men.F1,
+                           LocalName = men.F2
+                           //// other properties
+                           //ChildrenLocal = CreateVMLocal(men.F1, source)
                        };
             return data;
         }

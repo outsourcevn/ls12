@@ -61,7 +61,8 @@
                                 <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
                                     Chọn danh mục con <span class="caret pull-right"></span>
                                 </a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">                                    
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">    
+                                    <li><a href="#">--Chọn danh mục lớn--</a></li>                                
                                 </ul>
                             </div>
                         </div>
@@ -70,11 +71,41 @@
                     <!-- Input your email -->
                     <div class="col-md-3">
                         <div class="form-group">
+                            <div class="dropdown" id="selectDiadiem">
+                                <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
+                                    Chọn địa điểm <span class="caret pull-right"></span>
+                                </a>
+                                <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="width: 400px;">
+                                    <div class="row">
+                                        @{
+                                            var LocalList = ViewBag.LocalData as IEnumerable<Local>;
+                                            foreach (var item in LocalList.Where(x => x.F3 == null))
+                                            {
+                                                HomeController a = new HomeController();
+                                                var menu1 = a.CreateVMLocal(@item.F1, LocalList);
+                                                if (menu1 != null)
+                                                {
+                                                    <ul class="col-sm-6 select_a">
+                                                        <li>
+                                                            <a href="#" data-id="@item.F1">@item.F2</a>
+                                                            <ul style="list-style-type: none;">
+                                                                @foreach (var item1 in menu1)
+                                                                {
+                                                                    <li><a href="#" data-id="@item1.LocalId">@item1.LocalName</a></li>
+                                                                }
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                }
 
+                                            }
+                                        }                                                                             
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Input your Phone no. -->
+                   
                     <div class="col-md-2">
                         <div class="form-group">
                             <!-- Your email input -->

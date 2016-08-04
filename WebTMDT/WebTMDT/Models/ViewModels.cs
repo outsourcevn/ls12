@@ -18,4 +18,11 @@ namespace WebTMDT.Models
         public int Id { get; set; }
         public string Name { get; set; } 
     }
+
+    public class LocalViewModel
+    {
+        public int LocalId { get; set; }
+        public string LocalName { get; set; }
+        public IEnumerable<LocalViewModel> ChildrenLocal { get; set; }
+    }
 }

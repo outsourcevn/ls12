@@ -1197,11 +1197,33 @@ ul.meta-tags li:last-child:after { content: ' ' }
     border-radius: 6px 0 6px 6px;
 }
 
-#selectDM1, #selectDM2 {
+#selectDM1, #selectDM2, #selectDiadiem {
     margin-left: 5px;
 }
 
 #selectDM1 > a > span, 
-#selectDM2 > a > span {
+#selectDM2 > a > span,
+#selectDiadiem > a > span {
     margin-top: 7px;
+}
+
+#selectDiadiem .select_a {
+    list-style-type: none;
+}
+
+#selectDiadiem .select_a li a {
+    color: #333;
+}
+
+#selectDiadiem .select_a > li > a {
+        font-weight: 700;
+    padding-left: 10px;
+}
+
+#selectDiadiem .select_a li a:hover {
+    color: #FFCC33;
+}
+
+#selectDiadiem .select_a > li > ul {
+    padding-left: 10px;
 }
