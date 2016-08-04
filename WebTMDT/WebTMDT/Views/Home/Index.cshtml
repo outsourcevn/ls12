@@ -13,19 +13,24 @@
         <div class="col-md-10 col-md-offset-1">
             <!-- col 10 with offset 1 to centered -->
             <form id="contact-form" class="form-horizontal" name="sentMessage" novalidate>
-                <!-- form wrapper -->                
-                <div class="row" style="background:#cecece;display:block;padding-top:14px;">                   
+                <!-- form wrapper -->
+                <div class="row" style="background: #ffffff; display: block; padding-top: 14px;">
+                   <div class="col-sm-12">
+                       aa
+                   </div>
+                </div>
+                <div class="row" style="background:#cecece;display:block;padding-top:14px;">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <div class="dropdown">
+                            <div class="dropdown" id="selectDM1">
                                 <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
-                                    Chọn danh mục lớn <span class="caret pull-right" style="padding-top: 7px;"></span>
+                                    Chọn danh mục lớn <span class="caret pull-right"></span>
                                 </a>
                                 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                                     @{
                                         var menusList = ViewBag.Category as IEnumerable<Category>;
                                         foreach (var item in menusList.Where(x => x.F3 == null))
-                                        {                                           
+                                        {
                                             HomeController a = new HomeController();
                                             var menu1 = a.CreateVM(@item.F1, menusList);
                                             if (menu1 != null)
@@ -43,22 +48,32 @@
                                             }
 
                                         }
-                                    
+                                    }
+
                                 </ul>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <div class="dropdown" id="selectDM2">
+                                <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
+                                    Chọn danh mục con <span class="caret pull-right"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Input your email -->
                     <div class="col-md-3">
                         <div class="form-group">
-                           
+
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                          
-                        </div>
-                    </div>
+
                     <!-- Input your Phone no. -->
                     <div class="col-md-2">
                         <div class="form-group">
@@ -75,3 +90,39 @@
         </div><!-- end col 10 with offset 1 to centered -->
     </div> <!-- end contact form outer row with centered text-->
 </div><!-- End Input Your Home Content Here -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#selectDM1 > ul > li.dropdown-submenu > a').on('click', function (e) {
+            e.preventDefault();
+        })
+
+        $('#selectDM1 > ul > li.dropdown-submenu > ul > li > a').on('click', function (e) {
+            e.preventDefault();
+            var _id = $(this).data('id');
+            $.ajax({
+                url: '@Url.Action("SelectDanhMuc3", "Home")',
+                type: "POST",
+                async: true,
+                dataType: "json",
+                data: { Id: _id },
+                success: function (data) {
+                    $('#selectDM2 > ul').empty();
+                    $.each(data, function () {                       
+                        var item = $('<a href="#" />');
+                        item.attr('data-id', this.Id).html(this.Name);
+                        var item_li = $('<li />');
+                        item_li.append(item);
+                        $('#selectDM2 > ul').append(item_li);
+                    })                   
+
+                    //$('#selectDM2 > ul').html(data);
+                },
+                error: function (request, status, error) {
+                    // process error message
+                    console.log(error);
+                }
+            });
+        })
+    })
+</script>

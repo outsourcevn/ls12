@@ -18,16 +18,32 @@ namespace WebTMDT.Controllers
             return View();
         }
 
+        [ChildActionOnly]
         public IEnumerable<CatViewModel> CreateVM(int parentid, IEnumerable<Category> source)
         {
-            return from men in source
-                   where men.F3 == parentid
-                   select new CatViewModel(){
-                              CatId = men.F1, 
-                              CatName = men.F2
-                              //// other properties
-                              //ChildrenCat = CreateVM(men.F1, source)
-                          };
+            var data = from men in source
+                       where men.F3 == parentid
+                       select new CatViewModel()
+                       {
+                           CatId = men.F1,
+                           CatName = men.F2
+                           //// other properties
+                           //ChildrenCat = CreateVM(men.F1, source)
+                       };
+            return data;
+        }
+
+        [HttpPost]
+        public ActionResult SelectDanhMuc3(int id)
+        {
+            var data = from men in db.Categories
+                       where men.F3 == id
+                       select new DanhMucCon()
+                       {
+                           Id = men.F1,
+                           Name = men.F2
+                       };
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult About()

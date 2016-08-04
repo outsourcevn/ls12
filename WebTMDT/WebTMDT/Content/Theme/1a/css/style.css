@@ -1196,3 +1196,12 @@ ul.meta-tags li:last-child:after { content: ' ' }
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
 }
+
+#selectDM1, #selectDM2 {
+    margin-left: 5px;
+}
+
+#selectDM1 > a > span, 
+#selectDM2 > a > span {
+    margin-top: 7px;
+}

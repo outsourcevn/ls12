@@ -12,4 +12,10 @@ namespace WebTMDT.Models
         public string CatName { get; set; }
         public IEnumerable<CatViewModel> ChildrenCat { get; set; }
     }
+
+    public class DanhMucCon
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } 
+    }
 }
