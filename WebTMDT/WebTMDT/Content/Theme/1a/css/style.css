@@ -1224,6 +1224,10 @@ ul.meta-tags li:last-child:after { content: ' ' }
     color: #FFCC33;
 }
 
+.active_dd > a {
+    color: #FFCC33!important;
+}
+
 #selectDiadiem .select_a > li > ul {
     padding-left: 10px;
 }
