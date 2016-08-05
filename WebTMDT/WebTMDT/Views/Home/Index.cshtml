@@ -15,9 +15,11 @@
             <form id="contact-form" class="form-horizontal" name="sentMessage" novalidate>
                 <!-- form wrapper -->
                 <div class="row" style="background: #ffffff; display: block; padding-top: 14px;">
-                   <div class="col-sm-12">
-                       aa
-                   </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <input class="form-control" id="input-boloc" />
+                        </div>
+                    </div>
                 </div>
                 <div class="row" style="background:#cecece;display:block;padding-top:14px;">
                     <div class="col-md-3">
@@ -124,23 +126,35 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+
+        var elt = $('input#input-boloc');
+        elt.tagsinput({
+            itemValue: 'id',
+            itemText: 'text'
+
+        });       
+
         $('#selectDM1 > ul > li.dropdown-submenu > a').on('click', function (e) {
             e.preventDefault();
         })
 
         $('#selectDM2').on('click', 'ul.dropdown-menu > li > a', function (e) {
             e.preventDefault();
+            var _id = $(this).data('id');
+            var _text = $(this).html();
             var selText = $(this).html() + '<span class="caret pull-right"></span>';
             $(this).parent('li').siblings().removeClass('active');
             $(this).parent('li').addClass('active');
             $('#selectDM2').children('a').html(selText);
+            elt.tagsinput('add', { "id": _id, "text": _text });
         })
 
         $('#selectDM1 > ul > li.dropdown-submenu > ul.dropdown-menu > li > a').on('click', function (e) {
             e.preventDefault();
             var _id = $(this).data('id');
-            var selText = $(this).html() + '<span class="caret pull-right"></span>';0
-            console.log(selText);
+            var selText = $(this).html() + '<span class="caret pull-right"></span>';
+            var _text = $(this).html();
+            elt.tagsinput('add', { "id": _id, "text": _text });
             $(this).parent('li').siblings().removeClass('active');
             $(this).parent('li').parent('.dropdown-menu').parent('li').siblings().removeClass('active');
             $(this).parent('li').parent('.dropdown-menu').parent('li').siblings().children('ul').children('li').removeClass('active');
@@ -174,10 +188,15 @@
         $('.select_a').on('click', 'li > a', function (e) {
             e.preventDefault();
             var selText = $(this).html() + '<span class="caret pull-right"></span>';
+            var _text = $(this).html();
+            var _id = $(this).data('id');
             $(this).parent('li').siblings().removeClass('active_dd');
             $(this).parent('li').parent('ul').parent('li').parent('ul.select_a').siblings().find('li').removeClass('active_dd');
             $(this).parent('li').addClass('active_dd');
             $('#selectDiadiem').children('a').html(selText);
+            elt.tagsinput('add', { "id": _id, "text": _text });
         })
+
+       
     })
 </script>

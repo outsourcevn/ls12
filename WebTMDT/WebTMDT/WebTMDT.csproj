@@ -384,6 +384,9 @@
     <Content Include="Content\Theme\1a\js\parallax.js" />
     <Content Include="Content\Theme\1a\js\skrollr.js" />
     <Content Include="Content\Theme\1a\js\SmoothScroll.js" />
+    <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.css" />
+    <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.js" />
+    <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -443,6 +446,7 @@
     <Content Include="Models\LangSonModel.edmx.diagram">
       <DependentUpon>LangSonModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.min.js.map" />
     <None Include="Properties\PublishProfiles\langson12.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Models\LangSonModel.Context.tt">
