@@ -252,10 +252,18 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap-theme.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bootstrap-theme.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bootstrap.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bootstrap.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Theme\1a\css\animate.css" />
     <Content Include="Content\Theme\1a\css\bootstrap.css" />
     <Content Include="Content\Theme\1a\css\bootstrap.min.css" />
@@ -277,14 +285,30 @@
     <Content Include="Content\Theme\1a\fonts\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\Theme\1a\fonts\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Theme\1a\fonts\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\Theme\1a\img\1462888337_aiga_bus_on_grn_circle.png" />
-    <Content Include="Content\Theme\1a\img\a1.jpg" />
-    <Content Include="Content\Theme\1a\img\a2.jpg" />
-    <Content Include="Content\Theme\1a\img\a3.jpg" />
-    <Content Include="Content\Theme\1a\img\about.jpg" />
-    <Content Include="Content\Theme\1a\img\apple-touch-icon-114x114.png" />
-    <Content Include="Content\Theme\1a\img\apple-touch-icon-72x72.png" />
-    <Content Include="Content\Theme\1a\img\apple-touch-icon.png" />
+    <Content Include="Content\Theme\1a\img\1462888337_aiga_bus_on_grn_circle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\a1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\a2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\a3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\about.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\apple-touch-icon-114x114.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\apple-touch-icon-72x72.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\apple-touch-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Theme\1a\img\app\01.jpg" />
     <Content Include="Content\Theme\1a\img\app\02.jpg" />
     <Content Include="Content\Theme\1a\img\app\03.jpg" />
@@ -304,34 +328,90 @@
     <Content Include="Content\Theme\1a\img\blog\b06.jpg" />
     <Content Include="Content\Theme\1a\img\blog\c01.jpg" />
     <Content Include="Content\Theme\1a\img\blog\c02.jpg" />
-    <Content Include="Content\Theme\1a\img\download.png" />
-    <Content Include="Content\Theme\1a\img\e1.jpg" />
-    <Content Include="Content\Theme\1a\img\e2.jpg" />
-    <Content Include="Content\Theme\1a\img\e3.JPG" />
-    <Content Include="Content\Theme\1a\img\e4.jpg" />
-    <Content Include="Content\Theme\1a\img\e5.jpg" />
-    <Content Include="Content\Theme\1a\img\e6.jpg" />
-    <Content Include="Content\Theme\1a\img\email.png" />
-    <Content Include="Content\Theme\1a\img\favicon.ico" />
-    <Content Include="Content\Theme\1a\img\header2.png" />
-    <Content Include="Content\Theme\1a\img\header4.png" />
-    <Content Include="Content\Theme\1a\img\loca.png" />
-    <Content Include="Content\Theme\1a\img\logo-w.png" />
-    <Content Include="Content\Theme\1a\img\logo.png" />
-    <Content Include="Content\Theme\1a\img\m1.jpg" />
-    <Content Include="Content\Theme\1a\img\m2.jpg" />
-    <Content Include="Content\Theme\1a\img\m3.jpg" />
-    <Content Include="Content\Theme\1a\img\m4.jpg" />
-    <Content Include="Content\Theme\1a\img\m5.jpg" />
-    <Content Include="Content\Theme\1a\img\m6.jpg" />
-    <Content Include="Content\Theme\1a\img\marker.png" />
-    <Content Include="Content\Theme\1a\img\phone.png" />
-    <Content Include="Content\Theme\1a\img\pk1.jpg" />
-    <Content Include="Content\Theme\1a\img\pk2.jpg" />
-    <Content Include="Content\Theme\1a\img\pk3.jpg" />
-    <Content Include="Content\Theme\1a\img\pk4.jpg" />
-    <Content Include="Content\Theme\1a\img\pk5.jpg" />
-    <Content Include="Content\Theme\1a\img\pk6.jpg" />
+    <Content Include="Content\Theme\1a\img\download.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\e1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\e2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\e3.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\e4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\e5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\e6.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\email.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\favicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\header2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\header4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\loca.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\logo-w.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\m1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\m2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\m3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\m4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\m5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\m6.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\marker.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\phone.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\pk1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\pk2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\pk3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\pk4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\pk5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\pk6.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Theme\1a\img\portfolio\01%402x.jpg" />
     <Content Include="Content\Theme\1a\img\portfolio\01.jpg" />
     <Content Include="Content\Theme\1a\img\portfolio\02%402x.jpg" />
@@ -348,57 +428,141 @@
     <Content Include="Content\Theme\1a\img\portfolio\07.jpg" />
     <Content Include="Content\Theme\1a\img\portfolio\08%402x.jpg" />
     <Content Include="Content\Theme\1a\img\portfolio\08.jpg" />
-    <Content Include="Content\Theme\1a\img\qc1.png" />
-    <Content Include="Content\Theme\1a\img\qc2.gif" />
-    <Content Include="Content\Theme\1a\img\slide-four.jpg" />
-    <Content Include="Content\Theme\1a\img\slide-one.jpg" />
-    <Content Include="Content\Theme\1a\img\slide-three.jpg" />
-    <Content Include="Content\Theme\1a\img\slide-two.jpg" />
-    <Content Include="Content\Theme\1a\img\star.png" />
-    <Content Include="Content\Theme\1a\img\star2.png" />
-    <Content Include="Content\Theme\1a\img\tab01.png" />
-    <Content Include="Content\Theme\1a\img\tab02.png" />
-    <Content Include="Content\Theme\1a\img\tab03.png" />
-    <Content Include="Content\Theme\1a\img\tab04.png" />
-    <Content Include="Content\Theme\1a\img\tab05.png" />
+    <Content Include="Content\Theme\1a\img\qc1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\qc2.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\slide-four.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\slide-one.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\slide-three.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\slide-two.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\star.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\star2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\tab01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\tab02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\tab03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\tab04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\img\tab05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Theme\1a\img\team\01.jpg" />
     <Content Include="Content\Theme\1a\img\team\02.jpg" />
-    <Content Include="Content\Theme\1a\img\www.png" />
-    <Content Include="Content\Theme\1a\js\bootstrap.js" />
-    <Content Include="Content\Theme\1a\js\bootstrap.min.js" />
-    <Content Include="Content\Theme\1a\js\contact.js" />
-    <Content Include="Content\Theme\1a\js\imagesloaded.js" />
-    <Content Include="Content\Theme\1a\js\jqBootstrapValidation.js" />
-    <Content Include="Content\Theme\1a\js\jquery-1.11.2.min.js" />
-    <Content Include="Content\Theme\1a\js\jquery-ui-1.8.24.js" />
-    <Content Include="Content\Theme\1a\js\jquery-ui.css" />
-    <Content Include="Content\Theme\1a\js\jquery-ui.js" />
-    <Content Include="Content\Theme\1a\js\jquery.1.11.1.js" />
-    <Content Include="Content\Theme\1a\js\jquery.geocomplete.js" />
-    <Content Include="Content\Theme\1a\js\jquery.isotope.js" />
-    <Content Include="Content\Theme\1a\js\main.js" />
-    <Content Include="Content\Theme\1a\js\map.js" />
-    <Content Include="Content\Theme\1a\js\modernizr.custom.js" />
-    <Content Include="Content\Theme\1a\js\nivo-lightbox.min.js" />
-    <Content Include="Content\Theme\1a\js\owl.carousel.js" />
-    <Content Include="Content\Theme\1a\js\parallax.js" />
-    <Content Include="Content\Theme\1a\js\skrollr.js" />
-    <Content Include="Content\Theme\1a\js\SmoothScroll.js" />
-    <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.css" />
-    <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.js" />
-    <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.min.js" />
+    <Content Include="Content\Theme\1a\img\www.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\bootstrap.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\bootstrap.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\contact.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\imagesloaded.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\jqBootstrapValidation.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\jquery-1.11.2.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\jquery-ui-1.8.24.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\jquery-ui.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\jquery-ui.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\jquery.1.11.1.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\jquery.geocomplete.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\jquery.isotope.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\main.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\map.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\modernizr.custom.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\nivo-lightbox.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\owl.carousel.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\parallax.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\skrollr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\js\SmoothScroll.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\Site.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bootstrap-theme.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bootstrap.min.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bootstrap.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Theme\1a\css\HelveticaVn-Cn.ttf" />
     <Content Include="Content\Theme\1a\css\HelveticaVn-Md.ttf" />
     <Content Include="Content\Theme\1a\fonts\font-awesome\fonts\fontawesome-webfont.eot" />
@@ -438,7 +602,9 @@
     <Content Include="Content\Theme\1a\fonts\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\Theme\1a\fonts\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\Theme\1a\fonts\fonts\HelveticaVn-Md.ttf" />
-    <Content Include="Content\Theme\1a\img\Untitled.pxd" />
+    <Content Include="Content\Theme\1a\img\Untitled.pxd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EntityDeploy Include="Models\LangSonModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>LangSonModel.Designer.cs</LastGenOutput>
@@ -446,7 +612,9 @@
     <Content Include="Models\LangSonModel.edmx.diagram">
       <DependentUpon>LangSonModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.min.js.map" />
+    <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\langson12.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Models\LangSonModel.Context.tt">

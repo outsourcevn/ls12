@@ -1,6 +1,6 @@
 ﻿@model WebTMDT.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Đăng ký tài khoản";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -8,30 +8,62 @@
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
+    <h4>Người bán/cửa hàng đăng ký tài khoản.</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
+    
     <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder="Tên đăng nhập" })
         </div>
-    </div>
+    </div>   
+    
     <div class="form-group">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Nhập lại mật khẩu" })
+        </div>
+    </div>    
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.TenNguoiBan, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.TenNguoiBan, new { @class = "form-control", placeholder = "Nhập tên người bán / cửa hàng" })
+            <span class="help-block">Nếu là công ty/Cửa hàng thì ghi tên cửa hàng</span>
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DiaChi, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control", placeholder = "Nhập địa chỉ của bạn" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder="Nhập số điện thoại" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Nhập địa chỉ email" })
+        </div>
+    </div>
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+            <input type="submit" class="btn btn-primary" value="Đăng ký tài khoản" />
         </div>
     </div>
 }

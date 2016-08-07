@@ -49,36 +49,52 @@ namespace WebTMDT.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Tên đăng nhập")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Nhớ đăng nhập?")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Required(ErrorMessage="Vui lòng nhập {0}.")]
+        [Display(Name = "Tên đăng nhập")]
+        public string UserName { get; set; }       
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage="Vui lòng nhập {0}.")]
+        [StringLength(100, ErrorMessage = "{0} phải chứa ít nhất {2} kí tự.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Nhập lại mật khẩu")]
+        [Compare("Password", ErrorMessage = "Mật khẩu xác nhận không đúng.")]
         public string ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng nhập {0}.")]
+        [Display(Name="Tên người bán/cửa hàng")]
+        public string TenNguoiBan { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng nhập {0}.")]
+        [Display(Name = "Địa chỉ")]
+        public string DiaChi { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng nhập {0}.")]
+        [Display(Name = "Số điện thoại")]
+        public string PhoneNumber { get; set; }
+
+        [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "Vui lòng nhập {0}.")]
+        [EmailAddress(ErrorMessage="Địa chỉ email không đúng định dạng")]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
     }
 
     public class ResetPasswordViewModel
