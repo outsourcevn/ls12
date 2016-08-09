@@ -1,7 +1,7 @@
 ﻿@model WebTMDT.Models.ManageLoginsViewModel
 @using Microsoft.Owin.Security
 @{
-    ViewBag.Title = "Manage your external logins";
+    ViewBag.Title = "Quản lý liên kết tài khoản với";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -21,7 +21,7 @@
     {
         if (Model.CurrentLogins.Count > 0)
         {
-            <h4>Registered Logins</h4>
+            <h4>Tài khoản đăng ký</h4>
             <table class="table">
                 <tbody>
                     @foreach (var account in Model.CurrentLogins)

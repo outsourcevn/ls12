@@ -10,12 +10,13 @@
     @Html.AntiForgeryToken()
     <h4>Người bán/cửa hàng đăng ký tài khoản.</h4>
     <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     
     <div class="form-group">
         @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder="Tên đăng nhập" })
+            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
         </div>
     </div>   
     
@@ -23,12 +24,14 @@
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Nhập lại mật khẩu" })
+            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
         </div>
     </div>    
 
@@ -36,6 +39,7 @@
         @Html.LabelFor(m => m.TenNguoiBan, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.TenNguoiBan, new { @class = "form-control", placeholder = "Nhập tên người bán / cửa hàng" })
+            @Html.ValidationMessageFor(m => m.TenNguoiBan, "", new { @class = "text-danger" })
             <span class="help-block">Nếu là công ty/Cửa hàng thì ghi tên cửa hàng</span>
         </div>
     </div>
@@ -44,6 +48,7 @@
         @Html.LabelFor(m => m.DiaChi, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control", placeholder = "Nhập địa chỉ của bạn" })
+            @Html.ValidationMessageFor(m => m.DiaChi, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -51,6 +56,7 @@
         @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder="Nhập số điện thoại" })
+            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -58,6 +64,7 @@
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Nhập địa chỉ email" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
         </div>
     </div>
 

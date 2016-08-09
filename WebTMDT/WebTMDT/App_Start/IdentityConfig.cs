@@ -19,8 +19,10 @@ namespace WebTMDT
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
+            //return configSendGridasync(message);
             return Task.FromResult(0);
         }
+
     }
 
     public class SmsService : IIdentityMessageService
@@ -54,10 +56,10 @@ namespace WebTMDT
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
+                RequireNonLetterOrDigit = false,
                 RequireDigit = true,
                 RequireLowercase = true,
-                RequireUppercase = true,
+                RequireUppercase = false,
             };
 
             // Configure user lockout defaults
