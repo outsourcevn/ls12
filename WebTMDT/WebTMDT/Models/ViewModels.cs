@@ -30,7 +30,7 @@ namespace WebTMDT.Models
     public class ProductViewModel
     {
         [Required(ErrorMessage = "Vui lòng nhập {0}.")]
-        [Display(Name = "Tên đăng nhập")]
+        [Display(Name = "Tên và mô tả ngắn về sản phẩm")]
         public string ProductName { get; set; }
         public string ProductPrice { get; set; }
         public Nullable<bool> ProductVAT { get; set; }
@@ -42,7 +42,9 @@ namespace WebTMDT.Models
         public Nullable<System.DateTime> ProductDateCreate { get; set; }
         public string ProductAvatar { get; set; }
         public string ProductDescription { get; set; }
-        public string ProductMore { get; set; }       
+        public string ProductMore { get; set; }   
+        [Required(ErrorMessage="Vui lòng chọn danh mục sản phẩm")]
+        [Range(1, int.MaxValue, ErrorMessage = "Giá trị {0} phải là số")]
         public Nullable<int> CategoryId { get; set; }
         public Nullable<int> LocalId { get; set; }
         public ICollection<ProductImages> ProductImages { get; set; }
