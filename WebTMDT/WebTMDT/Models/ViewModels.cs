@@ -33,7 +33,7 @@ namespace WebTMDT.Models
         [Display(Name = "Tên và mô tả ngắn về sản phẩm")]
         public string ProductName { get; set; }
         public string ProductPrice { get; set; }
-        public Nullable<bool> ProductVAT { get; set; }
+        public bool ProductVAT { get; set; }
         public string ProductStatus { get; set; }
         public string ProductType { get; set; }
         public string ProductMethod { get; set; }
@@ -46,6 +46,8 @@ namespace WebTMDT.Models
         [Required(ErrorMessage="Vui lòng chọn danh mục sản phẩm")]
         [Range(1, int.MaxValue, ErrorMessage = "Giá trị {0} phải là số")]
         public Nullable<int> CategoryId { get; set; }
+        [Required(ErrorMessage = "Vui lòng chọn địa chỉ")]
+        [Range(1, int.MaxValue, ErrorMessage = "Giá trị {0} phải là số")]
         public Nullable<int> LocalId { get; set; }
         public ICollection<ProductImages> ProductImages { get; set; }
     }

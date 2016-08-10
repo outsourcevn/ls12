@@ -16,17 +16,39 @@
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
-    
+            @Html.ValidationMessageFor(m => m.LocalId, "", new { @class = "text-danger" })
+           
+            
             <h4 style="text-transform: uppercase;">Bước 1: Chọn danh mục sản phẩm</h4>
             @Html.HiddenFor(m => m.CategoryId, new { @id = "ProductCategoryId" })
             @Html.HiddenFor(m => m.LocalId, new { @id = "ProductLocalId" })
             @Html.Partial("_CategoryLocalPartial")
 
+            <h4 style="text-transform: uppercase;">Bước 2: Nhập thông tin sản phẩm</h4>
             <div class="form-group">
                 @Html.LabelFor(m => m.ProductName, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control", placeholder = "Tên đăng nhập" })
-                    @Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "text-danger" })
+                <div class="col-md-5">
+                    @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control", placeholder = "Tên sản phẩm và mô tả ngắn về sản phẩm" })
+                    @Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "text-danger has-error" })
+                </div>
+                <div class="col-md-5">
+                    <p class="help-block">(Ví dụ laptop Lenovo G2310 - core i5 6200, Ram 4gb, 15.6 inch, vga 2gb, hdd 500 gb)</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ProductPrice, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @Html.TextBoxFor(m => m.ProductPrice, new { @class = "form-control", placeholder = "Giá bán" })
+                    @Html.ValidationMessageFor(m => m.ProductPrice, "", new { @class = "text-danger has-error" })
+                </div>
+                <div class="col-md-5">
+                    <div class="checkbox">
+                        <label>
+                           @Html.CheckBoxFor(m => m.ProductVAT) VAT
+                        </label>
+                    </div>
+                                      
                 </div>
             </div>
 
