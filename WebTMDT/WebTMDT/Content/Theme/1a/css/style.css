@@ -1243,3 +1243,13 @@ ul.meta-tags li:last-child:after { content: ' ' }
     background-attachment: fixed;
     min-height: 570px;
 }
+
+#AddNewProduct {
+    padding: 5px;
+    background: #fff;
+    color: #333;
+}
+
+#AddNewProduct .text-danger {
+    display: block;
+}
