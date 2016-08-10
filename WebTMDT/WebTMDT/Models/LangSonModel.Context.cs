@@ -30,6 +30,8 @@ namespace WebTMDT.Models
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<ImageProduct> ImageProducts { get; set; }
         public virtual DbSet<Local> Locals { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace WebTMDT.Models
         public Category()
         {
             this.Category1 = new HashSet<Category>();
+            this.Products = new HashSet<Product>();
         }
     
         public int F1 { get; set; }
@@ -27,5 +28,7 @@ namespace WebTMDT.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Category> Category1 { get; set; }
         public virtual Category Category2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

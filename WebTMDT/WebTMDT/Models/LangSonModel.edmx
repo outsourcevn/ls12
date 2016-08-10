@@ -55,6 +55,8 @@
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar(max)" />
+          <Property Name="TenNguoiBan" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -64,6 +66,14 @@
           <Property Name="F2" Type="nvarchar(max)" />
           <Property Name="F3" Type="int" />
         </EntityType>
+        <EntityType Name="ImageProduct">
+          <Key>
+            <PropertyRef Name="F1" />
+          </Key>
+          <Property Name="F1" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="F2" Type="bigint" />
+          <Property Name="F3" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Local">
           <Key>
             <PropertyRef Name="F1" />
@@ -71,6 +81,27 @@
           <Property Name="F1" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="F2" Type="nvarchar" MaxLength="50" />
           <Property Name="F3" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="F1" />
+          </Key>
+          <Property Name="F1" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="F2" Type="nvarchar(max)" />
+          <Property Name="F3" Type="nvarchar(max)" />
+          <Property Name="F4" Type="bit" />
+          <Property Name="F5" Type="nvarchar(max)" />
+          <Property Name="F6" Type="nvarchar(max)" />
+          <Property Name="F7" Type="nvarchar(max)" />
+          <Property Name="F8" Type="nvarchar(max)" />
+          <Property Name="F9" Type="nvarchar(max)" />
+          <Property Name="F10" Type="datetime" />
+          <Property Name="F11" Type="nvarchar(max)" />
+          <Property Name="F12" Type="nvarchar(max)" />
+          <Property Name="F13" Type="nvarchar(max)" />
+          <Property Name="F14" Type="nvarchar" MaxLength="128" />
+          <Property Name="F15" Type="int" />
+          <Property Name="F16" Type="int" />
         </EntityType>
         <Association Name="FK_Category_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -140,6 +171,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ImageProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ImageProduct" Type="Self.ImageProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="F1" />
+            </Principal>
+            <Dependent Role="ImageProduct">
+              <PropertyRef Name="F2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Local_Local">
           <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
           <End Role="Local1" Type="Self.Local" Multiplicity="*" />
@@ -152,6 +195,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="F14" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="F1" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="F15" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Local">
+          <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="F1" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="F16" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="langson12ModelStoreContainer">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -159,7 +238,9 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImageProduct" EntityType="Self.ImageProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Local" EntityType="Self.Local" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Category_Category" Association="Self.FK_Category_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="Category1" EntitySet="Category" />
@@ -180,9 +261,25 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
+          <AssociationSet Name="FK_ImageProduct_Product" Association="Self.FK_ImageProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ImageProduct" EntitySet="ImageProduct" />
+          </AssociationSet>
           <AssociationSet Name="FK_Local_Local" Association="Self.FK_Local_Local">
             <End Role="Local" EntitySet="Local" />
             <End Role="Local1" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_AspNetUsers" Association="Self.FK_Product_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Local" Association="Self.FK_Product_Local">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -195,7 +292,9 @@
           <EntitySet Name="AspNetUserLogins" EntityType="langson12Model.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="langson12Model.AspNetUser" />
           <EntitySet Name="Categories" EntityType="langson12Model.Category" />
+          <EntitySet Name="ImageProducts" EntityType="langson12Model.ImageProduct" />
           <EntitySet Name="Locals" EntityType="langson12Model.Local" />
+          <EntitySet Name="Products" EntityType="langson12Model.Product" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="langson12Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
@@ -204,13 +303,29 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
           </AssociationSet>
+          <AssociationSet Name="FK_Product_AspNetUsers" Association="langson12Model.FK_Product_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
           <AssociationSet Name="FK_Category_Category" Association="langson12Model.FK_Category_Category">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Category1" EntitySet="Categories" />
           </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="langson12Model.FK_Product_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImageProduct_Product" Association="langson12Model.FK_ImageProduct_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ImageProduct" EntitySet="ImageProducts" />
+          </AssociationSet>
           <AssociationSet Name="FK_Local_Local" Association="langson12Model.FK_Local_Local">
             <End Role="Local" EntitySet="Locals" />
             <End Role="Local1" EntitySet="Locals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Local" Association="langson12Model.FK_Product_Local">
+            <End Role="Local" EntitySet="Locals" />
+            <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="langson12Model.AspNetUserRoles">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
@@ -262,8 +377,11 @@
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TenNguoiBan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="langson12Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="langson12Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="Products" Relationship="langson12Model.FK_Product_AspNetUsers" FromRole="AspNetUser" ToRole="Product" />
           <NavigationProperty Name="AspNetRoles" Relationship="langson12Model.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
         </EntityType>
         <EntityType Name="Category">
@@ -275,6 +393,16 @@
           <Property Name="F3" Type="Int32" />
           <NavigationProperty Name="Category1" Relationship="langson12Model.FK_Category_Category" FromRole="Category" ToRole="Category1" />
           <NavigationProperty Name="Category2" Relationship="langson12Model.FK_Category_Category" FromRole="Category1" ToRole="Category" />
+          <NavigationProperty Name="Products" Relationship="langson12Model.FK_Product_Category" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ImageProduct">
+          <Key>
+            <PropertyRef Name="F1" />
+          </Key>
+          <Property Name="F1" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="F2" Type="Int64" />
+          <Property Name="F3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="langson12Model.FK_ImageProduct_Product" FromRole="ImageProduct" ToRole="Product" />
         </EntityType>
         <EntityType Name="Local">
           <Key>
@@ -285,6 +413,32 @@
           <Property Name="F3" Type="Int32" />
           <NavigationProperty Name="Local1" Relationship="langson12Model.FK_Local_Local" FromRole="Local" ToRole="Local1" />
           <NavigationProperty Name="Local2" Relationship="langson12Model.FK_Local_Local" FromRole="Local1" ToRole="Local" />
+          <NavigationProperty Name="Products" Relationship="langson12Model.FK_Product_Local" FromRole="Local" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="F1" />
+          </Key>
+          <Property Name="F1" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="F2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F4" Type="Boolean" />
+          <Property Name="F5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F6" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F7" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F8" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F9" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F10" Type="DateTime" Precision="3" />
+          <Property Name="F11" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F12" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F13" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F14" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="F15" Type="Int32" />
+          <Property Name="F16" Type="Int32" />
+          <NavigationProperty Name="AspNetUser" Relationship="langson12Model.FK_Product_AspNetUsers" FromRole="Product" ToRole="AspNetUser" />
+          <NavigationProperty Name="Category" Relationship="langson12Model.FK_Product_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="ImageProducts" Relationship="langson12Model.FK_ImageProduct_Product" FromRole="Product" ToRole="ImageProduct" />
+          <NavigationProperty Name="Local" Relationship="langson12Model.FK_Product_Local" FromRole="Product" ToRole="Local" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="langson12Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -314,6 +468,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_AspNetUsers">
+          <End Type="langson12Model.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="langson12Model.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="F14" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Category_Category">
           <End Type="langson12Model.Category" Role="Category" Multiplicity="0..1" />
           <End Type="langson12Model.Category" Role="Category1" Multiplicity="*" />
@@ -326,6 +492,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_Category">
+          <End Type="langson12Model.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="langson12Model.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="F1" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="F15" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImageProduct_Product">
+          <End Type="langson12Model.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="langson12Model.ImageProduct" Role="ImageProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="F1" />
+            </Principal>
+            <Dependent Role="ImageProduct">
+              <PropertyRef Name="F2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Local_Local">
           <End Type="langson12Model.Local" Role="Local" Multiplicity="0..1" />
           <End Type="langson12Model.Local" Role="Local1" Multiplicity="*" />
@@ -335,6 +525,18 @@
             </Principal>
             <Dependent Role="Local1">
               <PropertyRef Name="F3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Local">
+          <End Type="langson12Model.Local" Role="Local" Multiplicity="0..1" />
+          <End Type="langson12Model.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="F1" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="F16" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -378,6 +580,8 @@
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="langson12Model.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="TenNguoiBan" ColumnName="TenNguoiBan" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
                 <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
@@ -402,9 +606,40 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ImageProducts">
+            <EntityTypeMapping TypeName="langson12Model.ImageProduct">
+              <MappingFragment StoreEntitySet="ImageProduct">
+                <ScalarProperty Name="F3" ColumnName="F3" />
+                <ScalarProperty Name="F2" ColumnName="F2" />
+                <ScalarProperty Name="F1" ColumnName="F1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Locals">
             <EntityTypeMapping TypeName="langson12Model.Local">
               <MappingFragment StoreEntitySet="Local">
+                <ScalarProperty Name="F3" ColumnName="F3" />
+                <ScalarProperty Name="F2" ColumnName="F2" />
+                <ScalarProperty Name="F1" ColumnName="F1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="langson12Model.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="F16" ColumnName="F16" />
+                <ScalarProperty Name="F15" ColumnName="F15" />
+                <ScalarProperty Name="F14" ColumnName="F14" />
+                <ScalarProperty Name="F13" ColumnName="F13" />
+                <ScalarProperty Name="F12" ColumnName="F12" />
+                <ScalarProperty Name="F11" ColumnName="F11" />
+                <ScalarProperty Name="F10" ColumnName="F10" />
+                <ScalarProperty Name="F9" ColumnName="F9" />
+                <ScalarProperty Name="F8" ColumnName="F8" />
+                <ScalarProperty Name="F7" ColumnName="F7" />
+                <ScalarProperty Name="F6" ColumnName="F6" />
+                <ScalarProperty Name="F5" ColumnName="F5" />
+                <ScalarProperty Name="F4" ColumnName="F4" />
                 <ScalarProperty Name="F3" ColumnName="F3" />
                 <ScalarProperty Name="F2" ColumnName="F2" />
                 <ScalarProperty Name="F1" ColumnName="F1" />

@@ -1,0 +1,162 @@
+﻿@using WebTMDT.Models;
+@using WebTMDT.Controllers;
+
+<div class="form-group">
+    <div class="col-md-12">
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="dropdown" id="selectDM1">
+                    <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
+                        Chọn danh mục lớn <span class="caret pull-right"></span>
+                    </a>
+                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                        @{
+                            var menusList = ViewBag.Category as IEnumerable<Category>;
+                            foreach (var item in menusList.Where(x => x.F3 == null))
+                            {
+                                HomeController a = new HomeController();
+                                var menu1 = a.CreateVM(@item.F1, menusList);
+                                if (menu1 != null)
+                                {
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#" data-id="@item.F1">@item.F2</a>
+                                        <ul class="dropdown-menu">
+                                            @foreach (var item1 in menu1)
+                                            {
+                                                <li><a href="#" data-id="@item1.CatId">@item1.CatName</a></li>
+                                            }
+                                            <li></li>
+                                        </ul>
+                                    </li>
+                                }
+
+                            }
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="dropdown" id="selectDM2">
+                    <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
+                        Chọn danh mục con <span class="caret pull-right"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                        <li><a href="#">--Chọn danh mục lớn--</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input your email -->
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="dropdown" id="selectDiadiem">
+                    <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
+                        Chọn địa điểm <span class="caret pull-right"></span>
+                    </a>
+                    <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="width: 400px;">
+                        <div class="row">
+                            @{
+                                var LocalList = ViewBag.LocalData as IEnumerable<Local>;
+                                foreach (var item in LocalList.Where(x => x.F3 == null))
+                                {
+                                    HomeController a = new HomeController();
+                                    var menu1 = a.CreateVMLocal(@item.F1, LocalList);
+                                    if (menu1 != null)
+                                    {
+                                        <ul class="col-sm-6 select_a">
+                                            <li>
+                                                <a href="#" data-id="@item.F1">@item.F2</a>
+                                                <ul style="list-style-type: none;">
+                                                    @foreach (var item1 in menu1)
+                                                    {
+                                                        <li><a href="#" data-id="@item1.LocalId">@item1.LocalName</a></li>
+                                                    }
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    }
+
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#selectDM1 > ul > li.dropdown-submenu > a').on('click', function (e) {
+            e.preventDefault();
+        })
+
+        $('#selectDM2').on('click', 'ul.dropdown-menu > li > a', function (e) {
+            e.preventDefault();
+            var _id = $(this).data('id');
+            var _text = $(this).html();
+            var selText = $(this).html() + '<span class="caret pull-right"></span>';
+            $(this).parent('li').siblings().removeClass('active');
+            $(this).parent('li').addClass('active');
+            $('#selectDM2').children('a').html(selText);
+            //elt.tagsinput('add', { "id": _id, "text": _text });
+        })
+
+        $('#selectDM1 > ul > li.dropdown-submenu > ul.dropdown-menu > li > a').on('click', function (e) {
+            e.preventDefault();
+            var _id = $(this).data('id');
+            var selText = $(this).html() + '<span class="caret pull-right"></span>';
+            var _text = $(this).html();
+            //elt.tagsinput('add', { "id": _id, "text": _text });
+            $(this).parent('li').siblings().removeClass('active');
+            $(this).parent('li').parent('.dropdown-menu').parent('li').siblings().removeClass('active');
+            $(this).parent('li').parent('.dropdown-menu').parent('li').siblings().children('ul').children('li').removeClass('active');
+            $('#selectDM1').children('a').html(selText);
+            $(this).parents('li').addClass("active");
+            $.ajax({
+                url: '@Url.Action("SelectDanhMuc3", "Home")',
+                type: "POST",
+                async: true,
+                dataType: "json",
+                data: { Id: _id },
+                success: function (data) {
+                    $('#selectDM2 > ul').empty();
+                    $.each(data, function () {
+                        var item = $('<a href="#" />');
+                        item.attr('data-id', this.Id).html(this.Name);
+                        var item_li = $('<li />');
+                        item_li.append(item);
+                        $('#selectDM2 > ul').append(item_li);
+                    })
+
+                    //$('#selectDM2 > ul').html(data);
+                },
+                error: function (request, status, error) {
+                    // process error message
+                    console.log(error);
+                }
+            });
+        })
+
+        $('.select_a').on('click', 'li > a', function (e) {
+            e.preventDefault();
+            var selText = $(this).html() + '<span class="caret pull-right"></span>';
+            var _text = $(this).html();
+            var _id = $(this).data('id');
+            $(this).parent('li').siblings().removeClass('active_dd');
+            $(this).parent('li').parent('ul').parent('li').parent('ul.select_a').siblings().find('li').removeClass('active_dd');
+            $(this).parent('li').addClass('active_dd');
+            $('#selectDiadiem').children('a').html(selText);
+            //elt.tagsinput('add', { "id": _id, "text": _text });
+        })
+
+
+    })
+</script>

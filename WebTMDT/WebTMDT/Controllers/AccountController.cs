@@ -157,7 +157,8 @@ namespace WebTMDT.Controllers
                         TenNguoiBan = model.TenNguoiBan,
                         DiaChi = model.DiaChi,
                         PhoneNumber = model.PhoneNumber,
-                        Email = model.Email
+                        Email = model.Email,
+                        EmailConfirmed = true
                     };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -204,7 +205,7 @@ namespace WebTMDT.Controllers
             return View();
         }
 
-        //
+       
         // POST: /Account/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
@@ -214,18 +215,20 @@ namespace WebTMDT.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByEmailAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                if (user != null)
                 {
-                    // Don't reveal that the user does not exist or is not confirmed
+                    if (!(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                    {
+                        return View("ForgotPasswordConfirmation");
+                    }
                     return View("ForgotPasswordConfirmation");
                 }
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
                 //string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                //var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                //var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 //await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                
 
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }

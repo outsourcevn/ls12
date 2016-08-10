@@ -2,6 +2,7 @@
 @model LoginViewModel
 @{
     ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -44,7 +45,9 @@
                 <p>
                     @Html.ActionLink("Đăng ký tài khoản mới", "Register")
                 </p>
-                
+                <p>
+                    @Html.ActionLink("Quên mật khẩu?", "ForgotPassword")
+                </p>
                 @* Enable this once you have account confirmation enabled for password reset functionality
                     <p>
                         @Html.ActionLink("Quên mật khẩu?", "ForgotPassword")

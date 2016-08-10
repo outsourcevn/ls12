@@ -1,0 +1,14 @@
+﻿@using WebTMDT.Models;
+@model IEnumerable<LocalViewModel>
+
+@foreach (var menuitem in Model)
+{
+    <ul>
+        <li>
+            <a href="#">@menuitem.LocalName</a>
+            @{
+                Html.RenderPartial("_LocalPartial", menuitem.LocalName);
+            }
+        </li>
+    </ul>
+}

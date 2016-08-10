@@ -20,6 +20,7 @@ namespace WebTMDT.Controllers
             return View();
         }
 
+        #region LoadDanhMuc
         [ChildActionOnly]
         public IEnumerable<CatViewModel> CreateVM(int parentid, IEnumerable<Category> source)
         {
@@ -62,6 +63,7 @@ namespace WebTMDT.Controllers
                        };
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+        #endregion
 
         public ActionResult About()
         {
