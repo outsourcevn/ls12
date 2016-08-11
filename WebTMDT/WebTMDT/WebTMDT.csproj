@@ -552,6 +552,30 @@
     <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Theme\1a\Plugin\Datetimepiker\css\bootstrap-datetimepicker-standalone.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\Datetimepiker\css\bootstrap-datetimepicker.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\Datetimepiker\css\bootstrap-datetimepicker.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\Datetimepiker\js\bootstrap-datetimepicker.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\momentjs\moment-with-locales.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\momentjs\moment-with-locales.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\momentjs\moment.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\momentjs\moment.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

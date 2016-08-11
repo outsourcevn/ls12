@@ -17,8 +17,8 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
             @Html.ValidationMessageFor(m => m.LocalId, "", new { @class = "text-danger" })
-           
-            
+
+
             <h4 style="text-transform: uppercase;">Bước 1: Chọn danh mục sản phẩm</h4>
             @Html.HiddenFor(m => m.CategoryId, new { @id = "ProductCategoryId" })
             @Html.HiddenFor(m => m.LocalId, new { @id = "ProductLocalId" })
@@ -32,23 +32,180 @@
                     @Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "text-danger has-error" })
                 </div>
                 <div class="col-md-5">
-                    <p class="help-block">(Ví dụ laptop Lenovo G2310 - core i5 6200, Ram 4gb, 15.6 inch, vga 2gb, hdd 500 gb)</p>
+                    <p class="help-block font-itali">(Ví dụ laptop Lenovo G2310 - core i5 6200, Ram 4gb, 15.6 inch, vga 2gb, hdd 500 gb)</p>
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.ProductPrice, new { @class = "col-md-2 control-label" })
                 <div class="col-md-5">
-                    @Html.TextBoxFor(m => m.ProductPrice, new { @class = "form-control", placeholder = "Giá bán" })
+                    @Html.TextBoxFor(m => m.ProductPrice, new { @class = "form-control", placeholder = "Giá bán sản phẩm" })
                     @Html.ValidationMessageFor(m => m.ProductPrice, "", new { @class = "text-danger has-error" })
                 </div>
                 <div class="col-md-5">
                     <div class="checkbox">
                         <label>
-                           @Html.CheckBoxFor(m => m.ProductVAT) VAT
+                            @Html.CheckBoxFor(m => m.ProductVAT) <span>VAT</span>
                         </label>
                     </div>
-                                      
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ProductStatus, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @Html.TextBoxFor(m => m.ProductStatus, new { @class = "form-control", placeholder = "Tình trạng của sản phẩm" })
+                    @Html.ValidationMessageFor(m => m.ProductStatus, "", new { @class = "text-danger has-error" })
+                </div>
+                <div class="col-md-5">
+                    <p class="help-block font-itali">(Ví dụ: mới | cũ | mới 90%, v.v...)</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ProductType, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @Html.TextBoxFor(m => m.ProductType, new { @class = "form-control", placeholder = "Thể loại của sản phẩm" })
+                    @Html.ValidationMessageFor(m => m.ProductType, "", new { @class = "text-danger has-error" })
+                </div>
+                <div class="col-md-5">
+                    <p class="help-block font-itali">(Ví dụ: Hàng chính hãng | Hàng xách tay, v.v...)</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ProductMethod, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @Html.TextBoxFor(m => m.ProductMethod, new { @class = "form-control", placeholder = "Cách thức giao hàng" })
+                    @Html.ValidationMessageFor(m => m.ProductMethod, "", new { @class = "text-danger has-error" })
+                </div>
+                <div class="col-md-5">
+                    <p class="help-block font-itali">(Ví dụ: Miễn phí giao hàng | Tiền ship 30k, sản phẩm, v.v...)</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ProductGuarantee, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @Html.TextBoxFor(m => m.ProductGuarantee, new { @class = "form-control", placeholder = "Chế độ bảo hành" })
+                    @Html.ValidationMessageFor(m => m.ProductGuarantee, "", new { @class = "text-danger has-error" })
+                </div>
+                <div class="col-md-5">
+                    <p class="help-block font-itali">(Ví dụ: 6 tháng | 12 tháng, 1 năm, v.v...)</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ProductPromotion, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @Html.TextBoxFor(m => m.ProductPromotion, new { @class = "form-control", placeholder = "Thông tin khuyến mại" })
+                    @Html.ValidationMessageFor(m => m.ProductPromotion, "", new { @class = "text-danger has-error" })
+                </div>
+                <div class="col-md-5">
+                    <p class="help-block font-itali">(Ví dụ: Giảm giá 20% từ 1/8/2016 đến 1/9/2016.)</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ProductDateCreate, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    <div class='input-group date' id='datetimepicker1'>
+                        @Html.TextBoxFor(m => m.ProductDateCreate, new { @class = "form-control", placeholder = "Nhập ngày đăng" })
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.ProductDateCreate, "", new { @class = "text-danger has-error" })
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker1').datetimepicker({
+                            locale: 'vi'
+                        });
+                    });
+                </script>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ProductAvatar, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <input type="file" id="ProductAvatar_file" name="ProductAvatar" accept="image/*" class="form-control" />
+                        <span class="input-group-addon" style="cursor: pointer;">
+                            <i class="fa fa-upload"></i> Tải ảnh
+                        </span>
+                    </div>
+
+                    @Html.HiddenFor(m => m.ProductAvatar)
+                </div>
+                <div class="col-md-5">
+                    <img id="ProductAvatar_img" class="img-thumbnail img-product" src="" alt="" />
+                </div>
+                <script>
+                    $(document).ready(function () {
+                        $("#ProductAvatar_file").siblings('span').click(function () {
+                            var formData = new FormData();
+                            var totalFiles = document.getElementById("ProductAvatar_file").files.length;
+                            for (var i = 0; i < totalFiles; i++) {
+                                var file = document.getElementById("ProductAvatar_file").files[i];
+
+                                formData.append("ProductAvatar_file", file);
+                            }
+                            $.ajax({
+                                type: "POST",
+                                url: '/product/Upload',
+                                data: formData,
+                                dataType: 'json',
+                                contentType: false,
+                                processData: false,
+                                success: function (response) {
+                                    $('#ProductAvatar').val(response);
+                                    $('#ProductAvatar_img').attr({ 'src': response }).css('display', 'block');
+                                },
+                                error: function (error) {
+                                    console.log(error);
+                                }
+                            });
+                        });
+                    });
+
+                </script>
+
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Chọn các ảnh mô tả sản phẩm</label>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <input type="file" id="Productimg_file1" name="ProductAvatar" accept="image/*" class="form-control" />
+                        <input type="file" id="Productimg_file2" name="ProductAvatar" accept="image/*" class="form-control" />
+                        <input type="file" id="Productimg_file3" name="ProductAvatar" accept="image/*" class="form-control" />
+                        <span class="input-group-addon" style="cursor: pointer;">
+                            <i class="fa fa-upload"></i> Tải ảnh
+                        </span>
+                    </div>
+                    <input type="hidden" name="hinh1" id="hinh1" />
+                    <input type="hidden" name="hinh2" id="hinh2" />
+                    <input type="hidden" name="hinh3" id="hinh3" />
+
+                </div>
+                <div class="col-md-5">
+                    <img id="Product_img1" class="img-thumbnail img-product" src="" alt="" />
+                    <img id="Product_img2" class="img-thumbnail img-product" src="" alt="" />
+                    <img id="Product_img3" class="img-thumbnail img-product" src="" alt="" />
+                </div>
+            </div>
+
+            <h4 style="text-transform: uppercase;">Bước 3: Viết mô tả chi tiết về sản phẩm</h4>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <a href="#">Bấm vào đây để xem ví dụ mẫu về mô tả chi tiết sản phẩm</a>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-5 col-md-offset-2">
+                    @Html.TextAreaFor(m => m.ProductDescription, new { @class = "form-control", rows = 5 })
                 </div>
             </div>
 
@@ -66,12 +223,11 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-<script type="text/javascript">
-    $.validator.setDefaults({
-        ignore: ""
-    });
-</script>
-
+    <script type="text/javascript">
+        $.validator.setDefaults({
+            ignore: ""
+        });
+    </script>
 }
 
 

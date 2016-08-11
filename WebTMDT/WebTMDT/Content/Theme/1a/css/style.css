@@ -1253,3 +1253,17 @@ ul.meta-tags li:last-child:after { content: ' ' }
 #AddNewProduct .text-danger {
     display: block;
 }
+
+.font-bolded {
+    font-weight: 700;
+}
+
+.font-itali {
+    font-style: italic;
+}
+
+.img-product {
+    display: none;
+        width: 130px;
+    margin-top: 5px;
+}
