@@ -552,6 +552,1025 @@
     <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\adapters\jquery.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\build-config.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\ckeditor.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\config.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\contents.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\af.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\ar.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\bg.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\bn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\bs.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\ca.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\cs.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\cy.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\da.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\de-ch.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\de.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\el.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\en-au.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\en-ca.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\en-gb.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\en.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\eo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\es.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\et.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\eu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\fa.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\fi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\fo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\fr-ca.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\fr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\gl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\gu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\he.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\hi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\hr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\hu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\id.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\is.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\it.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\ja.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\ka.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\km.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\ko.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\ku.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\lt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\lv.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\mk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\mn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\ms.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\nb.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\nl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\no.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\pl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\pt-br.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\pt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\ro.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\ru.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\si.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\sk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\sl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\sq.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\sr-latn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\sr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\sv.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\th.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\tr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\tt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\ug.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\uk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\vi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\zh-cn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\lang\zh.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\af.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\da.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\de-ch.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\de.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\el.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\en.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\es.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\et.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\eu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\fo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\he.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\id.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\it.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\km.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ko.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\no.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\si.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\th.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\tt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\zh.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\about\dialogs\about.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\about\dialogs\logo_ckeditor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\clipboard\dialogs\paste.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\colordialog\dialogs\colordialog.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\colordialog\dialogs\colordialog.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\dialog\dialogDefinition.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\div\dialogs\div.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\find\dialogs\find.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\flash\dialogs\flash.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\flash\images\placeholder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\forms\dialogs\button.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\forms\dialogs\checkbox.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\forms\dialogs\form.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\forms\dialogs\hiddenfield.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\forms\dialogs\radio.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\forms\dialogs\select.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\forms\dialogs\textarea.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\forms\dialogs\textfield.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\forms\images\hiddenfield.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\icons.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\icons_hidpi.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\iframe\dialogs\iframe.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\iframe\images\placeholder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\image\dialogs\image.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\image\images\noimage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\link\dialogs\anchor.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\link\dialogs\link.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\link\images\anchor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\link\images\hidpi\anchor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\liststyle\dialogs\liststyle.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\magicline\images\hidpi\icon-rtl.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\magicline\images\hidpi\icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\magicline\images\icon-rtl.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\magicline\images\icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\pagebreak\images\pagebreak.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\pastefromword\filter\default.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\preview\preview.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\scayt\dialogs\options.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\scayt\dialogs\toolbar.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\showblocks\images\block_address.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\showblocks\images\block_blockquote.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\showblocks\images\block_div.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\showblocks\images\block_h1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\showblocks\images\block_h2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\showblocks\images\block_h3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\showblocks\images\block_h4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\showblocks\images\block_h5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\showblocks\images\block_h6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\showblocks\images\block_p.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\showblocks\images\block_pre.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\dialogs\smiley.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\angel_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\angel_smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\angry_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\angry_smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\broken_heart.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\broken_heart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\confused_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\confused_smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\cry_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\cry_smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\devil_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\devil_smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\embaressed_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\embarrassed_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\embarrassed_smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\envelope.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\envelope.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\heart.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\heart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\kiss.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\kiss.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\lightbulb.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\lightbulb.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\omg_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\omg_smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\regular_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\regular_smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\sad_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\sad_smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\shades_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\shades_smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\teeth_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\teeth_smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\thumbs_down.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\thumbs_down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\thumbs_up.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\thumbs_up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\tongue_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\tongue_smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\tounge_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\whatchutalkingabout_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\whatchutalkingabout_smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\wink_smile.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\smiley\images\wink_smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\af.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\ar.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\bg.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\ca.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\cs.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\cy.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\da.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\de-ch.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\de.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\el.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\en-gb.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\en.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\eo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\es.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\et.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\eu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\fa.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\fi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\fr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\gl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\he.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\hr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\hu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\id.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\it.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\ja.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\km.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\ko.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\ku.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\lt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\lv.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\nb.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\nl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\no.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\pl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\pt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\ru.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\si.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\sk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\sl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\sq.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\sv.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\th.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\tr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\tt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\ug.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\uk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\vi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\zh.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\specialchar\dialogs\specialchar.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\tabletools\dialogs\tableCell.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\table\dialogs\table.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\templates\dialogs\templates.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\templates\dialogs\templates.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\templates\templates\default.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\templates\templates\images\template1.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\templates\templates\images\template2.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\templates\templates\images\template3.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\wsc\dialogs\ciframe.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\wsc\dialogs\tmpFrameset.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\wsc\dialogs\wsc.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\wsc\dialogs\wsc.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\wsc\dialogs\wsc_ie.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\css\samples.css" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\img\github-top.png" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\img\header-bg.png" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\img\header-separator.png" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\img\logo.png" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\img\navigation-tip.png" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\index.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\js\sample.js" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\js\sf.js" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\ajax.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\api.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\appendto.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\assets\inlineall\logo.png" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\assets\sample.jpg" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\assets\uilanguages\languages.js" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\datafiltering.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\dialog\assets\my_dialog.js" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\dialog\dialog.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\divreplace.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\enterkey\enterkey.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\htmlwriter\outputforflash.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\htmlwriter\outputhtml.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\index.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\inlineall.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\inlinebycode.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\inlinetextarea.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\jquery.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\magicline\magicline.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\readonly.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\replacebyclass.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\replacebycode.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\sample.css" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\sample.js" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\tabindex.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\toolbar\toolbar.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\uicolor.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\uilanguages.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\wysiwygarea\fullpage.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\xhtmlstyle.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\css\fontello.css" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\font\fontello.svg" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\font\LICENSE.txt" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\index.html" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\js\abstracttoolbarmodifier.js" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\js\fulltoolbareditor.js" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\js\toolbarmodifier.js" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\js\toolbartextmodifier.js" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.css" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.js" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\javascript.js" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\neo.css" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.css" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.js" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\dialog.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\dialog_ie.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\dialog_ie7.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\dialog_ie8.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\dialog_iequirks.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\editor.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\editor_gecko.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\editor_ie.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\editor_ie7.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\editor_ie8.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\editor_iequirks.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\icons.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\icons_hidpi.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\images\arrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\images\close.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\images\hidpi\close.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\images\hidpi\lock-open.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\images\hidpi\lock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\images\hidpi\refresh.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\images\lock-open.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\images\lock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\images\refresh.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\images\spinner.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\styles.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Theme\1a\Plugin\Datetimepiker\css\bootstrap-datetimepicker-standalone.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -648,6 +1667,41 @@
       <DependentUpon>LangSonModel.edmx</DependentUpon>
     </Content>
     <Content Include="Content\Theme\1a\Plugin\bootstrap-tagsinput.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\CHANGES.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\LICENSE.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\scayt\CHANGELOG.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\scayt\LICENSE.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\scayt\README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\wsc\LICENSE.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\plugins\wsc\README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\assets\posteddata.php" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\old\sample_posteddata.php" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\font\config.json" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\font\fontello.eot" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="Content\Theme\1a\Plugin\ckeditor\skins\moono\readme.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\langson12.pubxml" />

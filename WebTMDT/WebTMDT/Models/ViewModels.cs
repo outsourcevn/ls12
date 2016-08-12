@@ -52,12 +52,12 @@ namespace WebTMDT.Models
         [Display(Name = "Khuyến mại")]
         [Required(ErrorMessage = "Vui lòng nhập {0}")]
         public string ProductPromotion { get; set; }
-        [Display(Name = "Ngày đăng")]
-        [Required(ErrorMessage = "Vui lòng nhập {0}")]
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{dd/MM/yy hh:mm}", ApplyFormatInEditMode = true)]
-        public Nullable<System.DateTime> ProductDateCreate { get; set; }
+        //[Display(Name = "Ngày đăng")]
+        //[Required(ErrorMessage = "Vui lòng nhập {0}")]
+        //[DataType(DataType.Date), DisplayFormat(DataFormatString = "{dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+        //public Nullable<System.DateTime> ProductDateCreate { get; set; }
         [Display(Name = "Ảnh đại diện sản phẩm")]
-        public HttpPostedFileBase ProductAvatar { get; set; }
+        public string ProductAvatar { get; set; }
         public string ProductDescription { get; set; }
         public string ProductMore { get; set; }   
         [Required(ErrorMessage="Vui lòng chọn danh mục sản phẩm")]
@@ -73,6 +73,23 @@ namespace WebTMDT.Models
     {        
         public Nullable<long> ProductId { get; set; }
         public string UrlImage { get; set; }
+    }
+
+    public class ProductStatus
+    {
+        public string ProductStatusName { get; set; }
+    }
+
+    public class ProductType
+    {
+        public string ProductTypeName { get; set; }
+    }
+
+    public class UrlImages
+    {
+        public string hinh1 { get; set; }
+        public string hinh2 { get; set; }
+        public string hinh3 { get; set; }
     }
 
 }

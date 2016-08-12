@@ -1,6 +1,5 @@
 ﻿@model WebTMDT.Models.ProductViewModel
 
-
 @{
     ViewBag.Title = "Đăng sản phẩm";
     Layout = "~/Views/Shared/_LayoutProduct.cshtml";
@@ -11,6 +10,16 @@
         <div class="page-header">
             <h3>@ViewBag.Title</h3>
         </div>
+        @if (TempData["Message"] != null)
+        {           
+            <div class="alert alert-success alert-dismissible fade in" role="alert"> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                 <strong>@TempData["Message"]</strong>
+            </div>
+        }
+
+           
         @using (Html.BeginForm("AddNewProduct", "Product", FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "AddNewProduct" }))
         {
             @Html.AntiForgeryToken()
@@ -53,8 +62,11 @@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.ProductStatus, new { @class = "col-md-2 control-label" })
-                <div class="col-md-5">
-                    @Html.TextBoxFor(m => m.ProductStatus, new { @class = "form-control", placeholder = "Tình trạng của sản phẩm" })
+                <div class="col-md-5">    
+                    @if (ViewBag.ProductStatus != null)
+                    {
+                        @Html.DropDownListFor(m => m.ProductStatus, new SelectList(ViewBag.ProductStatus, "ProductStatusName", "ProductStatusName"), "-Chọn trạng thái sản phẩm-", new { @class = "form-control" })
+                    }
                     @Html.ValidationMessageFor(m => m.ProductStatus, "", new { @class = "text-danger has-error" })
                 </div>
                 <div class="col-md-5">
@@ -65,7 +77,10 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.ProductType, new { @class = "col-md-2 control-label" })
                 <div class="col-md-5">
-                    @Html.TextBoxFor(m => m.ProductType, new { @class = "form-control", placeholder = "Thể loại của sản phẩm" })
+                    @if (ViewBag.ProductType != null)
+                    {
+                        @Html.DropDownListFor(m => m.ProductType, new SelectList(ViewBag.ProductType, "ProductTypeName", "ProductTypeName"), "-Chọn thể loại sản phẩm-", new { @class = "form-control" })
+                    }
                     @Html.ValidationMessageFor(m => m.ProductType, "", new { @class = "text-danger has-error" })
                 </div>
                 <div class="col-md-5">
@@ -106,7 +121,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(m => m.ProductDateCreate, new { @class = "col-md-2 control-label" })
                 <div class="col-md-5">
                     <div class='input-group date' id='datetimepicker1'>
@@ -124,7 +139,7 @@
                         });
                     });
                 </script>
-            </div>
+            </div>*@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.ProductAvatar, new { @class = "col-md-2 control-label" })
@@ -144,6 +159,11 @@
                 <script>
                     $(document).ready(function () {
                         $("#ProductAvatar_file").siblings('span').click(function () {
+
+                            if ($('#ProductAvatar_file').get(0).files.length === 0) {
+                                alert('Vui lòng chọn tệp hình ảnh.');
+                                return;
+                            }
                             var formData = new FormData();
                             var totalFiles = document.getElementById("ProductAvatar_file").files.length;
                             for (var i = 0; i < totalFiles; i++) {
@@ -159,6 +179,10 @@
                                 contentType: false,
                                 processData: false,
                                 success: function (response) {
+                                    if (response.length === 0) {
+                                        alert("Ảnh không hợp lên. Vui lòng chọn lại ảnh khác và ảnh có dung lượng tối thiểu 512 byte.");
+                                        return;
+                                    }
                                     $('#ProductAvatar').val(response);
                                     $('#ProductAvatar_img').attr({ 'src': response }).css('display', 'block');
                                 },
@@ -177,13 +201,13 @@
                 <label class="control-label col-md-2">Chọn các ảnh mô tả sản phẩm</label>
                 <div class="col-md-5">
                     <div class="input-group">
-                        <input type="file" id="Productimg_file1" name="ProductAvatar" accept="image/*" class="form-control" />
-                        <input type="file" id="Productimg_file2" name="ProductAvatar" accept="image/*" class="form-control" />
-                        <input type="file" id="Productimg_file3" name="ProductAvatar" accept="image/*" class="form-control" />
-                        <span class="input-group-addon" style="cursor: pointer;">
-                            <i class="fa fa-upload"></i> Tải ảnh
+                        <input type="file" id="ProductImages1" name="ProductImages[]" accept="image/*" class="form-control" />
+                        <input type="file" id="ProductImages2" name="ProductImages[]" accept="image/*" class="form-control" />
+                        <input type="file" id="ProductImages3" name="ProductImages[]" accept="image/*" class="form-control" />
+                        <span class="input-group-addon" id="ProductImagesUpload" style="cursor: pointer;">
+                            <i class="fa fa-upload "></i> Tải ảnh
                         </span>
-                    </div>
+                    </div>                    
                     <input type="hidden" name="hinh1" id="hinh1" />
                     <input type="hidden" name="hinh2" id="hinh2" />
                     <input type="hidden" name="hinh3" id="hinh3" />
@@ -195,6 +219,56 @@
                     <img id="Product_img3" class="img-thumbnail img-product" src="" alt="" />
                 </div>
             </div>
+            
+            <script>
+                $(document).ready(function () {
+                    $('#ProductImagesUpload').on('click', function () {
+                        var xx = $(this).siblings($("input[name^='ProductImages']")).get(0).files.length;
+                        if (xx === 0) {
+                            alert('Vui lòng chọn ít nhất một hình ảnh.');
+                            return;
+                        }
+                        var ajaxData = new FormData();                        
+                        $.each($("input[name^='ProductImages']"), function (i, obj) {
+                            $.each(obj.files, function (j, file) {                               
+                                ajaxData.append('ProductImages[' + i + ']', file);                                
+                            })
+                        });
+                        $.ajax({
+                            type: "POST",
+                            url: '/product/UploadMultiFile',
+                            data: ajaxData,
+                            dataType: 'json',
+                            contentType: false,
+                            processData: false,
+                            success: function (response) {
+                                
+                                if (response.length === 0) {
+                                    alert("Ảnh không hợp lên. Vui lòng chọn lại ảnh khác và ảnh có dung lượng tối thiểu 512 byte.");
+                                    return;
+                                }
+
+                                $.each(response, function (index) {
+                                    var url0 = response[0];
+                                    var url1 = response[1];
+                                    var url2 = response[2];
+                                    $('#Product_img1').attr('src', url0).css('display', 'inline-block');
+                                    $('#Product_img2').attr('src', url1).css('display', 'inline-block');
+                                    $('#Product_img3').attr('src', url2).css('display', 'inline-block');
+                                    $('#hinh1').val(url0);
+                                    $('#hinh2').val(url1)
+                                    $('#hinh3').val(url2)
+                                });
+
+
+                            },
+                            error: function (error) {
+                                alert('Mất kết mạng');
+                            }
+                        });
+                    })
+                })
+            </script>
 
             <h4 style="text-transform: uppercase;">Bước 3: Viết mô tả chi tiết về sản phẩm</h4>
             <div class="form-group">
@@ -204,11 +278,16 @@
             </div>
 
             <div class="form-group">
-                <div class="col-md-5 col-md-offset-2">
+                <div class="col-md-10 col-md-offset-2">
                     @Html.TextAreaFor(m => m.ProductDescription, new { @class = "form-control", rows = 5 })
                 </div>
             </div>
-
+            
+            <script>
+                CKEDITOR.replace('ProductDescription');
+            </script>
+            
+            
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-primary" value="Đăng sản phẩm" />
