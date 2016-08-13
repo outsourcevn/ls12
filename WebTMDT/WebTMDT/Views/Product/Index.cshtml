@@ -35,23 +35,23 @@
 
             <h4 style="text-transform: uppercase;">Bước 2: Nhập thông tin sản phẩm</h4>
             <div class="form-group">
-                @Html.LabelFor(m => m.ProductName, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.ProductName, new { @class = "col-md-3 control-label" })
                 <div class="col-md-5">
                     @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control", placeholder = "Tên sản phẩm và mô tả ngắn về sản phẩm" })
-                    @Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "text-danger has-error" })
+                    @*@Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "text-danger has-error" })*@
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <p class="help-block font-itali">(Ví dụ laptop Lenovo G2310 - core i5 6200, Ram 4gb, 15.6 inch, vga 2gb, hdd 500 gb)</p>
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.ProductPrice, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.ProductPrice, new { @class = "col-md-3 control-label" })
                 <div class="col-md-5">
                     @Html.TextBoxFor(m => m.ProductPrice, new { @class = "form-control", placeholder = "Giá bán sản phẩm" })
-                    @Html.ValidationMessageFor(m => m.ProductPrice, "", new { @class = "text-danger has-error" })
+                    @*@Html.ValidationMessageFor(m => m.ProductPrice, "", new { @class = "text-danger has-error" })*@
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <div class="checkbox">
                         <label>
                             @Html.CheckBoxFor(m => m.ProductVAT) <span>VAT</span>
@@ -59,64 +59,87 @@
                     </div>
                 </div>
             </div>
+            
+            <script>
+                $(document).ready(function () {
+                    $("#ProductPrice").on("input", function () {
+                        // allow numbers, a comma or a dot
+                        var v = $(this).val(), vc = v.replace(/[^0-9,\.]/, '');
+                        if (v !== vc)
+                            $(this).val(vc);
+                    }).maskMoney({
+                        prefix: '', // The symbol to be displayed before the value entered by the user
+                        allowZero: false, // Prevent users from inputing zero
+                        allowNegative: true, // Prevent users from inputing negative values
+                        defaultZero: false, // when the user enters the field, it sets a default mask using zero
+                        thousands: ',', // The thousands separator
+                        decimal: '.', // The decimal separator
+                        precision: 0, // How many decimal places are allowed
+                        affixesStay: false, // set if the symbol will stay in the field after the user exits the field. 
+                        symbolPosition: 'right' // use this setting to position the symbol at the left or right side of the value. default 'left'
+                    }); //;
+
+                   
+                });
+            </script>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.ProductStatus, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.ProductStatus, new { @class = "col-md-3 control-label" })
                 <div class="col-md-5">    
                     @if (ViewBag.ProductStatus != null)
                     {
                         @Html.DropDownListFor(m => m.ProductStatus, new SelectList(ViewBag.ProductStatus, "ProductStatusName", "ProductStatusName"), "-Chọn trạng thái sản phẩm-", new { @class = "form-control" })
                     }
-                    @Html.ValidationMessageFor(m => m.ProductStatus, "", new { @class = "text-danger has-error" })
+                   @* @Html.ValidationMessageFor(m => m.ProductStatus, "", new { @class = "text-danger has-error" })*@
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <p class="help-block font-itali">(Ví dụ: mới | cũ | mới 90%, v.v...)</p>
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.ProductType, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.ProductType, new { @class = "col-md-3 control-label" })
                 <div class="col-md-5">
                     @if (ViewBag.ProductType != null)
                     {
                         @Html.DropDownListFor(m => m.ProductType, new SelectList(ViewBag.ProductType, "ProductTypeName", "ProductTypeName"), "-Chọn thể loại sản phẩm-", new { @class = "form-control" })
                     }
-                    @Html.ValidationMessageFor(m => m.ProductType, "", new { @class = "text-danger has-error" })
+                   @* @Html.ValidationMessageFor(m => m.ProductType, "", new { @class = "text-danger has-error" })*@
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <p class="help-block font-itali">(Ví dụ: Hàng chính hãng | Hàng xách tay, v.v...)</p>
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.ProductMethod, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.ProductMethod, new { @class = "col-md-3 control-label" })
                 <div class="col-md-5">
                     @Html.TextBoxFor(m => m.ProductMethod, new { @class = "form-control", placeholder = "Cách thức giao hàng" })
-                    @Html.ValidationMessageFor(m => m.ProductMethod, "", new { @class = "text-danger has-error" })
+                    @*@Html.ValidationMessageFor(m => m.ProductMethod, "", new { @class = "text-danger has-error" })*@
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <p class="help-block font-itali">(Ví dụ: Miễn phí giao hàng | Tiền ship 30k, sản phẩm, v.v...)</p>
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.ProductGuarantee, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.ProductGuarantee, new { @class = "col-md-3 control-label" })
                 <div class="col-md-5">
                     @Html.TextBoxFor(m => m.ProductGuarantee, new { @class = "form-control", placeholder = "Chế độ bảo hành" })
-                    @Html.ValidationMessageFor(m => m.ProductGuarantee, "", new { @class = "text-danger has-error" })
+                    @*@Html.ValidationMessageFor(m => m.ProductGuarantee, "", new { @class = "text-danger has-error" })*@
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <p class="help-block font-itali">(Ví dụ: 6 tháng | 12 tháng, 1 năm, v.v...)</p>
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.ProductPromotion, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.ProductPromotion, new { @class = "col-md-3 control-label" })
                 <div class="col-md-5">
                     @Html.TextBoxFor(m => m.ProductPromotion, new { @class = "form-control", placeholder = "Thông tin khuyến mại" })
-                    @Html.ValidationMessageFor(m => m.ProductPromotion, "", new { @class = "text-danger has-error" })
+                    @*@Html.ValidationMessageFor(m => m.ProductPromotion, "", new { @class = "text-danger has-error" })*@
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <p class="help-block font-itali">(Ví dụ: Giảm giá 20% từ 1/8/2016 đến 1/9/2016.)</p>
                 </div>
             </div>
@@ -142,35 +165,30 @@
             </div>*@
 
             <div class="form-group">
-                @Html.LabelFor(m => m.ProductAvatar, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.ProductAvatar, new { @class = "col-md-3 control-label" })
                 <div class="col-md-5">
-                    <div class="input-group">
-                        <input type="file" id="ProductAvatar_file" name="ProductAvatar" accept="image/*" class="form-control" />
+                    
+                    @*<div class="input-group">
                         <span class="input-group-addon" style="cursor: pointer;">
                             <i class="fa fa-upload"></i> Tải ảnh
                         </span>
-                    </div>
+                    </div>*@
+                    <label id="ProductAvatar_U1" class="upload-image btn-file">
+                        <i class="fa fa-plus fa-3x"></i>
+                        <input type="file" id="ProductAvatar_file" name="ProductAvatar" accept="image/*" class="form-control" style="display: none;" />
+                    </label>
 
                     @Html.HiddenFor(m => m.ProductAvatar)
                 </div>
-                <div class="col-md-5">
+                @*<div class="col-md-4">
                     <img id="ProductAvatar_img" class="img-thumbnail img-product" src="" alt="" />
-                </div>
+                </div>*@
                 <script>
                     $(document).ready(function () {
-                        $("#ProductAvatar_file").siblings('span').click(function () {
-
-                            if ($('#ProductAvatar_file').get(0).files.length === 0) {
-                                alert('Vui lòng chọn tệp hình ảnh.');
-                                return;
-                            }
+                        $("#ProductAvatar_file").change(function () {
                             var formData = new FormData();
-                            var totalFiles = document.getElementById("ProductAvatar_file").files.length;
-                            for (var i = 0; i < totalFiles; i++) {
-                                var file = document.getElementById("ProductAvatar_file").files[i];
-
-                                formData.append("ProductAvatar_file", file);
-                            }
+                            var file = $(this).get(0).files[0];
+                            formData.append("ProductImg_file", file);                            
                             $.ajax({
                                 type: "POST",
                                 url: '/product/Upload',
@@ -184,10 +202,10 @@
                                         return;
                                     }
                                     $('#ProductAvatar').val(response);
-                                    $('#ProductAvatar_img').attr({ 'src': response }).css('display', 'block');
+                                    $('#ProductAvatar_U1').css("background-image", "url('" + $('#ProductAvatar').val() + "')");
                                 },
                                 error: function (error) {
-                                    console.log(error);
+                                    alert('Mất kết mạng');
                                 }
                             });
                         });
@@ -198,76 +216,165 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-2">Chọn các ảnh mô tả sản phẩm</label>
+                <label class="control-label col-md-3">Chọn các ảnh mô tả sản phẩm</label>
                 <div class="col-md-5">
-                    <div class="input-group">
+                    <label id="ProductImages_U2" class="upload-image btn-file">
+                        <i class="fa fa-plus fa-3x"></i>
+                        <input type="file" id="ProductImages1" name="ProductImages1" accept="image/*" class="form-control" style="display: none;" />
+                    </label>
+                    <label id="ProductImages_U3" class="upload-image btn-file">
+                        <i class="fa fa-plus fa-3x"></i>
+                        <input type="file" id="ProductImages2" name="ProductImages2" accept="image/*" class="form-control" style="display: none;" />
+                    </label>
+                    <label id="ProductImages_U4" class="upload-image btn-file">
+                        <i class="fa fa-plus fa-3x"></i>
+                        <input type="file" id="ProductImages3" name="ProductImages3" accept="image/*" class="form-control" style="display: none;" />
+                    </label>                 
+                    
+                    
+                    @*<div class="input-group">
                         <input type="file" id="ProductImages1" name="ProductImages[]" accept="image/*" class="form-control" />
                         <input type="file" id="ProductImages2" name="ProductImages[]" accept="image/*" class="form-control" />
                         <input type="file" id="ProductImages3" name="ProductImages[]" accept="image/*" class="form-control" />
                         <span class="input-group-addon" id="ProductImagesUpload" style="cursor: pointer;">
                             <i class="fa fa-upload "></i> Tải ảnh
                         </span>
-                    </div>                    
+                    </div>*@                
                     <input type="hidden" name="hinh1" id="hinh1" />
                     <input type="hidden" name="hinh2" id="hinh2" />
                     <input type="hidden" name="hinh3" id="hinh3" />
 
                 </div>
-                <div class="col-md-5">
+                @*<div class="col-md-4">
                     <img id="Product_img1" class="img-thumbnail img-product" src="" alt="" />
                     <img id="Product_img2" class="img-thumbnail img-product" src="" alt="" />
                     <img id="Product_img3" class="img-thumbnail img-product" src="" alt="" />
-                </div>
+                </div>*@
             </div>
             
             <script>
                 $(document).ready(function () {
-                    $('#ProductImagesUpload').on('click', function () {
-                        var xx = $(this).siblings($("input[name^='ProductImages']")).get(0).files.length;
-                        if (xx === 0) {
-                            alert('Vui lòng chọn ít nhất một hình ảnh.');
-                            return;
-                        }
-                        var ajaxData = new FormData();                        
-                        $.each($("input[name^='ProductImages']"), function (i, obj) {
-                            $.each(obj.files, function (j, file) {                               
-                                ajaxData.append('ProductImages[' + i + ']', file);                                
-                            })
-                        });
+                    $('#ProductImages1').change(function () {
+                        var formData = new FormData();
+                        var file = $(this).get(0).files[0];
+                        formData.append("ProductImg_file", file);
                         $.ajax({
                             type: "POST",
-                            url: '/product/UploadMultiFile',
-                            data: ajaxData,
+                            url: '/product/Upload',
+                            data: formData,
                             dataType: 'json',
                             contentType: false,
                             processData: false,
                             success: function (response) {
-                                
                                 if (response.length === 0) {
-                                    alert("Ảnh không hợp lên. Vui lòng chọn lại ảnh khác và ảnh có dung lượng tối thiểu 512 byte.");
+                                    alert("Ảnh không hợp lệ. Vui lòng chọn lại ảnh khác và ảnh có dung lượng tối thiểu 512 byte.");
                                     return;
                                 }
-
-                                $.each(response, function (index) {
-                                    var url0 = response[0];
-                                    var url1 = response[1];
-                                    var url2 = response[2];
-                                    $('#Product_img1').attr('src', url0).css('display', 'inline-block');
-                                    $('#Product_img2').attr('src', url1).css('display', 'inline-block');
-                                    $('#Product_img3').attr('src', url2).css('display', 'inline-block');
-                                    $('#hinh1').val(url0);
-                                    $('#hinh2').val(url1)
-                                    $('#hinh3').val(url2)
-                                });
-
-
+                                $('#hinh1').val(response);
+                                $('#ProductImages_U2').css("background-image", "url('" + $('#hinh1').val() + "')");
+                            },
+                            error: function (error) {
+                                alert('Mất kết mạng');
+                            }
+                        });
+                    });
+                    $('#ProductImages2').change(function () {
+                        var formData = new FormData();
+                        var file = $(this).get(0).files[0];
+                        formData.append("ProductImg_file", file);
+                        $.ajax({
+                            type: "POST",
+                            url: '/product/Upload',
+                            data: formData,
+                            dataType: 'json',
+                            contentType: false,
+                            processData: false,
+                            success: function (response) {
+                                if (response.length === 0) {
+                                    alert("Ảnh không hợp lệ. Vui lòng chọn lại ảnh khác và ảnh có dung lượng tối thiểu 512 byte.");
+                                    return;
+                                }
+                                $('#hinh2').val(response);
+                                $('#ProductImages_U3').css("background-image", "url('" + $('#hinh2').val() + "')");
+                            },
+                            error: function (error) {
+                                alert('Mất kết mạng');
+                            }
+                        });
+                    });
+                    $('#ProductImages3').change(function () {
+                        var formData = new FormData();
+                        var file = $(this).get(0).files[0];
+                        formData.append("ProductImg_file", file);
+                        $.ajax({
+                            type: "POST",
+                            url: '/product/Upload',
+                            data: formData,
+                            dataType: 'json',
+                            contentType: false,
+                            processData: false,
+                            success: function (response) {
+                                if (response.length === 0) {
+                                    alert("Ảnh không hợp lệ. Vui lòng chọn lại ảnh khác và ảnh có dung lượng tối thiểu 512 byte.");
+                                    return;
+                                }
+                                $('#hinh3').val(response);
+                                $('#ProductImages_U4').css("background-image", "url('" + $('#hinh3').val() + "')");
                             },
                             error: function (error) {
                                 alert('Mất kết mạng');
                             }
                         });
                     })
+                   
                 })
+                //$(document).ready(function () {
+                //    $('#ProductImagesUpload').on('click', function () {
+                //        var xx = $(this).siblings($("input[name^='ProductImages']")).get(0).files.length;
+                //        if (xx === 0) {
+                //            alert('Vui lòng chọn ít nhất một hình ảnh.');
+                //            return;
+                //        }
+                //        var ajaxData = new FormData();                        
+                //        $.each($("input[name^='ProductImages']"), function (i, obj) {
+                //            $.each(obj.files, function (j, file) {                               
+                //                ajaxData.append('ProductImages[' + i + ']', file);                                
+                //            })
+                //        });
+                //        $.ajax({
+                //            type: "POST",
+                //            url: '/product/UploadMultiFile',
+                //            data: ajaxData,
+                //            dataType: 'json',
+                //            contentType: false,
+                //            processData: false,
+                //            success: function (response) {
+                                
+                //                if (response.length === 0) {
+                //                    alert("Ảnh không hợp lên. Vui lòng chọn lại ảnh khác và ảnh có dung lượng tối thiểu 512 byte.");
+                //                    return;
+                //                }
+
+                //                $.each(response, function (index) {
+                //                    var url0 = response[0];
+                //                    var url1 = response[1];
+                //                    var url2 = response[2];
+                //                    $('#Product_img1').attr('src', url0).css('display', 'inline-block');
+                //                    $('#Product_img2').attr('src', url1).css('display', 'inline-block');
+                //                    $('#Product_img3').attr('src', url2).css('display', 'inline-block');
+                //                    $('#hinh1').val(url0);
+                //                    $('#hinh2').val(url1)
+                //                    $('#hinh3').val(url2)
+                //                });
+
+
+                //            },
+                //            error: function (error) {
+                //                alert('Mất kết mạng');
+                //            }
+                //        });
+                //    })
+                //})
             </script>
 
             <h4 style="text-transform: uppercase;">Bước 3: Viết mô tả chi tiết về sản phẩm</h4>
@@ -278,7 +385,7 @@
             </div>
 
             <div class="form-group">
-                <div class="col-md-10 col-md-offset-2">
+                <div class="col-md-12">
                     @Html.TextAreaFor(m => m.ProductDescription, new { @class = "form-control", rows = 5 })
                 </div>
             </div>
@@ -289,7 +396,7 @@
             
             
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
+                <div class="col-md-offset-3 col-md-9">
                     <input type="submit" class="btn btn-primary" value="Đăng sản phẩm" />
                 </div>
             </div>

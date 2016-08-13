@@ -1583,6 +1583,12 @@
     <Content Include="Content\Theme\1a\Plugin\Datetimepiker\js\bootstrap-datetimepicker.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Theme\1a\Plugin\maskMoney\jquery.maskMoney.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\1a\Plugin\maskMoney\jquery.maskMoney.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Theme\1a\Plugin\momentjs\moment-with-locales.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

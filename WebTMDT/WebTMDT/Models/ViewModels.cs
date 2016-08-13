@@ -29,28 +29,28 @@ namespace WebTMDT.Models
 
     public class ProductViewModel
     {
-        [Required(ErrorMessage = "Vui lòng nhập {0}.")]
+        //[Required(ErrorMessage = "Vui lòng nhập {0}.")]
         [Display(Name = "Tên và mô tả ngắn về sản phẩm")]
         public string ProductName { get; set; }
         [Display(Name="Giá bán")]
-        [Required(ErrorMessage="Vui lòng nhập {0} sản phẩm")]
+        //[Required(ErrorMessage="Vui lòng nhập {0} sản phẩm")]
         public string ProductPrice { get; set; }
         [Display(Name="VAT")]
         public bool ProductVAT { get; set; }
         [Display(Name="Tình trạng sản phẩm")]
-        [Required(ErrorMessage="Vui lòng nhập {0}")]
+        //[Required(ErrorMessage="Vui lòng nhập {0}")]
         public string ProductStatus { get; set; }
         [Display(Name = "Thể loại sản phẩm")]
-        [Required(ErrorMessage = "Vui lòng nhập {0}")]
+        //[Required(ErrorMessage = "Vui lòng nhập {0}")]
         public string ProductType { get; set; }
         [Display(Name="Cách thức giao hàng")]
-        [Required(ErrorMessage="Vui lòng nhập {0}")]
+        //[Required(ErrorMessage="Vui lòng nhập {0}")]
         public string ProductMethod { get; set; }
         [Display(Name = "Bảo hành")]
-        [Required(ErrorMessage = "Vui lòng nhập {0}")]
+        //[Required(ErrorMessage = "Vui lòng nhập {0}")]
         public string ProductGuarantee { get; set; }
         [Display(Name = "Khuyến mại")]
-        [Required(ErrorMessage = "Vui lòng nhập {0}")]
+        //[Required(ErrorMessage = "Vui lòng nhập {0}")]
         public string ProductPromotion { get; set; }
         //[Display(Name = "Ngày đăng")]
         //[Required(ErrorMessage = "Vui lòng nhập {0}")]

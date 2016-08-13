@@ -9,6 +9,7 @@ html {
     overflow-y: auto;
     overflow-x: hidden;
     font-family: myFirstFont;
+    font-family: Arial, Helvetica, sans-serif;
     color: #6f6f6f;
 }
 ::-webkit-scrollbar { width: 2px;  }/* for vertical scrollbars */
@@ -1295,4 +1296,51 @@ ul.meta-tags li:last-child:after { content: ' ' }
 
 .clicked {
     background: red;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.upload-image {
+    width: 120px;
+    height: 120px;
+    border: 1px solid #cbcbcb;
+    background-color: rgba(51, 51, 51, 0.09);
+    -moz-transition: background-color ease .5s;
+    -webkit-transition: background-color ease .5s;
+    -o-transition: background-color ease .5s;
+    transition: background-color ease .5s;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.upload-image:hover {    
+    background-color: rgba(51, 51, 51, 0.2);
+}
+
+.upload-image:hover > i {
+     opacity: 1;
+}
+
+.upload-image > i {
+        padding: 30% 35%;
+            opacity: 0.4;
 }

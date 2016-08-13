@@ -7,7 +7,9 @@
             <div class="form-group">
                 <div class="dropdown" id="selectDM1">
                     <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
-                        Chọn danh mục lớn <span class="caret pull-right"></span>
+                    Chọn danh mục lớn                                          
+                        
+                    <span class="caret pull-right"></span>
                     </a>
                     <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                         @{
@@ -42,7 +44,15 @@
             <div class="form-group">
                 <div class="dropdown" id="selectDM2">
                     <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
-                        Chọn danh mục con <span class="caret pull-right"></span>
+                        @if (TempData["CatName"] != null)
+                        {
+                            @TempData["CatName"]
+                        }
+                        else
+                        {
+                            <span>Chọn danh mục con</span>
+                        }
+                        <span class="caret pull-right"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                         <li><a href="#">--Chọn danh mục lớn--</a></li>
@@ -56,7 +66,16 @@
             <div class="form-group">
                 <div class="dropdown" id="selectDiadiem">
                     <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
-                        Chọn địa điểm <span class="caret pull-right"></span>
+                         
+                        @if (TempData["LocalName"] != null)
+                        {
+                            @TempData["LocalName"]
+                        }
+                        else
+                        {
+                            <span>Chọn địa điểm</span>
+                        }
+                        <span class="caret pull-right"></span>
                     </a>
                     <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="width: 400px;">
                         <div class="row">
