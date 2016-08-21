@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using WebTMDT.Models;
+using Microsoft.Owin.Security.Facebook;
 
 namespace WebTMDT
 {
@@ -54,9 +55,25 @@ namespace WebTMDT
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
-               appId: "520624664798810",
-               appSecret: "cfc13c337ac561ca07cfaddab431886b");
+            var options = new FacebookAuthenticationOptions
+            {
+                AppId = "520624664798810",
+                AppSecret = "cfc13c337ac561ca07cfaddab431886b",
+                CallbackPath = new PathString("/oauth-redirect/facebook")
+            };
+            app.UseFacebookAuthentication(options);
+
+            //app.UseFacebookAuthentication(
+            //   appId: "520624664798810",
+            //   appSecret: "cfc13c337ac561ca07cfaddab431886b");
+
+            //var options = new FacebookAuthenticationOptions
+            //{
+            //    AppId = "Your App ID",
+            //    AppSecret = "Your App Secret",
+            //    CallbackPath = new PathString("/oauth-redirect/facebook")
+            //};
+            //app.UseFacebookAuthentication(options);
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
