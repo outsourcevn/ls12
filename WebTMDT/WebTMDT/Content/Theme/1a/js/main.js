@@ -1,4 +1,4 @@
-// Hello.
+﻿// Hello.
 //
 // This is The Scripts used for ___________ Theme
 //
@@ -144,6 +144,16 @@ function main() {
       // itemsMobile : false
  
   });
+
+  //$.ajaxSetup({
+  //    beforeSend: function (jqXHR, options) {
+  //        setTimeout(function () {
+  //            // null beforeSend to prevent recursive ajax call
+  //            $.ajax($.extend(options, { beforeSend: $.noop }));
+  //        }, 5000);
+  //        return false;
+  //    }
+  //});
  
 });
 
@@ -155,3 +165,14 @@ function main() {
 
 }
 main();
+
+// sửa lỗi call back facebook location hash
+function facebookCallback() {
+    if (window.location.hash == '#_=_') {
+        history.replaceState
+            ? history.replaceState(null, null, window.location.href.split('#')[0])
+            : window.location.hash = '';
+    }
+}
+facebookCallback();
+
