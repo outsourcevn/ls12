@@ -10,7 +10,7 @@
     src: url(HelveticaVn-Cn.ttf);
 }
 html {
-  font-family: myFirstFont;
+  /*font-family: myFirstFont;*/
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
