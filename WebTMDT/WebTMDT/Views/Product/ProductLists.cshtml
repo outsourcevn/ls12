@@ -1,0 +1,84 @@
+﻿@using WebTMDT.Models;
+@using PagedList;
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<script src="~/Content/Theme/1a/Plugin/jquery.number.min.js"></script>
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12" id="user_productslist">
+        <div class="page-header">
+            <h3>@ViewBag.Title</h3>
+        </div>
+        @using (Html.BeginForm("ProductLists", "Product", FormMethod.Get, new { @class = "form-inline search_form", role = "form", @id = "search_admin_product", style = "margin-bottom: 5px;", onsubmit = "return validate()" }))
+        {
+            <div class="form-group">
+                <label for="searchQuery" class="control-label">Tìm kiếm: </label>
+                @Html.TextBox("searchQuery", "", new { @class = "form-control", placeholder = "Nhập tên sản phẩm" })
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Tìm sản phẩm" />
+            </div>
+        }
+
+        <script>
+            function validate() {
+                if (document.getElementById("searchQuery").value === "") {
+                    alert("Vui lòng nhập từ khóa tìm kiếm");
+                    return false;
+                } else {
+                    return true;
+                };
+            }
+        </script>
+
+
+        @if (ViewBag.ProductLists != null)
+        {
+            foreach (var item in ViewBag.ProductLists)
+            {
+                <div class="row product">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="thumbnail">
+                            <img src="@item.AnhSanPham" alt="@item.TenSp" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-7">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h3>@item.TenSp</h3>
+                                <p><b>Tình trạng: </b> @item.TinhTrangSp</p>
+                                <p><b>Ngày đăng: </b>@item.NgayDang</p>
+                                <p><b>Thể loại: </b> @item.TheLoai</p>
+                                <p><b>Tên cửa hàng: </b> @item.TenNguoiBan</p>
+                                <p class="giaban" style="top: 48%;">@item.GiaBan</p>
+                                <p class="sodienthoai"><a href="tel:@item.SoDienThoaiNgBan">@item.SoDienThoaiNgBan</a></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 col-md-2">
+                        @*@Html.ActionLink("Sửa", "Edit", "Product", new { id = @item.SanPhamId }, htmlAttributes: new { @class = "btn btn-primary btn-block" })*@
+                        @Html.RouteLink("Sửa", "ProductEdit", new { id = @item.SanPhamId }, htmlAttributes: new { @class = "btn btn-primary btn-block" })
+                    </div>
+                </div>
+
+            }
+
+            <script>
+                $('.giaban').append($('.giaban').number(true, 0, '.', '.')).append(" Đồng.");
+            </script>
+    <div class="row phantrang">
+        @Html.PagedListPager((IPagedList)ViewBag.ProductLists, page => Url.RouteUrl("ProductLists", new { searchQuery = ViewBag.searchQuery, page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </div>
+        }
+        else
+        {
+            <span>Không có sản phẩm nào.</span>
+        }
+    </div>
+
+</div>

@@ -1,0 +1,58 @@
+﻿@using WebTMDT.Models;
+@using PagedList;
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<script src="~/Content/Theme/1a/Plugin/jquery.number.min.js"></script>
+@{
+    ViewBag.Title = "Gian hàng";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12" id="user_productslist">
+        <div class="page-header">
+            <h3>@ViewBag.Title @ViewBag.TenGianHang</h3>
+        </div>
+
+        @if (ViewBag.ProductLists != null)
+        {
+            foreach (var item in ViewBag.ProductLists)
+            {
+                <div class="row product">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="thumbnail">
+                            <img src="@item.AnhSanPham" alt="@item.TenSp" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-9">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h3>@item.TenSp</h3>
+                                <p><b>Tình trạng: </b> @item.TinhTrangSp</p>
+                                <p><b>Ngày đăng: </b>@item.NgayDang</p>
+                                <p><b>Thể loại: </b> @item.TheLoai</p>
+                                <p><b>Tên cửa hàng: </b> @item.TenNguoiBan</p>
+                                <p class="giaban" style="top: 48%;">@item.GiaBan</p>
+                                <p class="sodienthoai"><a href="tel:@item.SoDienThoaiNgBan">@item.SoDienThoaiNgBan</a></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            }
+
+            <script>
+                $('.giaban').append($('.giaban').number(true, 0, '.', '.')).append(" Đồng.");
+            </script>
+            <div class="row phantrang">
+                @Html.PagedListPager((IPagedList)ViewBag.ProductLists, page => Url.RouteUrl("gianhangUser", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+            </div>
+        }
+        else
+        {
+            <span>Không có sản phẩm nào.</span>
+        }
+    </div>
+
+</div>

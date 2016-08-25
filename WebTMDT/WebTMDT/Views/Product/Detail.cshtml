@@ -1,0 +1,141 @@
+﻿@using WebTMDT.Helpers;
+@model WebTMDT.Models.Product
+@{
+    if (Model != null)
+    {
+        ViewBag.Title = Html.Raw(Model.F2) + " - Lạng sơn";
+    }
+    else
+    {
+        ViewBag.Title = "Sản phẩm không tồn tại - Lạng sơn";
+    }
+    
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+
+@*seo*@
+@section metatags
+{
+    @if (Model != null)
+    {
+        <meta name="description" content="@Html.Raw(Model.Category.Category2.F2) @Html.Raw(Model.Category.F2) @Html.Raw(Model.F2)">
+        <meta name="keywords" content="@Html.Raw(Model.F2), @Configs.splitString(Model.F2)">
+        <meta name="author" content="test.langson.net">
+        <meta name="robots" content="index,follow,noodp">
+        <meta property="og:locale" content="vi_VN">
+        <meta property="og:type" content="Product">
+        <meta property="og:url" content="@Request.Url.Host@Request.RawUrl.ToString()">
+        <meta property="og:title" content="@Html.Raw(Model.F2) - lạng sơn">
+        <meta property="og:description" content="@Html.Raw(Model.Category.Category2.F2) @Html.Raw(Model.Category.F2) @Html.Raw(Model.F2)">
+        <meta property="og:image" itemprop="thumbnailUrl" content="@Request.Url.Host@Html.DisplayFor(m => m.F11)">
+    }   
+
+}
+
+<script src="~/Content/Theme/1a/Plugin/jquery.number.min.js"></script>
+
+
+<div class="row detail-product">
+    @if (ViewBag.ProductNotFound != null)
+    {
+        <div class="col-md-12">
+            <div class="page-header">
+                <p>@ViewBag.ProductNotFound</p>
+            </div>
+        </div>
+    }
+    
+    @if (Model != null)
+    {
+        <div class="col-md-4 detail-product-image">
+            <div id="img-product">                
+                <div class="thumbnail">
+                    <img class="img-responsive" src="@Html.DisplayFor(m=>m.F11)" alt="@Html.DisplayFor(m=>m.F2)">                    
+                </div>
+                @if (Model.ImageProducts.Count > 0)
+                {
+                    <ul class="img-product-n">
+                        <li index="-1"><a href="@Html.DisplayFor(m=>m.F11)"><img src="@Html.DisplayFor(m=>m.F11)" alt="@Html.DisplayFor(m=>m.F2)" /></a></li>
+                        @foreach (var myItem in Model.ImageProducts.Select((value, i) => new { i, value }))
+                        {
+                            <li index="@myItem.i"><a href="@myItem.value.F3"><img src="@myItem.value.F3" alt="@Html.DisplayFor(m=>m.F2) - Ảnh @myItem.i" /></a></li>
+                        }
+                    </ul>
+                }                
+            </div>
+        </div>
+        <div class="col-md-8 detail-product-content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>@Html.DisplayFor(m => m.F2)</h3>
+                    <p><b>Tình trạng: </b>@Html.DisplayFor(m => m.F5)</p>
+                    <p><b>Giao hàng: </b>@Html.DisplayFor(m => m.F7)</p>
+                    <p><b>Ngày đăng: </b>@Html.DisplayFor(m => m.F10)</p>
+                    <p><b>Địa chỉ: </b>@Html.DisplayFor(m => m.AspNetUser.DiaChi)</p>
+                    <p><b>Tên cửa hàng: </b>@Html.DisplayFor(m => m.AspNetUser.TenNguoiBan)</p>
+                    <p><b>Khuyến mại: </b>@Html.DisplayFor(m=>m.F9)</p>
+                </div>
+            </div>
+            <div class="row" style="position: absolute; width: 100%; bottom: 0;">
+                <div class="col-sm-6">
+                    <p><b>Giá bán: </b> <span class="p-d-giaban">@Html.DisplayFor(m=>m.F3)</span></p>
+                </div>
+                <div class="col-sm-6">
+                    <p><b>Điện thoại: </b> <a href="tel:@Html.DisplayFor(m=>m.AspNetUser.PhoneNumber)" class="p-d-dienthoai">@Html.DisplayFor(m => m.AspNetUser.PhoneNumber)</a></p>
+                </div>
+            </div>
+        </div>
+
+    <div class="col-md-12 detail-product-description">
+        <h3>Chi tiết sản phẩm</h3>
+        <div class="row">
+            <div class="col-sm-12">
+                @Html.Raw(Model.F12)
+            </div>
+        </div>
+        <h3>Cách thức giao hàng</h3>
+        <div class="row">
+            <div class="col-sm-12">
+                <p>@Html.DisplayFor(m => m.F7)</p>
+            </div>
+        </div>
+    </div>
+
+    }
+
+    
+    
+</div>
+
+<script>
+    $('.p-d-giaban').append($('.p-d-giaban').number(true, 0, '.', '.'));
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        $('.detail-product-description').children('.row').children('.col-sm-12').find('p').find('img').addClass('img-responsive');
+
+        $('.detail-product').map(function () {
+            var _h = $('.detail-product-image').height();
+            $('.detail-product-content').height(_h);
+        })
+
+        $('#img-product').map(function () {
+            $('.img-product-n').children('li').find('a').click(function (e) {
+                e.preventDefault();
+                $(this).parent('li').addClass('img-product-actived');
+                $(this).parent('li').siblings().removeClass('img-product-actived');
+            })
+
+            $('.img-product-n').children('li').find('a').mouseenter(function (e) {
+                e.preventDefault();
+                $(this).parent('li').addClass('img-product-actived');
+                $(this).parent('li').siblings().removeClass('img-product-actived');
+                var _url = $(this).attr('href');
+                $('#img-product > .thumbnail').children('img').attr('src', _url).fadeIn();
+            })
+
+        })
+    })
+</script>
