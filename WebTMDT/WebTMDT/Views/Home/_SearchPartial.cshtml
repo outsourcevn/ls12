@@ -1,0 +1,414 @@
+﻿@using WebTMDT.Models;
+@using WebTMDT.Controllers;
+
+<form id="form-search" class="form-horizontal" name="sentMessage" method="get" action="/product/search" onsubmit="return validate()">
+    <!-- form wrapper -->
+    <div class="form-group query_search">
+        <div class="col-md-12">
+            @Html.TextBox("inputsearch", "", new { @class = "form-control", type = "search", placeholder = "Nhập tên sản phẩm", @id = "inputsearch" })
+        </div>
+    </div>
+    <script>
+        $('input#inputsearch').change(function() {
+            var $input_search = $(this).val();
+            if ($input_search !== "") {               
+                $.ajax({
+                    url: '@Url.Action("AddToLog", "Product")',
+                    type: "POST",
+                    async: true,
+                    dataType: "json",
+                    data: { inputsearch:  $input_search},
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (request, status, error) {
+                        // process error message
+                        console.log(error);
+                    }
+                });
+            }
+        });
+    </script>
+
+    <div class="form-group filter_search">
+        <div class="col-md-12">
+            @Html.TextBox("ParentId", "", new { @class = "form-control input_search" })
+            @Html.TextBox("CategoryId", "", new { @class = "form-control input_search" })
+            @Html.TextBox("SubCategoryId", "", new { @class = "form-control input_search" })
+            @Html.TextBox("LocalId", "", new { @class = "form-control input_search" })
+            @Html.TextBox("TheLoai", "", new { @class = "form-control input_option" })
+            @Html.TextBox("TinhTrang", "", new { @class = "form-control input_option" })
+        </div>
+    </div>
+         @*<div class="form-group filter_search">
+        <div class="col-md-4 col-xs-12">
+            @Html.TextBox("ParentId", "", new { @class = "form-control input_search" })
+        </div>
+        <div class="col-md-4 col-xs-12">
+            @Html.TextBox("CategoryId", "", new { @class = "form-control input_search" })
+        </div>
+        <div class="col-md-4 col-xs-12">
+            @Html.TextBox("SubCategoryId", "", new { @class = "form-control input_search" })
+        </div>
+    </div>
+    <div class="form-group filter_search">
+        <div class="col-md-4 col-xs-12">
+            @Html.TextBox("LocalId", "", new { @class = "form-control input_search" })
+        </div>
+        <div class="col-md-4 col-xs-12">
+            @Html.TextBox("TheLoai", "", new { @class = "form-control input_query_2" })
+        </div>
+        <div class="col-md-4 col-xs-12">
+            @Html.TextBox("TinhTrang", "", new { @class = "form-control input_query_2" })
+        </div>
+    </div>*@
+         @*@Html.TextBox("CategoryId", "", new { @class = "input-sm input_search" })
+        @Html.TextBox("SubCategoryId", "", new { @class = "input-sm input_search" })
+        @Html.TextBox("LocalId", "", new { @class = "input-sm input_search" })
+        @Html.TextBox("TheLoai", "", new { @class = "input-sm input_query" })
+        @Html.TextBox("TinhTrang", "", new { @class = "input-sm input_query" })*@
+         @Html.Hidden("NgayDang", "")
+         @Html.Hidden("GiaBan", "")
+    <div class="form-group select_search">
+        <div class="col-md-3">
+            <div class="dropdown" id="selectDM1">
+                <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
+                    Chọn danh mục lớn <span class="caret pull-right"></span>
+                </a>
+                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                    @{
+                            var menusList = ViewBag.Category as IEnumerable<Category>;
+                            foreach (var item in menusList.Where(x => x.F3 == null))
+                            {
+                                HomeController a = new HomeController();
+                                var menu1 = a.CreateVM(@item.F1, menusList);
+                                if (menu1 != null)
+                                {
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#" data-id="@item.F1">@item.F2</a>
+                                        <ul class="dropdown-menu">
+                                            @foreach (var item1 in menu1)
+                                            {
+                                                <li><a href="#" data-id="@item1.CatId">@item1.CatName</a></li>
+                                            }
+                                            <li></li>
+                                        </ul>
+                                    </li>
+                                }
+
+                            }
+                    }
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="dropdown" id="selectDM2">
+                <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
+                    Chọn danh mục con <span class="caret pull-right"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                    <li><a href="#">--Chọn danh mục lớn--</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Input your email -->
+        <div class="col-md-3">
+
+            <div class="dropdown" id="selectDiadiem">
+                <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
+                    Chọn địa điểm <span class="caret pull-right"></span>
+                </a>
+                <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="width: 400px;">
+                    <div class="row">
+                        @{
+                                var LocalList = ViewBag.LocalData as IEnumerable<Local>;
+                                foreach (var item in LocalList.Where(x => x.F3 == null))
+                                {
+                                    HomeController a = new HomeController();
+                                    var menu1 = a.CreateVMLocal(@item.F1, LocalList);
+                                    if (menu1 != null)
+                                    {
+                                        <ul class="col-sm-6 select_a">
+                                            <li>
+                                                <span>@item.F2</span>
+                                                <ul style="list-style-type: none;">
+                                                    @foreach (var item1 in menu1)
+                                                    {
+                                                        <li><a href="#" data-id="@item1.LocalId">@item1.LocalName</a></li>
+                                                    }
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    }
+
+                                }
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+                <!-- Your email input -->
+                <button class="btn btn-primary btn-block" id="btn-timkiem"><i class="fa fa-search"></i> Tìm Kiếm</button> <!-- Send button -->
+        </div>
+
+    </div><!-- end nested inner row -->
+
+</form><!-- end form wrapper -->
+
+
+<script type="text/javascript">
+    //function validate() {
+    //    if (document.getElementById("ParentId").value !== "" || document.getElementById("CategoryId").value !== "" || document.getElementById("SubCategoryId").value !== "") {
+    //        return true;
+    //    } else {
+    //        alert("Vui lòng chọn một danh mục để tìm kiếm");
+    //        return false;
+    //    };
+    //}
+
+    function validate() {
+        if (document.getElementById("ParentId").value === "" && document.getElementById("CategoryId").value === "" && document.getElementById("SubCategoryId").value === "" && document.getElementById("inputsearch").value === "" && document.getElementById("LocalId").value === "") {
+            alert("Vui lòng nhập từ khóa hoặc chọn một danh mục để tìm kiếm");
+            return false;
+        } else {
+            return true;
+        };
+    }
+
+    $(document).ready(function () {
+        //function empty() {
+        //    var x;
+        //    x = document.getElementById("roll-input").value;
+        //    if (x == "") {
+        //        alert("Enter a Valid Roll Number");
+        //        return false;
+        //    };
+        //}
+
+        $('input.input_search').tagsinput({
+            itemValue: 'id',
+            itemText: 'text'
+        });       
+        
+        var parent = $('input#ParentId');
+        var cat = $('input#CategoryId');
+        var subcat = $('input#SubCategoryId');
+        var local = $('input#LocalId');
+        $('#selectDM1 > ul > li.dropdown-submenu > a').on('click', function (e) {
+            e.preventDefault();
+            var _id = $(this).data('id');
+            var _text = $(this).html();
+            var selText = $(this).html() + '<span class="caret pull-right"></span>';
+            $(this).parent('li').siblings().removeClass('active');
+            $(this).parent('li').addClass('active');
+            $('#selectDM1').children('a').html(selText);
+            if (typeof _id != 'undefined' && _id) {
+                parent.tagsinput('removeAll');
+                parent.tagsinput('add', { "id": _id, "text": _text });
+            }
+            $('#selectDM2 > ul').empty().append('<li><a href="#">Chọn danh mục</a></li>');
+            //console.log(_id);
+        })
+
+        $('#selectDM2').on('click', 'ul.dropdown-menu > li > a', function (e) {
+            e.preventDefault();
+            var _id = $(this).data('id');
+            var _text = $(this).html();
+            var selText = $(this).html() + '<span class="caret pull-right"></span>';
+            $(this).parent('li').siblings().removeClass('active');
+            $(this).parent('li').addClass('active');
+            $('#selectDM2').children('a').html(selText);
+            if (typeof _id != 'undefined' && _id) {
+                subcat.tagsinput('removeAll');
+                subcat.tagsinput('add', { "id": _id, "text": _text });
+            }
+        })
+
+        $('#selectDM1 > ul > li.dropdown-submenu > ul.dropdown-menu > li > a').on('click', function (e) {
+            e.preventDefault();
+            var _id = $(this).data('id');
+            var selText = $(this).html() + '<span class="caret pull-right"></span>';
+            var _text = $(this).html();
+            if (typeof _id != 'undefined' && _id) {
+                cat.tagsinput('removeAll');
+                cat.tagsinput('add', { "id": _id, "text": _text });
+            }
+
+            $(this).parent('li').siblings().removeClass('active');
+            $(this).parent('li').parent('.dropdown-menu').parent('li').siblings().removeClass('active');
+            $(this).parent('li').parent('.dropdown-menu').parent('li').siblings().children('ul').children('li').removeClass('active');
+            $('#selectDM1').children('a').html(selText);
+            $(this).parents('li').addClass("active");
+            $.ajax({
+                url: '@Url.Action("SelectDanhMuc3", "Home")',
+                type: "POST",
+                async: true,
+                dataType: "json",
+                data: { Id: _id },
+                success: function (data) {
+                    $('#selectDM2 > ul').empty();
+                    $.each(data, function () {
+                        var item = $('<a href="#" />');
+                        item.attr('data-id', this.Id).html(this.Name);
+                        var item_li = $('<li />');
+                        item_li.append(item);
+                        $('#selectDM2 > ul').append(item_li);
+                    })
+
+                    //$('#selectDM2 > ul').html(data);
+                },
+                error: function (request, status, error) {
+                    // process error message
+                    console.log(error);
+                }
+            });
+        })
+
+        $('.select_a').on('click', 'li > a', function (e) {
+            e.preventDefault();
+            var selText = $(this).html() + '<span class="caret pull-right"></span>';
+            var _text = $(this).html();
+            var _id = $(this).data('id');
+            $(this).parent('li').siblings().removeClass('active_dd');
+            $(this).parent('li').parent('ul').parent('li').parent('ul.select_a').siblings().find('li').removeClass('active_dd');
+            $(this).parent('li').addClass('active_dd');
+            $('#selectDiadiem').children('a').html(selText);
+            if (typeof _id != 'undefined' && _id) {
+                local.tagsinput('removeAll');
+                local.tagsinput('add', { "id": _id, "text": _text });
+            }
+        })
+
+
+    })
+</script>
+
+@if (ViewBag.ParentCatIdFirst != null && ViewBag.ParentCatNameFirst != null)
+{
+    <script>
+        $(document).ready(function() {
+            $('input#ParentId').tagsinput('add', { id: @ViewBag.ParentCatIdFirst, text: "@Html.Raw(ViewBag.ParentCatNameFirst)" });
+        })
+    </script>
+}
+else
+{
+    <script>
+        $(document).ready(function() {
+            $('input#ParentId').tagsinput('removeAll');
+        })
+    </script>
+}
+
+@if (ViewBag.CatIdFirst != null && ViewBag.CatNameFirst != null)
+{
+    <script>
+        $(document).ready(function() {
+            $('input#CategoryId').tagsinput('add', { id: @ViewBag.CatIdFirst, text: "@Html.Raw(ViewBag.CatNameFirst)" });
+        })
+    </script>
+}
+else
+{
+    <script>
+        $(document).ready(function() {
+            $('input#CategoryId').tagsinput('removeAll');
+        })
+    </script>
+}
+
+@if (ViewBag.SubCatIdFirst != null && ViewBag.SubCatNameFirst != null)
+{
+    <script>
+        $(document).ready(function() {
+            $('input#SubCategoryId').tagsinput('add', { id: @ViewBag.SubCatIdFirst, text: "@Html.Raw(ViewBag.SubCatNameFirst)" });
+        })
+    </script>
+}
+else
+{
+    <script>
+        $(document).ready(function() {
+            $('input#SubCategoryId').tagsinput('removeAll');
+        })
+    </script>
+}
+
+@if (ViewBag.LocalId != null && ViewBag.LocalName != null)
+{
+    <script>
+        $(document).ready(function() {
+            $('input#LocalId').tagsinput('add', { id: @ViewBag.LocalId, text: "@Html.Raw(ViewBag.LocalName)" });
+        })
+    </script>
+}
+else
+{
+    <script>
+        $(document).ready(function() {
+            $('input#LocalId').tagsinput('removeAll');
+        })
+    </script>
+}
+
+@if (ViewBag.TheLoai != null)
+{
+    <script>
+        $(document).ready(function() {
+            $('input#TheLoai').tagsinput('add', "@Html.Raw(ViewBag.TheLoai)");
+            $('#SelectTheLoai').val('@Html.Raw(ViewBag.TheLoai)');
+        })
+    </script>
+}
+else
+{
+    <script>
+        $(document).ready(function() {
+            $('input#TheLoai').tagsinput('removeAll');
+        })
+    </script>
+}
+
+@if (ViewBag.TinhTrang != null)
+{
+    <script>
+        $(document).ready(function() {
+            $('input#TinhTrang').tagsinput('add', "@Html.Raw(ViewBag.TinhTrang)");
+            $('#SelectTinhTrang').val('@Html.Raw(ViewBag.TinhTrang)');
+        })
+    </script>
+}
+else
+{
+    <script>
+        $(document).ready(function() {
+            $('input#TinhTrang').tagsinput('removeAll');
+        })
+    </script>
+}
+
+@if (ViewBag.NgayDang != null)
+{
+    <script>
+        $(document).ready(function() {
+            $('#SelectNgayDang').val('@Html.Raw(ViewBag.NgayDang)');
+        })
+    </script>
+}
+
+@if (ViewBag.GiaBan != null)
+{
+    <script>
+        $(document).ready(function() {
+            $('#SelectGiaBan').val('@Html.Raw(ViewBag.GiaBan)');
+        })
+    </script>
+}
