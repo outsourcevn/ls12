@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebTMDT.Models;
+using System.Net.Mail;
+using System.Net;
 
 namespace WebTMDT.Controllers
 {
@@ -57,6 +59,11 @@ namespace WebTMDT.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -139,6 +146,10 @@ namespace WebTMDT.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -163,6 +174,9 @@ namespace WebTMDT.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //var currentUser = UserManager.FindByName(user.UserName); 
+                    //var roleresult = UserManager.AddToRole(currentUser.Id, "Administrator");
+                   
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -173,7 +187,7 @@ namespace WebTMDT.Controllers
                     //    new { userId = user.Id, code = code }, 
                     //        protocol: Request.Url.Scheme);
                     //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                    await this.UserManager.AddToRoleAsync(user.Id, "Employee"); 
                     return RedirectToAction("Index", "Home");
                     //return View("DisplayEmail");
                 }
@@ -221,13 +235,19 @@ namespace WebTMDT.Controllers
                     {
                         return View("ForgotPasswordConfirmation");
                     }
-                    return View("ForgotPasswordConfirmation");
+                }
+                else
+                {
+                    TempData["NotEmail"] = "Địa chỉ Email không tồn tại.";
+                    return RedirectToAction("ForgotPassword");
                 }
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                //string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                //var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                string _bodyMail = string.Format("Xin chào {0}. Đây là email khôi phục tài khoản đăng nhập. Vui lòng nhấn vào link sau để lấy lại mật khẩu <a href='{1}'>{2}</a><br/><p>Bạn có thể bỏ qua email này nếu không phải bạn.</p>", user.UserName, callbackUrl, callbackUrl);
+                mail("muabanraovat63@gmail.com", user.Email,"Ngày " + DateTime.Now.ToString() + " Email khôi phục mật khẩu tài khoản " + user.UserName, "chanhniem1", _bodyMail);
                 //await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
@@ -235,6 +255,44 @@ namespace WebTMDT.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        public static bool mail(string from, string to, string topic, string pass, string content)
+        {
+            try
+            {
+                var fromAddress = from;
+                var toAddress = to;
+                //Password of your gmail address
+                string fromPassword = pass;
+                // Passing the values and make a email formate to display
+                string subject = topic;
+                string body = content;
+
+                // smtp settings
+                MailMessage message = new MailMessage();
+                message.From = new MailAddress(fromAddress);
+                message.To.Add(toAddress);
+                message.Subject = subject;
+                message.IsBodyHtml = true;
+                message.Body = body;
+                var smtp = new System.Net.Mail.SmtpClient();
+                {
+                    smtp.Host = "smtp.gmail.com";//"smtp.gmail.com";
+                    smtp.Port = 587;// 465;//587;
+                    smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                    smtp.Credentials = new NetworkCredential(fromAddress, fromPassword);
+                    smtp.Timeout = 20000;
+                }
+                // Passing values to smtp object
+                smtp.Send(message);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
 
         //
@@ -264,11 +322,12 @@ namespace WebTMDT.Controllers
             {
                 return View(model);
             }
-            var user = await UserManager.FindByNameAsync(model.Email);
+            var user = await UserManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
+                TempData["NotEmail"] = "Địa chỉ email không đúng.";
+                return RedirectToAction("ResetPassword", "Account");
             }
             var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)

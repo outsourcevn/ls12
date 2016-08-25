@@ -20,7 +20,53 @@ namespace WebTMDT.Controllers
         {
         }
 
-       
+        private langson12Entities db = new langson12Entities();
+
+        public async Task<ActionResult> ManageUserInfo()
+        {
+            string userId = User.Identity.GetUserId();
+            var user = await UserManager.FindByIdAsync(userId);
+            var _user = new UserEditViewModel()
+            {
+                Email = user.Email,
+                DiaChi = user.DiaChi,
+                PhoneNumber = user.PhoneNumber,
+                TenNguoiBan = user.TenNguoiBan
+            };            
+            return View(_user);
+        }
+
+        [HttpPost]       
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ManageUserInfo(UserEditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                string userId = User.Identity.GetUserId();
+                var user = await UserManager.FindByIdAsync(userId);
+
+                // Update the details
+                user.Email = model.Email ?? null;
+                user.DiaChi = model.DiaChi ?? null;
+                user.PhoneNumber = model.PhoneNumber ?? null;
+                user.TenNguoiBan = model.TenNguoiBan ?? null;
+                
+                // This is the part that doesn't work
+                var result = await UserManager.UpdateAsync(user);
+
+                // However, it always succeeds inspite of not updating the database
+                if (!result.Succeeded)
+                {
+                    AddErrors(result);
+                }
+                TempData["Updated"] = "Cập nhật thông tin cửa hàng thành công.";
+                return RedirectToAction("ManageUserInfo");
+            }
+
+            return View(model);
+        }
+
+
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
