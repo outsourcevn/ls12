@@ -55,15 +55,15 @@
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="DiaChi" Type="nvarchar(max)" />
-          <Property Name="TenNguoiBan" Type="nvarchar(max)" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="505" />
+          <Property Name="TenNguoiBan" Type="nvarchar" MaxLength="505" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="F1" />
           </Key>
           <Property Name="F1" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="F2" Type="nvarchar(max)" />
+          <Property Name="F2" Type="nvarchar" MaxLength="256" />
           <Property Name="F3" Type="int" />
         </EntityType>
         <EntityType Name="ImageProduct">
@@ -72,7 +72,7 @@
           </Key>
           <Property Name="F1" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="F2" Type="bigint" />
-          <Property Name="F3" Type="nvarchar(max)" />
+          <Property Name="F3" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="Local">
           <Key>
@@ -82,26 +82,35 @@
           <Property Name="F2" Type="nvarchar" MaxLength="50" />
           <Property Name="F3" Type="int" />
         </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="256" />
+          <Property Name="Count" Type="int" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="F1" />
           </Key>
           <Property Name="F1" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="F2" Type="nvarchar(max)" />
-          <Property Name="F3" Type="nvarchar(max)" />
+          <Property Name="F2" Type="nvarchar" MaxLength="505" />
+          <Property Name="F3" Type="int" />
           <Property Name="F4" Type="bit" />
-          <Property Name="F5" Type="nvarchar(max)" />
-          <Property Name="F6" Type="nvarchar(max)" />
-          <Property Name="F7" Type="nvarchar(max)" />
-          <Property Name="F8" Type="nvarchar(max)" />
-          <Property Name="F9" Type="nvarchar(max)" />
+          <Property Name="F5" Type="nvarchar" MaxLength="256" />
+          <Property Name="F6" Type="nvarchar" MaxLength="256" />
+          <Property Name="F7" Type="nvarchar" MaxLength="1010" />
+          <Property Name="F8" Type="nvarchar" MaxLength="256" />
+          <Property Name="F9" Type="nvarchar" MaxLength="1010" />
           <Property Name="F10" Type="datetime" />
-          <Property Name="F11" Type="nvarchar(max)" />
-          <Property Name="F12" Type="nvarchar(max)" />
-          <Property Name="F13" Type="nvarchar(max)" />
+          <Property Name="F11" Type="nvarchar" MaxLength="256" />
+          <Property Name="F12" Type="ntext" />
+          <Property Name="F13" Type="ntext" />
           <Property Name="F14" Type="nvarchar" MaxLength="128" />
           <Property Name="F15" Type="int" />
           <Property Name="F16" Type="int" />
+          <Property Name="F17" Type="int" />
         </EntityType>
         <Association Name="FK_Category_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -240,6 +249,7 @@
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImageProduct" EntityType="Self.ImageProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Local" EntityType="Self.Local" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Category_Category" Association="Self.FK_Category_Category">
             <End Role="Category" EntitySet="Category" />
@@ -294,6 +304,7 @@
           <EntitySet Name="Categories" EntityType="langson12Model.Category" />
           <EntitySet Name="ImageProducts" EntityType="langson12Model.ImageProduct" />
           <EntitySet Name="Locals" EntityType="langson12Model.Local" />
+          <EntitySet Name="Logs" EntityType="langson12Model.Log" />
           <EntitySet Name="Products" EntityType="langson12Model.Product" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="langson12Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
@@ -377,8 +388,8 @@
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TenNguoiBan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="505" FixedLength="false" Unicode="true" />
+          <Property Name="TenNguoiBan" Type="String" MaxLength="505" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="langson12Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="langson12Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
           <NavigationProperty Name="Products" Relationship="langson12Model.FK_Product_AspNetUsers" FromRole="AspNetUser" ToRole="Product" />
@@ -389,7 +400,7 @@
             <PropertyRef Name="F1" />
           </Key>
           <Property Name="F1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="F2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F2" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="F3" Type="Int32" />
           <NavigationProperty Name="Category1" Relationship="langson12Model.FK_Category_Category" FromRole="Category" ToRole="Category1" />
           <NavigationProperty Name="Category2" Relationship="langson12Model.FK_Category_Category" FromRole="Category1" ToRole="Category" />
@@ -401,7 +412,7 @@
           </Key>
           <Property Name="F1" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="F2" Type="Int64" />
-          <Property Name="F3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F3" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="langson12Model.FK_ImageProduct_Product" FromRole="ImageProduct" ToRole="Product" />
         </EntityType>
         <EntityType Name="Local">
@@ -415,26 +426,35 @@
           <NavigationProperty Name="Local2" Relationship="langson12Model.FK_Local_Local" FromRole="Local1" ToRole="Local" />
           <NavigationProperty Name="Products" Relationship="langson12Model.FK_Product_Local" FromRole="Local" ToRole="Product" />
         </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Keyword" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Count" Type="Int32" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="F1" />
           </Key>
           <Property Name="F1" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="F2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="F3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F2" Type="String" MaxLength="505" FixedLength="false" Unicode="true" />
+          <Property Name="F3" Type="Int32" />
           <Property Name="F4" Type="Boolean" />
-          <Property Name="F5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="F6" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="F7" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="F8" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="F9" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F5" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="F6" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="F7" Type="String" MaxLength="1010" FixedLength="false" Unicode="true" />
+          <Property Name="F8" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="F9" Type="String" MaxLength="1010" FixedLength="false" Unicode="true" />
           <Property Name="F10" Type="DateTime" Precision="3" />
-          <Property Name="F11" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F11" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="F12" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="F13" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="F14" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="F15" Type="Int32" />
           <Property Name="F16" Type="Int32" />
+          <Property Name="F17" Type="Int32" />
           <NavigationProperty Name="AspNetUser" Relationship="langson12Model.FK_Product_AspNetUsers" FromRole="Product" ToRole="AspNetUser" />
           <NavigationProperty Name="Category" Relationship="langson12Model.FK_Product_Category" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="ImageProducts" Relationship="langson12Model.FK_ImageProduct_Product" FromRole="Product" ToRole="ImageProduct" />
@@ -624,9 +644,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="langson12Model.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="langson12Model.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="F17" ColumnName="F17" />
                 <ScalarProperty Name="F16" ColumnName="F16" />
                 <ScalarProperty Name="F15" ColumnName="F15" />
                 <ScalarProperty Name="F14" ColumnName="F14" />

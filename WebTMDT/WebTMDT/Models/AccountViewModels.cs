@@ -120,8 +120,8 @@ namespace WebTMDT.Models
 
     public class ForgotPasswordViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Vui lòng nhập {0}.")]
+        [EmailAddress(ErrorMessage = "Địa chỉ email không đúng định dạng")]
         [Display(Name = "Địa chỉ Email")]
         public string Email { get; set; }
     }

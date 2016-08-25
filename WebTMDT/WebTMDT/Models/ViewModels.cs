@@ -27,12 +27,34 @@ namespace WebTMDT.Models
         public IEnumerable<LocalViewModel> ChildrenLocal { get; set; }
     }
 
+    public class DanhMuc
+    {
+        public int CatId { get; set; }
+        public string CatName { get; set; }
+        public int? ParentId { get; set; }
+        public IList<DanhMuc> DanhMucs { get; set; }
+        public DanhMuc() {
+            DanhMucs = new List<DanhMuc>();
+        }
+    }
+
+    public class DanhMucEdit
+    {
+        public int CatId { get; set; }
+        [Display(Name = "Tên menu")]
+        [Required(ErrorMessage = "Phải nhập tên menu")]
+        public string CatName { get; set; }
+        [Display(Name = "Menu cha")]
+        public int? ParentId { get; set; }
+    }
+
     public class ProductViewModel
     {
         //[Required(ErrorMessage = "Vui lòng nhập {0}.")]
         [Display(Name = "Tên và mô tả ngắn về sản phẩm")]
         public string ProductName { get; set; }
         [Display(Name="Giá bán")]
+        //[RegularExpression("([1-9][0-9]*)", ErrorMessage = "Giá bán phải là số.")]
         //[Required(ErrorMessage="Vui lòng nhập {0} sản phẩm")]
         public string ProductPrice { get; set; }
         [Display(Name="VAT")]
@@ -67,6 +89,70 @@ namespace WebTMDT.Models
         [Range(1, int.MaxValue, ErrorMessage = "Giá trị {0} phải là số")]
         public Nullable<int> LocalId { get; set; }
         public ICollection<ProductImages> ProductImages { get; set; }
+        public Nullable<int> ParentCatId { get; set; }
+    }
+
+    public class ProductEditViewModel
+    {
+        public long ProductId { get; set; }
+        //[Required(ErrorMessage = "Vui lòng nhập {0}.")]
+        [Display(Name = "Tên và mô tả ngắn về sản phẩm")]
+        public string ProductName { get; set; }
+        [Display(Name = "Giá bán")]
+        //[RegularExpression("([1-9][0-9]*)", ErrorMessage = "Giá bán phải là số.")]
+        //[Required(ErrorMessage="Vui lòng nhập {0} sản phẩm")]
+        public string ProductPrice { get; set; }
+        [Display(Name = "VAT")]
+        public bool ProductVAT { get; set; }
+        [Display(Name = "Tình trạng sản phẩm")]
+        //[Required(ErrorMessage="Vui lòng nhập {0}")]
+        public string ProductStatus { get; set; }
+        [Display(Name = "Thể loại sản phẩm")]
+        //[Required(ErrorMessage = "Vui lòng nhập {0}")]
+        public string ProductType { get; set; }
+        [Display(Name = "Cách thức giao hàng")]
+        //[Required(ErrorMessage="Vui lòng nhập {0}")]
+        public string ProductMethod { get; set; }
+        [Display(Name = "Bảo hành")]
+        //[Required(ErrorMessage = "Vui lòng nhập {0}")]
+        public string ProductGuarantee { get; set; }
+        [Display(Name = "Khuyến mại")]
+        //[Required(ErrorMessage = "Vui lòng nhập {0}")]
+        public string ProductPromotion { get; set; }
+        //[Display(Name = "Ngày đăng")]
+        //[Required(ErrorMessage = "Vui lòng nhập {0}")]
+        //[DataType(DataType.Date), DisplayFormat(DataFormatString = "{dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+        //public Nullable<System.DateTime> ProductDateCreate { get; set; }
+        [Display(Name = "Ảnh đại diện sản phẩm")]
+        public string ProductAvatar { get; set; }
+        public string ProductDescription { get; set; }
+        public string ProductMore { get; set; }
+        [Required(ErrorMessage = "Vui lòng chọn danh mục sản phẩm")]
+        [Range(1, int.MaxValue, ErrorMessage = "Giá trị {0} phải là số")]
+        public Nullable<int> CategoryId { get; set; }
+        [Required(ErrorMessage = "Vui lòng chọn địa chỉ")]
+        [Range(1, int.MaxValue, ErrorMessage = "Giá trị {0} phải là số")]
+        public Nullable<int> LocalId { get; set; }
+        public ICollection<ProductImages> ProductImages { get; set; }
+        public Nullable<int> ParentCatId { get; set; }
+    }
+
+    public class UserEditViewModel
+    {
+        [Required(ErrorMessage = "Vui lòng nhập {0}.")]
+        [Display(Name = "Địa chỉ")]
+        public string DiaChi { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập {0}.")]
+        [Display(Name = "Số điện thoại")]
+        public string PhoneNumber { get; set; }
+        [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "Vui lòng nhập {0}.")]
+        [EmailAddress(ErrorMessage = "Địa chỉ email không đúng định dạng")]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập {0}.")]
+        [Display(Name = "Tên người bán/cửa hàng")]
+        public string TenNguoiBan { get; set; }
     }
 
     public class ProductImages
@@ -90,6 +176,56 @@ namespace WebTMDT.Models
         public string hinh1 { get; set; }
         public string hinh2 { get; set; }
         public string hinh3 { get; set; }
+    }
+
+    public class SeachQueryString
+    {
+        public string ParentId { get; set; }
+        public string CategoryId { get; set; }
+        public string SubCategoryId { get; set; }
+        public string LocalId { get; set; }
+        public string TheLoai { get; set; }
+        public string TinhTrang { get; set; }
+        public string NgayDang { get; set; }
+        public string GiaBan { get; set; }
+    }
+
+    public class ProductShow
+    {
+        public string DanhMucCha { get; set; }
+        public string DanhMucCon { get; set; }
+        public long SanPhamId { get; set; }
+        public string TenSp { get; set; }
+        public string slugTenSp { get; set; }
+        public string TinhTrangSp { get; set; }
+        public DateTime? NgayDang { get; set; }
+        public string TheLoai { get; set; }
+        public int? GiaBan { get; set; }
+        public string TenNguoiBan { get; set; }
+        public string SoDienThoaiNgBan { get; set; }
+        public string AnhSanPham { get; set; }
+        public int? LocalId { get; set; }
+        public string gianhang { get; set; }
+        public string SlugGianHang { get; set; }
+    }
+
+    public class EntityProduct
+    {
+        public long SanPhamId { get; set; }
+        public string TenSp { get; set; }
+        public string TinhTrangSp { get; set; }
+        public DateTime? NgayDang { get; set; }
+        public string TheLoai { get; set; }
+        public int? GiaBan { get; set; }
+        public string TenNguoiBan { get; set; }
+        public string SoDienThoaiNgBan { get; set; }
+        public string AnhSanPham { get; set; }
+    }
+
+    public class sortOrder
+    {
+        public string TypeSort { get; set; }
+        public string NameSort { get; set; }
     }
 
 }
