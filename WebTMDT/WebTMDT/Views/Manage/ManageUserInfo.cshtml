@@ -1,0 +1,77 @@
+﻿@model WebTMDT.Models.UserEditViewModel
+@{
+    ViewBag.Title = "Cập nhật thông tin tài khoản";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+
+<div class="row profile-user">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h3>@ViewBag.Title</h3>
+        </div>
+
+        @if (TempData["Updated"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                @Html.Raw(TempData["Updated"])
+            </div>
+        }
+
+        @if (Model != null)
+        {
+            using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "EditUser" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.TenNguoiBan, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.TenNguoiBan, new { @class = "form-control", placeholder = "Nhập tên người bán / cửa hàng" })
+                        @Html.ValidationMessageFor(m => m.TenNguoiBan, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DiaChi, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control", placeholder = "Nhập địa chỉ của bạn" })
+                        @Html.ValidationMessageFor(m => m.DiaChi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Nhập số điện thoại" })
+                        @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Nhập địa chỉ email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9">
+                        <input type="submit" class="btn btn-primary" value="Cập nhật thông tin" />
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $.validator.setDefaults({
+            ignore: ""
+        });
+    </script>
+}
