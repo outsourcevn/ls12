@@ -11,6 +11,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using WebTMDT.Models;
+using System.Net.Mail;
+using System.Net;
+using System.Net.Http;
 
 namespace WebTMDT
 {
@@ -18,11 +21,11 @@ namespace WebTMDT
     {
         public Task SendAsync(IdentityMessage message)
         {
+
             // Plug in your email service here to send an email.
-            //return configSendGridasync(message);
+            //mail("muabanraovat63@gmail.com", "", message.Subject, "chanhniem1", message.Body);            
             return Task.FromResult(0);
         }
-
     }
 
     public class SmsService : IIdentityMessageService
@@ -83,8 +86,12 @@ namespace WebTMDT
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = 
-                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                manager.UserTokenProvider =
+                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"))
+                    {
+                        TokenLifespan = TimeSpan.FromHours(3)
+                    };
+
             }
             return manager;
         }
