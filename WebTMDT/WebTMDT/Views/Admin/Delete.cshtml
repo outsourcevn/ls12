@@ -1,0 +1,32 @@
+﻿@model WebTMDT.Models.Product
+@{
+    ViewBag.Title = "Xóa sản phẩm";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h1>@ViewBag.Title <b>@Html.DisplayFor(m => m.F2)</b></h1>
+        </div>
+
+        @if (ViewBag.ProductNotFound != null)
+        {
+            <div class="alert alert-info alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <strong>@ViewBag.ProductNotFound</strong>
+            </div>
+        }
+        
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" class="btn btn-primary" value="Xóa sản phẩm" />
+        }
+        
+
+    </div>
+</div>
+

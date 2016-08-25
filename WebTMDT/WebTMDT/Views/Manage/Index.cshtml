@@ -1,84 +1,71 @@
 ﻿@model WebTMDT.Models.IndexViewModel
 @{
     ViewBag.Title = "Quản lý thông tin tài khoản";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Thay đổi thông tin cài đặt</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Mật khẩu:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
+
+<div class="row profile-user">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h3>@ViewBag.Title.</h3>
+            <h4>Thay đổi thông tin cài đặt</h4>
+        </div>
+        <p class="text-success">@ViewBag.StatusMessage</p>
+    </div>
+</div>
+
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-md-4 control-label">Mật khẩu:</label>
+            <div class="col-md-8">
+                <div class="checkbox">
+                    @if (Model.HasPassword)
+                    {
+                        @Html.ActionLink("Thay đổi mật khẩu", "ChangePassword")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Tạo mật khẩu", "SetPassword")
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @if (User.IsInRole("Administrator"))
             {
-                @Html.ActionLink("Thay đổi mật khẩu", "ChangePassword")
+                <label class="col-md-4 control-label">
+                    Quản trị sản phẩm:
+                </label>
+                <div class="col-md-8">
+                    <div class="checkbox">
+                        <a href="/admin">Trang quản trị</a>
+                    </div>
+                </div>
             }
             else
             {
-                @Html.ActionLink("Tạo mật khẩu", "SetPassword")
+                <label class="col-md-4 control-label">
+                    Quản trị sản phẩm:
+                </label>
+                <div class="col-md-8">
+                    <div class="checkbox">
+                        <a href="/user/product/List">Quản trị sản phẩm</a>
+                    </div>
+                </div>
             }
-            ]
-        </dd>
-        <dt>Liên kết tài khoản:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Quản lý", "ManageLogins") ]
-        </dd>
-        @*
-            Phone Numbers can used as a second factor of verification in a two-factor authentication system.
-             
-             See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-             
-             Uncomment the following block after you have set up two-factor authentication
-        *@
-        @*  
-            <dt>Phone Number:</dt>
-            <dd>
-                @(Model.PhoneNumber ?? "None") [
-                @if (Model.PhoneNumber != null)
-                {
-                    @Html.ActionLink("Change", "AddPhoneNumber")
-                    @: &nbsp;|&nbsp;
-                    @Html.ActionLink("Remove", "RemovePhoneNumber")
-                }
-                else
-                {
-                    @Html.ActionLink("Add", "AddPhoneNumber")
-                }
-                ]
-            </dd>
-        *@
-        <dt>Two-Factor Authentication:</dt>
-        <dd>
-            <p>
-                There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication.
-            </p>
-            @*@if (Model.TwoFactor)
-                {
-                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Enabled
-                        <input type="submit" value="Disable" class="btn btn-link" />
-                        </text>
-                    }
-                }
-                else
-                {
-                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Disabled
-                        <input type="submit" value="Enable" class="btn btn-link" />
-                        </text>
-                    }
-                }*@
-        </dd>
-    </dl>
-</div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">
+                Quản lý thông tin tài khoản
+            </label>
+            <div class="col-md-8">
+                <div class="checkbox">
+                    @Html.ActionLink("Quản lý thông tin cửa hàng", "ManageUserInfo")
+                </div>
+            </div>
+        </div>
+    </div>

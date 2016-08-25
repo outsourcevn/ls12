@@ -1,23 +1,26 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-    @Html.AntiForgeryToken()
-    <li>
-        @Html.ActionLink("Chào " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Premium Bootstrap Themes &amp; Templates" aria-expanded="true"><i class="fa fa-user"></i> @User.Identity.GetUserName() <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="/Manage"><i class="fa fa-user"></i> Quản lý thông tin tài khoản</a>
+            </li>
+            <li>
+                <a href="/user/product/List"><i class="fa fa-shopping-cart"></i> Quản lý sản phẩm</a>
+            </li>
+            <li class="divider"></li>
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+                @Html.AntiForgeryToken()
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a></li>
+            }
+        </ul>
     </li>
-    <li><a href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất tài khoản</a></li>
-    @*<ul class="nav navbar-nav navbar-right">
-        
-    </ul>*@
-    }
 }
 else
 {
     <li>@Html.ActionLink("Đăng ký", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
     <li>@Html.ActionLink("Đăng nhập", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    @*<ul class="nav navbar-nav navbar-right">
-       
-    </ul>*@
 }

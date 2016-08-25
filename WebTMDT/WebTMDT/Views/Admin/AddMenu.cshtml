@@ -1,0 +1,52 @@
+﻿@model WebTMDT.Models.DanhMucEdit
+@{
+    ViewBag.Title = "Thêm menu";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h3>@ViewBag.Title</h3>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Thêm menu</h3>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("AddMenu", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "addMenu" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CatName, new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(m => m.CatName, new { @class = "form-control", placeholder = "Tên menu", autocomplete = "off" })
+                            @Html.ValidationMessageFor(m => m.CatName, "", new { @class = "text-danger has-error" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ParentId, new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            @if (ViewBag.ParentMenu != null)
+                            {
+                                @Html.DropDownListFor(m => m.ParentId, new SelectList(ViewBag.ParentMenu, "CatId", "CatName"), "-Chọn menu cha-", new { @class = "form-control" })
+                            }
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <input type="submit" class="btn btn-primary" value="Thêm menu" />
+                        </div>
+                    </div>
+                    
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

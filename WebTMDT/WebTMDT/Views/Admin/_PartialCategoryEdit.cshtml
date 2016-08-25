@@ -7,15 +7,15 @@
             <div class="form-group">
                 <div class="dropdown" id="selectDM1">
                     <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
-                   @if (TempData["ParentCatName"] != null)
-                   {
-                     @TempData["ParentCatName"]
-                   }
-                   else
-                   {
-                       @Html.DisplayName("Chọn danh mục lớn")
-                   }
-                    <span class="caret pull-right"></span>
+                        @if (ViewBag.ParentCatName != null)
+                        {
+                            @ViewBag.ParentCatName
+                        }
+                        else
+                        {
+                            @Html.DisplayText("Chọn danh mục lớn")
+                        }
+                        <span class="caret pull-right"></span>
                     </a>
                     <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                         @{
@@ -50,13 +50,13 @@
             <div class="form-group">
                 <div class="dropdown" id="selectDM2">
                     <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
-                        @if (TempData["CatName"] != null)
+                        @if (ViewBag.CategoryName != null)
                         {
-                            @TempData["CatName"]
+                            @ViewBag.CategoryName
                         }
                         else
                         {
-                            @Html.DisplayName("Chọn danh mục con")
+                            @Html.DisplayText("Chọn danh mục con")
                         }
                         <span class="caret pull-right"></span>
                     </a>
@@ -72,14 +72,14 @@
             <div class="form-group">
                 <div class="dropdown" id="selectDiadiem">
                     <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
-                        
-                        @if (TempData["LocalName"] != null)
+
+                        @if (ViewBag.LocalName != null)
                         {
-                            @TempData["LocalName"]
+                            @ViewBag.LocalName
                         }
                         else
                         {
-                            @Html.DisplayName("Chọn địa điểm")
+                            @Html.DisplayText("Chọn địa điểm")
                         }
                         <span class="caret pull-right"></span>
                     </a>
@@ -120,7 +120,7 @@
     $(document).ready(function () {
 
         $('#selectDM1 > ul > li.dropdown-submenu > a').on('click', function (e) {
-            e.preventDefault();            
+            e.preventDefault();
         })
 
         $('#selectDM2').on('click', 'ul.dropdown-menu > li > a', function (e) {
@@ -147,7 +147,7 @@
             $(this).parent('li').parent('.dropdown-menu').parent('li').siblings().children('ul').children('li').removeClass('active');
             $('#selectDM1').children('a').html(selText);
             $(this).parents('li').addClass("active");
-            
+
             $.ajax({
                 url: '@Url.Action("SelectDanhMuc3", "Home")',
                 type: "POST",
@@ -190,3 +190,5 @@
 
     })
 </script>
+
+

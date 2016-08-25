@@ -1,0 +1,34 @@
+﻿@model WebTMDT.Models.DanhMuc
+
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="~/Content/jsTree/jstree.min.js"></script>
+<link href="~/Content/jsTree/themes/default/style.min.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h3>@ViewBag.Title</h3>
+        </div>
+        @Html.ActionLink("Thêm menu", "AddMenu", new { area = "" }, new { @class = "btn btn-primary" })
+
+        <div class="col-md-6">
+            <div class="divtree">
+                <ul class="tree">
+                    <li>
+                        <a data-id="@Model.CatId" href="#">@Model.CatName</a>
+                        @Html.Partial("Childrens", Model)
+                    <li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.divtree').jstree();
+    })
+</script>

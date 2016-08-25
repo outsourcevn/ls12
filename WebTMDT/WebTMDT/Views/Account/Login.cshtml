@@ -5,8 +5,7 @@
     Layout = "~/Views/Shared/_LayoutProduct.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
+<div class="row form_login">
     <div class="col-md-8">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -16,38 +15,37 @@
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
                         @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
+                    <div class="col-md-offset-3 col-md-5">
                         <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+                            <label>@Html.CheckBoxFor(m => m.RememberMe) Nhớ đăng nhập?</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="checkbox">
+                            @Html.ActionLink("Quên mật khẩu?", "ForgotPassword")
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Đăng nhập" class="btn btn-default" />
+                    <div class="col-md-offset-3 col-md-9">
+                        <input type="submit" value="Đăng nhập" class="btn btn-primary" />
                     </div>
                 </div>
-                <p>
-                    @Html.ActionLink("Đăng ký tài khoản mới", "Register")
-                </p>
-                <p>
-                    @Html.ActionLink("Quên mật khẩu?", "ForgotPassword")
-                </p>
+               
                 @* Enable this once you have account confirmation enabled for password reset functionality
                     <p>
                         @Html.ActionLink("Quên mật khẩu?", "ForgotPassword")
@@ -58,6 +56,9 @@
     <div class="col-md-4">
         <section id="socialLoginForm">
             @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            <p>
+                @Html.ActionLink("Đăng ký tài khoản mới", "Register")
+            </p>
         </section>
     </div>
 </div>

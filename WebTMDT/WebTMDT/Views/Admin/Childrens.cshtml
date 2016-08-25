@@ -1,0 +1,17 @@
+﻿@model WebTMDT.Models.DanhMuc
+
+@foreach (var item in Model.DanhMucs)
+{
+    <ul>
+        @if (item != null)
+        {
+            <li>
+                <a href="#">@item.CatName</a>
+                if (item.DanhMucs.Count > 0)
+                {
+                    @Html.Partial("Childrens", item)
+                }
+            </li>
+        }
+    </ul>
+}
