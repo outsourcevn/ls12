@@ -4,6 +4,7 @@
     ViewBag.Title = "Quản lý quận/huyện";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<link href="~/Content/Theme/admin/vendor/datatable/dataTables.bootstrap.min.css" rel="stylesheet" />
 
 <div class="row">
     <div class="col-md-12">
@@ -13,33 +14,37 @@
         <p>
             @Html.ActionLink("Thêm mới quận/huyện", "Create", null, new { @class = "btn btn-primary" })
         </p>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayName("Nhập tên quận/huyện")
-                </th>
-                <th>
-                    @Html.DisplayName("Danh mục cha")
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
+        <table class="table" id="table-dmqh">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.F2)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Local2.F2)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Sửa", "Edit", new { id = item.F1 }) |
-                        @*@Html.ActionLink("Details", "Details", new { id=item.F1 }) |*@
-                        @Html.ActionLink("Xóa", "Delete", new { id = item.F1 })
-                    </td>
+                    <th>
+                        @Html.DisplayName("Nhập tên quận/huyện")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Danh mục cha")
+                    </th>
+                    <th></th>
                 </tr>
-            }
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.F2)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Local2.F2)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit", new { id = item.F1 }) |
+                            @*@Html.ActionLink("Details", "Details", new { id=item.F1 }) |*@
+                            @Html.ActionLink("Xóa", "Delete", new { id = item.F1 })
+                        </td>
+                    </tr>
+                }
+            </tbody>
 
         </table>
 
@@ -47,4 +52,10 @@
     </div>
 </div>
 
-
+<script src="~/Content/Theme/admin/vendor/datatable/jquery.dataTables.min.js"></script>
+<script src="~/Content/Theme/admin/vendor/datatable/dataTables.bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#table-dmqh').DataTable();
+    });
+</script>

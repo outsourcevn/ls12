@@ -1684,6 +1684,15 @@
     <Content Include="Content\Theme\admin\vendor\bootstrap\js\bootstrap.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Theme\admin\vendor\datatable\dataTables.bootstrap.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\admin\vendor\datatable\dataTables.bootstrap.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Theme\admin\vendor\datatable\jquery.dataTables.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Theme\admin\vendor\font-awesome\css\font-awesome.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
