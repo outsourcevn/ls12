@@ -318,56 +318,56 @@ namespace WebTMDT.Controllers
             return RedirectToRoute("AdminProductsList");
         }
 
-        public ActionResult AddMenu()
-        {
-            return View();
-        }
+        //public ActionResult AddMenu()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AddMenu(DanhMucEdit model)
-        {
-            if (ModelState.IsValid)
-            {
-                if (model.ParentId == null)
-                {
-                    Category _cat = new Category();
-                    _cat.F2 = model.CatName ?? null;
-                    _cat.F3 = null;
-                    db.Categories.Add(_cat);
-                    db.SaveChanges();
-                }
-            }
-            return View();
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult AddMenu(DanhMucEdit model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (model.ParentId == null)
+        //        {
+        //            Category _cat = new Category();
+        //            _cat.F2 = model.CatName ?? null;
+        //            _cat.F3 = null;
+        //            db.Categories.Add(_cat);
+        //            db.SaveChanges();
+        //        }
+        //    }
+        //    return View();
+        //}
 
-        public ActionResult Menu()
-        {
-           List<DanhMuc> data = db.Categories.Select(x=>new DanhMuc() {
-                CatId = x.F1,
-                CatName = x.F2,
-                ParentId = x.F3
-           }).ToList();
+        //public ActionResult Menu()
+        //{
+        //   List<DanhMuc> data = db.Categories.Select(x=>new DanhMuc() {
+        //        CatId = x.F1,
+        //        CatName = x.F2,
+        //        ParentId = x.F3
+        //   }).ToList();
 
-           var presidents = data.Where(x => x.ParentId == null).FirstOrDefault();
-           SetChildren(presidents, data);
+        //   var presidents = data.Where(x => x.ParentId == null).FirstOrDefault();
+        //   SetChildren(presidents, data);
 
 
-           return View(presidents);
-        }
+        //   return View(presidents);
+        //}
 
-        private void SetChildren(DanhMuc model, List<DanhMuc> danhmuc)
-        {
-            var childs = danhmuc.Where(x => x.ParentId == model.CatId).ToList();
-            if (childs.Count > 0)
-            {
-                foreach (var child in childs)
-                {
-                    SetChildren(child, danhmuc);
-                    model.DanhMucs.Add(child);
-                }
-            }
-        }
+        //private void SetChildren(DanhMuc model, List<DanhMuc> danhmuc)
+        //{
+        //    var childs = danhmuc.Where(x => x.ParentId == model.CatId).ToList();
+        //    if (childs.Count > 0)
+        //    {
+        //        foreach (var child in childs)
+        //        {
+        //            SetChildren(child, danhmuc);
+        //            model.DanhMucs.Add(child);
+        //        }
+        //    }
+        //}
 
     }
 }

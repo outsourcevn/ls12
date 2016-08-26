@@ -1,0 +1,35 @@
+﻿@model WebTMDT.Models.Local
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Local</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.F2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Local2.F2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Local2.F2)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.F1 }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

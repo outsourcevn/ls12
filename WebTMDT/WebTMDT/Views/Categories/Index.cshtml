@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebTMDT.Models.Category>
+
+@{
+    ViewBag.Title = "Quản lý danh mục";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h3>@ViewBag.Title</h3>
+
+        </div>
+        <p>
+            @Html.ActionLink("Thêm danh mục sản phẩm", "Create", null, new { @class = "btn btn-primary" })
+        </p>:
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayName("Danh mục")
+                </th>
+                <th>
+                    @Html.DisplayName("Danh mục cha")
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.F2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category2.F2)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.F1 }) |
+                        @*@Html.ActionLink("Chi tiết", "Details", new { id = item.F1 }) |*@
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.F1 })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+    </div>
+
+</div>
+
+
+

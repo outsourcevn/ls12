@@ -1,0 +1,46 @@
+﻿@model WebTMDT.Models.Category
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Xác nhận xóa danh mục</h2>
+
+        <h3>Bạn chắn chắn muốn xóa danh mục, nếu xóa danh mục sẽ ảnh hưởng tới sản phẩm khác?</h3>
+        <div>
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayName("Tên danh mục")
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.F2)
+                </dd>
+
+                <dt>
+                    @Html.DisplayName("Danh mục cha")
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Category2.F2)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Xóa danh mục này" class="btn btn-default" /> 
+                    @Html.ActionLink("Hủy bỏ", "Index", null, new { @class = "btn btn-danger" })
+                </div>
+            }
+        </div>
+
+
+    </div>
+</div>

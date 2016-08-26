@@ -1,0 +1,49 @@
+﻿@model WebTMDT.Models.Local
+
+@{
+    ViewBag.Title = "Xóa danh mục địa danh";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h3>@ViewBag.Title</h3>
+        </div>
+
+
+
+    </div>
+</div>
+
+<h3>Bạn chắc chắn muốn xóa danh mục quận/huyện, nếu xóa sẽ ảnh hưởng tới các sản phẩm khác?</h3>
+<div>
+   
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Tên quận/huyện")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F2)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Danh mục cha")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Local2.F2)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" />
+            @Html.ActionLink("Trở lại trang trước", "Index", null, new { @class = "btn btn-danger" })
+        </div>
+    }
+</div>

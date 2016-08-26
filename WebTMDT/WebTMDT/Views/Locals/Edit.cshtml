@@ -1,0 +1,52 @@
+﻿@model WebTMDT.Models.Local
+
+@{
+    ViewBag.Title = "Sửa quận huyện";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h3>@ViewBag.Title</h3>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.F1)
+
+        <div class="form-group">
+            @Html.Label("Tên quận huyện", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.F2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.F2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Danh mục cha", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("F3", null, "Là danh mục cha" , htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.F3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cập nhật" class="btn btn-default" />
+                @Html.ActionLink("Hủy bỏ", "Index", null, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    </div>
+}

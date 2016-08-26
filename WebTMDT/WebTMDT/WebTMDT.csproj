@@ -215,7 +215,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocalsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1953,6 +1955,16 @@
     <Content Include="Views\Manage\ManageUserInfo.cshtml" />
     <Content Include="Views\Admin\Childrens.cshtml" />
     <Content Include="Views\Admin\AddMenu.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Locals\Create.cshtml" />
+    <Content Include="Views\Locals\Delete.cshtml" />
+    <Content Include="Views\Locals\Details.cshtml" />
+    <Content Include="Views\Locals\Edit.cshtml" />
+    <Content Include="Views\Locals\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
