@@ -42,12 +42,12 @@
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(m => m.SubCatId, "", new { @class = "text-danger" })
                 @Html.ValidationMessageFor(m => m.LocalId, "", new { @class = "text-danger" })
                 @Html.HiddenFor(m => m.ProductId)
 
                 <h4 style="text-transform: uppercase;">Bước 1: Chọn danh mục sản phẩm</h4>
-                @Html.HiddenFor(m => m.CategoryId, new { @id = "ProductCategoryId" })
+                @Html.HiddenFor(m => m.SubCatId, new { @id = "ProductCategoryId" })
                 @Html.HiddenFor(m => m.LocalId, new { @id = "ProductLocalId" })
                 @Html.Partial("_PartialCategoryEdit")
 

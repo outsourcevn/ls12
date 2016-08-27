@@ -7,9 +7,9 @@
             <div class="form-group">
                 <div class="dropdown" id="selectDM1">
                     <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
-                   @if (TempData["ParentCatName"] != null)
+                   @if (TempData["CatName"] != null)
                    {
-                     @TempData["ParentCatName"]
+                     @TempData["CatName"]
                    }
                    else
                    {
@@ -50,9 +50,9 @@
             <div class="form-group">
                 <div class="dropdown" id="selectDM2">
                     <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
-                        @if (TempData["CatName"] != null)
+                        @if (TempData["SubCatName"] != null)
                         {
-                            @TempData["CatName"]
+                            @TempData["SubCatName"]
                         }
                         else
                         {

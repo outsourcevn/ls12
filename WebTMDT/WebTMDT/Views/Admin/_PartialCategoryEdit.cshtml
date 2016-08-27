@@ -7,9 +7,9 @@
             <div class="form-group">
                 <div class="dropdown" id="selectDM1">
                     <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
-                        @if (ViewBag.ParentCatName != null)
+                        @if (ViewBag.CatName != null)
                         {
-                            @ViewBag.ParentCatName
+                            @ViewBag.CatName
                         }
                         else
                         {
@@ -50,9 +50,9 @@
             <div class="form-group">
                 <div class="dropdown" id="selectDM2">
                     <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-default" data-target="#" style="width: 100%; text-align: left;">
-                        @if (ViewBag.CategoryName != null)
+                        @if (ViewBag.SubCatName != null)
                         {
-                            @ViewBag.CategoryName
+                            @ViewBag.SubCatName
                         }
                         else
                         {

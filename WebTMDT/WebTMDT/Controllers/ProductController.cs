@@ -94,8 +94,11 @@ namespace WebTMDT.Controllers
                 _product.F12 = model.ProductDescription ?? null;
                 _product.F13 = null;
                 _product.F14 = userId;
-                _product.F15 = model.CategoryId ?? null;
+                _product.F15 = model.SubCatId ?? null;
                 _product.F16 = model.LocalId ?? null;
+                var _subcat = db.Categories.Where(x => x.F1 == model.SubCatId).FirstOrDefault();
+                _product.F17 = _subcat.Category2.F1;
+                _product.F18 = _subcat.Category2.Category2.F1;
                 db.Products.Add(_product);
                 await db.SaveChangesAsync();
                 long _productId = _product.F1;
@@ -113,11 +116,11 @@ namespace WebTMDT.Controllers
                         await db.SaveChangesAsync();
                     }
                 }
-                TempData["CatId"] = model.CategoryId;
+                TempData["SubCatId"] = model.SubCatId;
                 TempData["LocalId"] = model.LocalId;
-                var _catToP = db.Categories.Where(x => x.F1 == model.CategoryId).FirstOrDefault();
-                TempData["CatName"] = _catToP.F2;
-                TempData["ParentCatName"] = _catToP.Category2.F2;
+                
+                TempData["SubCatName"] = _subcat.F2;
+                TempData["CatName"] = _subcat.Category2.F2;
                 TempData["LocalName"] = db.Locals.Where(x => x.F1 == model.LocalId).FirstOrDefault().F2;
                 TempData["Message"] = "Đăng sản phẩm thành công.";
             }
@@ -821,8 +824,8 @@ namespace WebTMDT.Controllers
                 new ProductType() { ProductTypeName = "Hàng trung quốc" },
                 new ProductType() { ProductTypeName = "Hàng Sê cần hen" },
             };
-            this.ApplicationDbContext = new ApplicationDbContext();
-            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+           // this.ApplicationDbContext = new ApplicationDbContext();
+           // this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
             string userId = User.Identity.GetUserId();
             Product product = await db.Products.FindAsync(id);
             if (product == null)
@@ -849,14 +852,14 @@ namespace WebTMDT.Controllers
                 ProductPromotion = product.F9,
                 ProductAvatar = product.F11,
                 ProductDescription = product.F12,
-                ParentCatId = product.Category.Category2.F1,
-                CategoryId = product.Category.F1,
+                CategoryId = product.Category.Category2.F1,
+                SubCatId = product.Category.F1,
                 LocalId = product.F16,
                 ProductImages = product.ImageProducts.Select(x => new ProductImages() { ProductId = x.F1, UrlImage = x.F3 }).ToList()
             };
 
-            ViewBag.ParentCatName = db.Categories.Where(x => x.F1 == _products.ParentCatId).FirstOrDefault().F2;
-            ViewBag.CategoryName = db.Categories.Where(x => x.F1 == _products.CategoryId).FirstOrDefault().F2;
+            ViewBag.CatName = db.Categories.Where(x => x.F1 == _products.CategoryId).FirstOrDefault().F2;
+            ViewBag.SubCatName = db.Categories.Where(x => x.F1 == _products.SubCatId).FirstOrDefault().F2;
             ViewBag.LocalName = db.Locals.Where(x => x.F1 == _products.LocalId).FirstOrDefault().F2;
             //ViewBag.ItemsPt = new SelectList(ViewBag.ProductType, "ProductTypeName", "ProductTypeName", _products.ProductType);
             //ViewBag.ItemsPs = new SelectList(ViewBag.ProductStatus, "ProductStatusName", "ProductStatusName", _products.ProductStatus);
@@ -886,7 +889,10 @@ namespace WebTMDT.Controllers
                     _product.F11 = product.ProductAvatar ?? null;
                     _product.F12 = product.ProductDescription ?? null;
                     _product.F13 = null;
-                    _product.F15 = product.CategoryId ?? null;
+                    _product.F15 = product.SubCatId ?? null;
+                    var _subcat = db.Categories.Where(x => x.F1 == product.SubCatId).FirstOrDefault();
+                    _product.F17 = _subcat.Category2.F1;
+                    _product.F18 = _subcat.Category2.Category2.F1;
                     _product.F16 = product.LocalId ?? null;
                     db.SaveChanges();
                     var _images = _product.ImageProducts;

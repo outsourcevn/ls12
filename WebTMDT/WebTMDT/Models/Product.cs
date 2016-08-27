@@ -37,6 +37,7 @@ namespace WebTMDT.Models
         public Nullable<int> F15 { get; set; }
         public Nullable<int> F16 { get; set; }
         public Nullable<int> F17 { get; set; }
+        public Nullable<int> F18 { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual Category Category { get; set; }

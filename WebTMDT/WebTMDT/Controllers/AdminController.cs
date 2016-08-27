@@ -137,14 +137,14 @@ namespace WebTMDT.Controllers
                 ProductPromotion = product.F9,
                 ProductAvatar = product.F11,
                 ProductDescription = product.F12,
-                ParentCatId = product.Category.Category2.F1,
-                CategoryId = product.Category.F1,
+                CategoryId = product.Category.Category2.F1,
+                SubCatId = product.Category.F1,
                 LocalId = product.F16,
                 ProductImages = product.ImageProducts.Select(x => new ProductImages() { ProductId = x.F1, UrlImage = x.F3 }).ToList()
             };
 
-            ViewBag.ParentCatName = db.Categories.Where(x => x.F1 == _products.ParentCatId).FirstOrDefault().F2;
-            ViewBag.CategoryName = db.Categories.Where(x => x.F1 == _products.CategoryId).FirstOrDefault().F2;
+            ViewBag.CatName = db.Categories.Where(x => x.F1 == _products.CategoryId).FirstOrDefault().F2;
+            ViewBag.SubCatName = db.Categories.Where(x => x.F1 == _products.SubCatId).FirstOrDefault().F2;
             ViewBag.LocalName = db.Locals.Where(x => x.F1 == _products.LocalId).FirstOrDefault().F2;
             //ViewBag.ItemsPt = new SelectList(ViewBag.ProductType, "ProductTypeName", "ProductTypeName", _products.ProductType);
             //ViewBag.ItemsPs = new SelectList(ViewBag.ProductStatus, "ProductStatusName", "ProductStatusName", _products.ProductStatus);
@@ -174,8 +174,12 @@ namespace WebTMDT.Controllers
                     _product.F11 = product.ProductAvatar ?? null;
                     _product.F12 = product.ProductDescription ?? null;
                     _product.F13 = null;
-                    _product.F15 = product.CategoryId ?? null;
+                    _product.F15 = product.SubCatId ?? null;
+                    var _subcat = db.Categories.Where(x => x.F1 == product.SubCatId).FirstOrDefault();
+                    _product.F17 = _subcat.Category2.F1;
+                    _product.F18 = _subcat.Category2.Category2.F1;
                     _product.F16 = product.LocalId ?? null;
+
                     db.SaveChanges();
                     var _images = _product.ImageProducts;
                     if (_images.Count == 3)

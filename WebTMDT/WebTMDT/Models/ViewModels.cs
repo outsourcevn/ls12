@@ -84,12 +84,11 @@ namespace WebTMDT.Models
         public string ProductMore { get; set; }   
         [Required(ErrorMessage="Vui lòng chọn danh mục sản phẩm")]
         [Range(1, int.MaxValue, ErrorMessage = "Giá trị {0} phải là số")]
-        public Nullable<int> CategoryId { get; set; }
-        [Required(ErrorMessage = "Vui lòng chọn địa chỉ")]
-        [Range(1, int.MaxValue, ErrorMessage = "Giá trị {0} phải là số")]
+        public Nullable<int> SubCatId { get; set; }
         public Nullable<int> LocalId { get; set; }
         public ICollection<ProductImages> ProductImages { get; set; }
         public Nullable<int> ParentCatId { get; set; }
+        public Nullable<int> CategoryId { get; set; }
     }
 
     public class ProductEditViewModel
@@ -129,12 +128,13 @@ namespace WebTMDT.Models
         public string ProductMore { get; set; }
         [Required(ErrorMessage = "Vui lòng chọn danh mục sản phẩm")]
         [Range(1, int.MaxValue, ErrorMessage = "Giá trị {0} phải là số")]
-        public Nullable<int> CategoryId { get; set; }
+        public Nullable<int> SubCatId { get; set; }
         [Required(ErrorMessage = "Vui lòng chọn địa chỉ")]
         [Range(1, int.MaxValue, ErrorMessage = "Giá trị {0} phải là số")]
         public Nullable<int> LocalId { get; set; }
         public ICollection<ProductImages> ProductImages { get; set; }
         public Nullable<int> ParentCatId { get; set; }
+        public Nullable<int> CategoryId { get; set; }
     }
 
     public class UserEditViewModel

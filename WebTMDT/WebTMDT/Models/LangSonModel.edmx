@@ -111,6 +111,7 @@
           <Property Name="F15" Type="int" />
           <Property Name="F16" Type="int" />
           <Property Name="F17" Type="int" />
+          <Property Name="F18" Type="int" />
         </EntityType>
         <Association Name="FK_Category_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -455,6 +456,7 @@
           <Property Name="F15" Type="Int32" />
           <Property Name="F16" Type="Int32" />
           <Property Name="F17" Type="Int32" />
+          <Property Name="F18" Type="Int32" />
           <NavigationProperty Name="AspNetUser" Relationship="langson12Model.FK_Product_AspNetUsers" FromRole="Product" ToRole="AspNetUser" />
           <NavigationProperty Name="Category" Relationship="langson12Model.FK_Product_Category" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="ImageProducts" Relationship="langson12Model.FK_ImageProduct_Product" FromRole="Product" ToRole="ImageProduct" />
@@ -656,6 +658,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="langson12Model.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="F18" ColumnName="F18" />
                 <ScalarProperty Name="F17" ColumnName="F17" />
                 <ScalarProperty Name="F16" ColumnName="F16" />
                 <ScalarProperty Name="F15" ColumnName="F15" />

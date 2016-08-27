@@ -159,5 +159,28 @@ namespace WebTMDT.Helpers
             return _tw;
         }
 
+        public static string CookieName { get; set; }
+        public static void setCookie(string cookieName, string cookieValue) {
+            HttpCookie myCookie = new HttpCookie(CookieName);
+            myCookie.Name = CookieName;
+            myCookie.Value = cookieValue;
+            myCookie.Expires = DateTime.Now.AddDays(7);
+            HttpContext.Current.Response.SetCookie(myCookie);
+        }
+
+        public static string getCookie(string name)
+        {
+            if (HttpContext.Current.Request.Cookies.Get(name) != null)
+            {
+                HttpCookie cookie = HttpContext.Current.Request.Cookies.Get(name);
+                return name;
+            }
+            else
+            {
+                return "";
+            }           
+        }
+
+
     }
 }
