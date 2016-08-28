@@ -58,10 +58,10 @@ namespace WebTMDT
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
+                RequiredLength = 1,
                 RequireNonLetterOrDigit = false,
-                RequireDigit = true,
-                RequireLowercase = true,
+                RequireDigit = false,
+                RequireLowercase = false,
                 RequireUppercase = false,
             };
 

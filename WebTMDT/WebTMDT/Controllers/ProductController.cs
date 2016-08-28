@@ -249,8 +249,9 @@ namespace WebTMDT.Controllers
 
         // GET: /Product/search
         [AllowAnonymous]
-        public ActionResult Search(SeachQueryString search, int? page, string inputsearch)
-        {            
+        public ActionResult Search(string inputsearch, string f5, string f6, string f3, string f10, string f15, string f16, string f17, string f18, int? pg)
+        {
+            
             var Cat = db.Categories.ToList();
             ViewBag.Category = Cat;
             var LocalData = db.Locals.ToList();
@@ -284,442 +285,141 @@ namespace WebTMDT.Controllers
             List<sortOrder> myList = Configs.KhoangGia();
             var _ConcatListGiaBan = ListGiaBan.Concat(myList).AsEnumerable();
             ViewBag.ProductGiaBan = _ConcatListGiaBan;
-           
-            List<ProductShow> lstProduct = new List<ProductShow>();
+
+            var _p = db.Products.Take(1000).Select(p => new ProductShow()
+            {
+                SanPhamId = p.F1,
+                TenSp = p.F2,
+                TinhTrangSp = p.F5,
+                TheLoai = p.F6,
+                GiaBan = p.F3,
+                NgayDang = p.F10,
+                TenNguoiBan = p.AspNetUser.TenNguoiBan,
+                SDTNguoiBan = p.AspNetUser.PhoneNumber,
+                AnhSanPham = p.F11,
+                LocalId = p.F16,
+                SlugCat = Configs.unicodeToNoMark(p.Category.Category2.F2),
+                SlugSubCat = Configs.unicodeToNoMark(p.Category.F2),
+                slugTenSp = Configs.unicodeToNoMark(p.F2 != null ? p.F2 : "no-title"),
+                GianHang = p.AspNetUser.UserName,
+                SlugGianHang = Configs.unicodeToNoMark(p.AspNetUser.TenNguoiBan != null ? p.AspNetUser.TenNguoiBan : "no-title"),
+                SubCatId = p.F15,
+                CatId = p.F17,
+                ParentId = p.F18
+            });
+            int pageSize = 25;
+            if (pg == null) pg = 1;
+            int pageNumber = (pg ?? 1);
+            ViewBag.pg = pg;
 
             if (!string.IsNullOrWhiteSpace(inputsearch))
             {
-                var _products = db.Products.Where(p => p.F2.ToLower().Contains(inputsearch)).Select(p=>p);
-                foreach (var product in _products)
-                {
-                    var _p = new ProductShow()
-                    {
-                        SanPhamId = product.F1,
-                        TenSp = product.F2,
-                        TinhTrangSp = product.F5,
-                        TheLoai = product.F6,
-                        GiaBan = product.F3,
-                        NgayDang = product.F10,
-                        TenNguoiBan = product.AspNetUser.TenNguoiBan,
-                        SoDienThoaiNgBan = product.AspNetUser.PhoneNumber,
-                        AnhSanPham = product.F11,
-                        LocalId = product.F16,
-                        DanhMucCha = Configs.unicodeToNoMark(product.Category.Category2.F2),
-                        DanhMucCon = Configs.unicodeToNoMark(product.Category.F2),
-                        slugTenSp = Configs.unicodeToNoMark(product.F2 != null ? product.F2 : "no-title"),
-                        gianhang = product.AspNetUser.UserName,
-                        SlugGianHang = Configs.unicodeToNoMark(product.AspNetUser.TenNguoiBan != null ? product.AspNetUser.TenNguoiBan : "no-title")
-                    };
-                    lstProduct.Add(_p);
-                }
+                _p = _p.Where(o => o.TenSp.ToLower().Contains(inputsearch));
             }
 
-            // !p && !c && sc
-            if (!string.IsNullOrWhiteSpace(search.ParentId) && !string.IsNullOrWhiteSpace(search.CategoryId) && string.IsNullOrWhiteSpace(search.SubCategoryId))
+            if (f18 == null) f18 = ""; if (f17 == null) f17 = ""; if (f15 == null) f15 = ""; if (f16 == null) f16 = ""; if (f3 == null) f3 = ""; if (f5 == null) f5 = ""; if (f6 == null) f6 = ""; if (f10 == null) f10 = "";
+            if (f18 != null && f18 != "")
             {
-                int _idParent = int.Parse(search.ParentId);
-                int _idCat = int.Parse(search.CategoryId);
-                var _dataCatParent = db.Categories.Where(x => x.F1 == _idCat && x.F3 == _idParent).FirstOrDefault();
-                if (_dataCatParent != null)
-                {
-                    ViewBag.ParentCatIdFirst = _dataCatParent.Category2.F1;
-                    ViewBag.ParentCatNameFirst = _dataCatParent.Category2.F2;
-                    ViewBag.CatIdFirst = _dataCatParent.F1;
-                    ViewBag.CatNameFirst = _dataCatParent.F2;
-                    var cats = (from c in db.Categories where c.F3 == _idCat select new { c.F1 }).ToList();
-                    List<int?> catsChildList = cats.Select(x => (int?)x.F1).ToList();
-                    var products = (from p in db.Products
-                                    group p by p.F1 into g
-                                    where g.Any(x => catsChildList.Contains(x.F15))
-                                    select g);
-
-                    foreach (var item in products)
-                    {
-                        foreach (var product in item)
-                        {
-                            var p = new ProductShow()
-                            {
-                                SanPhamId = product.F1,
-                                TenSp = product.F2,
-                                TinhTrangSp = product.F5,
-                                TheLoai = product.F6,
-                                GiaBan = product.F3,
-                                NgayDang = product.F10,
-                                TenNguoiBan = product.AspNetUser.TenNguoiBan,
-                                SoDienThoaiNgBan = product.AspNetUser.PhoneNumber,
-                                AnhSanPham = product.F11,
-                                LocalId = product.F16,
-                                DanhMucCha = Configs.unicodeToNoMark(product.Category.Category2.F2),
-                                DanhMucCon = Configs.unicodeToNoMark(product.Category.F2),
-                                slugTenSp = Configs.unicodeToNoMark(product.F2 != null ? product.F2 : ""),
-                                gianhang = product.AspNetUser.UserName,
-                                SlugGianHang = Configs.unicodeToNoMark(product.AspNetUser.TenNguoiBan != null ? product.AspNetUser.TenNguoiBan : "no-title")
-
-                            };
-                            lstProduct.Add(p);
-                        }
-                    }
-                }
-            }
-            // !p && c && sc
-            if (!string.IsNullOrWhiteSpace(search.ParentId) && string.IsNullOrWhiteSpace(search.CategoryId) && string.IsNullOrWhiteSpace(search.SubCategoryId))
-            {
-                int _idParent;
-                if (int.TryParse(search.ParentId, out _idParent))
-                {
-                    var _dataCatParent = db.Categories.Where(x => x.F1 == _idParent).FirstOrDefault();
-                    ViewBag.ParentCatIdFirst = _dataCatParent.F1;
-                    ViewBag.ParentCatNameFirst = _dataCatParent.F2;
-                    //IQueryable<Product> products;
-                    var catsInParentCat = (from c in db.Categories where c.F3 == _idParent select new { c.F1 }).ToList();
-                    foreach (var cat in catsInParentCat)
-                    {
-                        var cats = (from cc in db.Categories where cc.F3 == cat.F1 select new { cc.F1 }).ToList();
-                        List<int?> catsChildList = cats.Select(x => (int?)x.F1).ToList();
-                        var _products = (from p in db.Products
-                                         group p by p.F1 into g
-                                         where g.Any(x => catsChildList.Contains(x.F15))
-                                         select g);
-                        foreach (var item in _products)
-                        {
-                            foreach (var product in item)
-                            {
-                                var p = new ProductShow()
-                                {
-                                    SanPhamId = product.F1,
-                                    TenSp = product.F2,
-                                    TinhTrangSp = product.F5,
-                                    TheLoai = product.F6,
-                                    GiaBan = product.F3,
-                                    NgayDang = product.F10,
-                                    TenNguoiBan = product.AspNetUser.TenNguoiBan,
-                                    SoDienThoaiNgBan = product.AspNetUser.PhoneNumber,
-                                    AnhSanPham = product.F11,
-                                    LocalId = product.F16,
-                                    DanhMucCha = Configs.unicodeToNoMark(product.Category.Category2.F2),
-                                    DanhMucCon = Configs.unicodeToNoMark(product.Category.F2),
-                                    slugTenSp = Configs.unicodeToNoMark(product.F2 != null ? product.F2 : "san-pham-khong-ten"),
-                                    gianhang = product.AspNetUser.UserName,
-                                    SlugGianHang = Configs.unicodeToNoMark(product.AspNetUser.TenNguoiBan != null ? product.AspNetUser.TenNguoiBan : "gian-hang-khong-ten")
-                                
-                                };
-                                lstProduct.Add(p);
-                            }
-                        }
-
-                    }                 
-
-                }
+                int _id = Convert.ToInt32(f18);
+                _p = _p.Where(o => o.ParentId == _id);
             }
 
-            // !p && !c && !sc
-            if (!string.IsNullOrWhiteSpace(search.CategoryId) && !string.IsNullOrWhiteSpace(search.SubCategoryId) && !string.IsNullOrWhiteSpace(search.ParentId))
+            if (f17 != null && f17 != "")
             {
-                int _idCat = int.Parse(search.CategoryId);
-                int _idSubCat = int.Parse(search.SubCategoryId);
-                int _idPaCat = int.Parse(search.ParentId);
-                var _parent = db.Categories.Where(x => x.F1 == _idPaCat).FirstOrDefault();
-                ViewBag.ParentCatIdFirst = _parent.F1;
-                ViewBag.ParentCatNameFirst = _parent.F2;
-                var _cat = db.Categories.Where(x => x.F1 == _idCat && x.F3 == _idPaCat).FirstOrDefault();
-                if (_cat != null)
-                {
-                    ViewBag.CatIdFirst = _cat.F1;
-                    ViewBag.CatNameFirst = _cat.F2;
-                    var _subcat = db.Categories.Where(x => x.F1 == _idSubCat && x.F3 == _idCat).FirstOrDefault();
-                    if (_subcat != null)
-                    {
-                        ViewBag.SubCatIdFirst = _subcat.F1;
-                        ViewBag.SubCatNameFirst = _subcat.F2;
-                        // lay san pham voi subcatid
-                        var _products = (from p in db.Products where p.F15 == _idSubCat select p);
-                        foreach (var product in _products)
-                        {
-                            var p = new ProductShow()
-                            {
-                                SanPhamId = product.F1,
-                                TenSp = product.F2,
-                                TinhTrangSp = product.F5,
-                                TheLoai = product.F6,
-                                GiaBan = product.F3,
-                                NgayDang = product.F10,
-                                TenNguoiBan = product.AspNetUser.TenNguoiBan,
-                                SoDienThoaiNgBan = product.AspNetUser.PhoneNumber,
-                                AnhSanPham = product.F11,
-                                LocalId = product.F16,
-                                DanhMucCha = Configs.unicodeToNoMark(product.Category.Category2.F2),
-                                DanhMucCon = Configs.unicodeToNoMark(product.Category.F2),
-                                slugTenSp = Configs.unicodeToNoMark(product.F2 != null ? product.F2 : ""),
-                                gianhang = product.AspNetUser.UserName,
-                                SlugGianHang = Configs.unicodeToNoMark(product.AspNetUser.TenNguoiBan != null ? product.AspNetUser.TenNguoiBan : "no-title")
-                                
-                            };
-                            lstProduct.Add(p);
-                        }
-                    }
-                    else
-                    {
-                        ViewBag.SubCatIdFirst = null;
-                        ViewBag.SubCatNameFirst = null;
-                    }
-
-                }
-                else
-                {
-                    ViewBag.CatIdFirst = null;
-                    ViewBag.CatNameFirst = null;
-                }                
-                
-
+                int _id = Convert.ToInt32(f17);
+                _p = _p.Where(o => o.CatId == _id);
             }
 
-            // p && c && !sc
-            if (string.IsNullOrWhiteSpace(search.CategoryId) && string.IsNullOrWhiteSpace(search.ParentId) && !string.IsNullOrWhiteSpace(search.SubCategoryId))
+            if (f15 != null && f15 != "")
             {
-                int _id;
-                if (int.TryParse(search.SubCategoryId, out _id))
-                {
-                    var _cat = db.Categories.Where(x => x.F1 == _id).FirstOrDefault();
-                    ViewBag.SubCatIdFirst = _cat.F1;
-                    ViewBag.SubCatNameFirst = _cat.F2;
-                    // lay san pham voi subcatid
-                    var _products = (from p in db.Products where p.F15 == _id select p);
-                    foreach (var product in _products)
-                    {
-                        var p = new ProductShow()
-                        {
-                            SanPhamId = product.F1,
-                            TenSp = product.F2,
-                            TinhTrangSp = product.F5,
-                            TheLoai = product.F6,
-                            GiaBan = product.F3,
-                            NgayDang = product.F10,
-                            TenNguoiBan = product.AspNetUser.TenNguoiBan,
-                            SoDienThoaiNgBan = product.AspNetUser.PhoneNumber,
-                            AnhSanPham = product.F11,
-                            LocalId = product.F16,
-                            DanhMucCha = Configs.unicodeToNoMark(product.Category.Category2.F2),
-                            DanhMucCon = Configs.unicodeToNoMark(product.Category.F2),
-                            slugTenSp = Configs.unicodeToNoMark(product.F2 != null ? product.F2 : ""),
-                            gianhang = product.AspNetUser.UserName,
-                            SlugGianHang = Configs.unicodeToNoMark(product.AspNetUser.TenNguoiBan != null ? product.AspNetUser.TenNguoiBan : "no-title")
-                                
-                        };
-                        lstProduct.Add(p);
-                    }
-                }
+                int _id = Convert.ToInt32(f15);
+                _p = _p.Where(o => o.SubCatId == _id);
             }
 
-            if (!string.IsNullOrWhiteSpace(search.CategoryId) && string.IsNullOrWhiteSpace(search.SubCategoryId) && string.IsNullOrWhiteSpace(search.ParentId))
+            if (f5 != null && f5 != "")
             {
-                int _id;
-                if (int.TryParse(search.CategoryId, out _id))
-                {
-                    var _dataCat = db.Categories.Where(x => x.F1 == _id).FirstOrDefault();
-                    ViewBag.CatIdFirst = _dataCat.F1;
-                    ViewBag.CatNameFirst = _dataCat.F2;
-                    // lay da cac danh muc con cua danh muc cha co _id
-                    var cats = (from c in db.Categories where c.F3 == _id select new { c.F1 }).ToList();
-                    List<int?> catsChildList = cats.Select(x => (int?)x.F1).ToList();
-                    var products = (from p in db.Products
-                                    group p by p.F1 into g
-                                    where g.Any(x => catsChildList.Contains(x.F15))
-                                    select g);
-
-                    foreach (var item in products)
-                    {
-                        foreach (var product in item)
-                        {
-                            var p = new ProductShow()
-                               {
-                                   SanPhamId = product.F1,
-                                   TenSp = product.F2,
-                                   TinhTrangSp = product.F5,
-                                   TheLoai = product.F6,
-                                   GiaBan = product.F3,
-                                   NgayDang = product.F10,
-                                   TenNguoiBan = product.AspNetUser.TenNguoiBan,
-                                   SoDienThoaiNgBan = product.AspNetUser.PhoneNumber,
-                                   AnhSanPham = product.F11,
-                                   LocalId = product.F16,
-                                   DanhMucCha = Configs.unicodeToNoMark(product.Category.Category2.F2),
-                                   DanhMucCon = Configs.unicodeToNoMark(product.Category.F2),
-                                   slugTenSp = Configs.unicodeToNoMark(product.F2 != null ? product.F2 : ""),
-                                   gianhang = product.AspNetUser.UserName,
-                                   SlugGianHang = Configs.unicodeToNoMark(product.AspNetUser.TenNguoiBan != null ? product.AspNetUser.TenNguoiBan : "no-title")
-                                
-                               };
-                            lstProduct.Add(p);
-                        }
-                    }
-                }
-
+                _p = _p.Where(o => o.TheLoai == f5);
             }
 
-            if (lstProduct.Count > 0)
+            if (f6 != null && f6 != "")
             {
-                if (!string.IsNullOrWhiteSpace(search.LocalId))
-                {
-                    int _idLocal;
-                    if (int.TryParse(search.LocalId, out _idLocal))
-                    {
-                        var _local = db.Locals.Where(x => x.F1 == _idLocal).FirstOrDefault();
-                        ViewBag.LocalId = _local.F1;
-                        ViewBag.LocalName = _local.F2;
-                        lstProduct = lstProduct.Where(x => x.LocalId == _idLocal).ToList();
-                    };
-                }
+                _p = _p.Where(o => o.TinhTrangSp == f6);
             }
 
-            if (string.IsNullOrWhiteSpace(search.ParentId) && string.IsNullOrWhiteSpace(search.CategoryId) && string.IsNullOrWhiteSpace(search.SubCategoryId) && !string.IsNullOrWhiteSpace(search.LocalId))
+            if (f10 == null && f10 == "")
             {
-                int _idLocal;
-                if (int.TryParse(search.LocalId, out _idLocal))
-                {
-                    var _local = db.Locals.Where(x => x.F1 == _idLocal).FirstOrDefault();
-                    ViewBag.LocalId = _local.F1;
-                    ViewBag.LocalName = _local.F2;
-                    var _products = (from p in db.Products where p.F16 == _idLocal select p);
-                    foreach (var product in _products)
-                    {
-                        var p = new ProductShow()
-                        {
-                            SanPhamId = product.F1,
-                            TenSp = product.F2,
-                            TinhTrangSp = product.F5,
-                            TheLoai = product.F6,
-                            GiaBan = product.F3,
-                            NgayDang = product.F10,
-                            TenNguoiBan = product.AspNetUser.TenNguoiBan,
-                            SoDienThoaiNgBan = product.AspNetUser.PhoneNumber,
-                            AnhSanPham = product.F11,
-                            LocalId = product.F16,
-                            DanhMucCha = Configs.unicodeToNoMark(product.Category.Category2.F2),
-                            DanhMucCon = Configs.unicodeToNoMark(product.Category.F2),
-                            slugTenSp = Configs.unicodeToNoMark(product.F2 != null ? product.F2 : ""),
-                            gianhang = product.AspNetUser.UserName,
-                            SlugGianHang = Configs.unicodeToNoMark(product.AspNetUser.TenNguoiBan != null ? product.AspNetUser.TenNguoiBan : "no-title")
-
-                        };
-                        lstProduct.Add(p);
-                    }
-                }
+                _p = _p.OrderByDescending(o => o.NgayDang);
+            }
+            else if (f10 != null && f10 == "desc")
+            {
+                _p = _p.OrderByDescending(o => o.NgayDang);
+            }
+            else if(f10 != null && f10 == "asc")
+            {
+                _p = _p.OrderBy(o => o.NgayDang);
             }
 
-            // Thêm điều kiện lọc khi lstProduct được tìm thấy
-            if (!string.IsNullOrWhiteSpace(search.TheLoai) && !string.IsNullOrWhiteSpace(search.TinhTrang))
-            {
-                ViewBag.TheLoai = search.TheLoai;
-                ViewBag.TinhTrang = search.TinhTrang;
-                lstProduct = lstProduct.Where(x => x.TheLoai == search.TheLoai && x.TinhTrangSp == search.TinhTrang).ToList();
-            }
-
-            if (!string.IsNullOrWhiteSpace(search.TheLoai) && string.IsNullOrWhiteSpace(search.TinhTrang))
-            {
-                ViewBag.TinhTrang = null;
-                ViewBag.TheLoai = search.TheLoai;
-                string _strTheLoai = search.TheLoai;
-                lstProduct = lstProduct.Where(x => x.TheLoai == _strTheLoai).ToList();
-            }
-
-            if (string.IsNullOrWhiteSpace(search.TheLoai) && !string.IsNullOrWhiteSpace(search.TinhTrang))
-            {
-                ViewBag.TheLoai = null;
-                ViewBag.TinhTrang = search.TinhTrang;
-                string _strTinhTrang = search.TinhTrang;
-                lstProduct = lstProduct.Where(x => x.TinhTrangSp == _strTinhTrang).ToList();
-            }
-
-            lstProduct = lstProduct.OrderByDescending(x => x.NgayDang).ToList();
-
-            //search.NgayDang = "desc";
-            if (!string.IsNullOrWhiteSpace(search.NgayDang) && string.IsNullOrWhiteSpace(search.GiaBan))
-            {
-                ViewBag.GiaBan = null;
-                ViewBag.NgayDang = search.NgayDang;
-                switch (search.NgayDang)
-                {
-                    case "desc":
-                        lstProduct = lstProduct.OrderByDescending(x => x.NgayDang).ToList();
-                        break;
-                    case "asc":
-                        lstProduct = lstProduct.OrderBy(x => x.NgayDang).ToList();
-                        break;
-                    
-                }
-            }
-
-            if (string.IsNullOrWhiteSpace(search.NgayDang) && !string.IsNullOrWhiteSpace(search.GiaBan))
-            {
-                ViewBag.NgayDang = null;
-                ViewBag.GiaBan = search.GiaBan;
+            if (string.IsNullOrWhiteSpace(f3) && !string.IsNullOrWhiteSpace(f3))
+            {               
                 Configs.TwoNumber _x;
-                switch (search.GiaBan)
+                switch (f3)
                 {
                     case "desc":
-                        lstProduct = lstProduct.OrderByDescending(x => x.GiaBan).ToList();
+                        _p = _p.OrderByDescending(x => x.GiaBan);
                         break;
                     case "asc":
-                        lstProduct = lstProduct.OrderBy(x => x.GiaBan).ToList();
+                        _p = _p.OrderBy(x => x.GiaBan);
                         break;
                     case "1-3":
                         _x = Configs.GetNumber("1-3");
-                        lstProduct = lstProduct.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2).ToList();
+                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
                         break;
                     case "3-5":
                         _x = Configs.GetNumber("3-5");
-                        lstProduct = lstProduct.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2).ToList();
+                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
                         break;
                     case "5-7":
                         _x = Configs.GetNumber("5-7");
-                        lstProduct = lstProduct.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2).ToList();
+                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
                         break;
                     case "7-9":
                         _x = Configs.GetNumber("7-9");
-                        lstProduct = lstProduct.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2).ToList();
+                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
                         break;
                     case "9-11":
                         _x = Configs.GetNumber("9-11");
-                        lstProduct = lstProduct.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2).ToList();
+                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
                         break;
                     case "11-13":
                         _x = Configs.GetNumber("11-13");
-                        lstProduct = lstProduct.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2).ToList();
+                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
                         break;
                     case "13-15":
                         _x = Configs.GetNumber("13-15");
-                        lstProduct = lstProduct.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2).ToList();
+                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
                         break;
                     case "15-17":
                         _x = Configs.GetNumber("15-17");
-                        lstProduct = lstProduct.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2).ToList();
+                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
                         break;
                     case "17-19":
                         _x = Configs.GetNumber("17-19");
-                        lstProduct = lstProduct.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2).ToList();
+                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
                         break;
                     case "19-20":
                         _x = Configs.GetNumber("19-20");
-                        lstProduct = lstProduct.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2).ToList();
+                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
                         break;
                     default: 
                         _x = Configs.GetNumber("0-1");
-                        lstProduct = lstProduct.Where(x=>x.GiaBan <= _x.Number2).ToList();
+                        _p = _p.Where(x => x.GiaBan <= _x.Number2);
                         break;
                 }
             }
 
-            if (lstProduct.Count > 0)
-            {
-                // Phan trang o day ne
-                int pageSize = 10;
-                int pageNumber = (page ?? 1);
-                var onePageOfProducts = lstProduct.ToPagedList(pageNumber, pageSize);
-                ViewBag.Product = onePageOfProducts;
-            }            
 
-            
-            return View();
+  
+            return View(_p.ToPagedList(pageNumber, pageSize));
         }
 
         // Product/ProductDetail/1

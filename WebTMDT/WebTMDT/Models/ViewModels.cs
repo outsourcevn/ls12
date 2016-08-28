@@ -191,9 +191,7 @@ namespace WebTMDT.Models
     }
 
     public class ProductShow
-    {
-        public string DanhMucCha { get; set; }
-        public string DanhMucCon { get; set; }
+    {       
         public long SanPhamId { get; set; }
         public string TenSp { get; set; }
         public string slugTenSp { get; set; }
@@ -202,11 +200,16 @@ namespace WebTMDT.Models
         public string TheLoai { get; set; }
         public int? GiaBan { get; set; }
         public string TenNguoiBan { get; set; }
-        public string SoDienThoaiNgBan { get; set; }
+        public string SDTNguoiBan { get; set; }
         public string AnhSanPham { get; set; }
         public int? LocalId { get; set; }
-        public string gianhang { get; set; }
+        public string GianHang { get; set; }
+        public string SlugCat { get; set; }
+        public string SlugSubCat { get; set; }
         public string SlugGianHang { get; set; }
+        public int? SubCatId { get; set; }
+        public int? CatId { get; set; }
+        public int? ParentId { get; set; }
     }
 
     public class EntityProduct
