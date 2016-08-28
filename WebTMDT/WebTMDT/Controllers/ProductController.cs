@@ -250,8 +250,119 @@ namespace WebTMDT.Controllers
         // GET: /Product/search
         [AllowAnonymous]
         public ActionResult Search(string inputsearch, string f5, string f6, string f3, string f10, string f15, string f16, string f17, string f18, int? pg)
-        {
-            
+        {         
+            var _p = db.Products.Take(1000);           
+
+            int pageSize = 10;
+            if (pg == null) pg = 1;
+            int pageNumber = (pg ?? 1);
+            ViewBag.pg = pg;
+
+            if (!string.IsNullOrWhiteSpace(inputsearch))
+            {
+                _p = _p.Where(o => o.F2.ToLower().Contains(inputsearch));
+            }
+
+            if (f18 == null) f18 = ""; if (f17 == null) f17 = ""; if (f15 == null) f15 = ""; if (f16 == null) f16 = ""; if (f3 == null) f3 = ""; if (f5 == null) f5 = ""; if (f6 == null) f6 = ""; if (f10 == null) f10 = "";
+            if (f18 != null && f18 != "")
+            {
+                int _id = Convert.ToInt32(f18);
+                _p = _p.Where(o => o.F18 == _id);
+            }
+
+            if (f17 != null && f17 != "")
+            {
+                int _id = Convert.ToInt32(f17);
+                _p = _p.Where(o => o.F17 == _id);
+            }
+
+            if (f15 != null && f15 != "")
+            {
+                int _id = Convert.ToInt32(f15);
+                _p = _p.Where(o => o.F15 == _id);
+            }
+
+            if (f5 != null && f5 != "")
+            {
+                _p = _p.Where(o => o.F5 == f5);
+            }
+
+            if (f6 != null && f6 != "")
+            {
+                _p = _p.Where(o => o.F6 == f6);
+            }
+
+            if (f10 != null && f10 == "")
+            {
+                _p = _p.OrderByDescending(o => o.F10);
+            }
+            else if (f10 != null && f10 == "desc")
+            {
+                _p = _p.OrderByDescending(o => o.F10);
+            }
+            else if(f10 != null && f10 == "asc")
+            {
+                _p = _p.OrderBy(o => o.F10);
+            }
+
+            if (string.IsNullOrWhiteSpace(f3) && !string.IsNullOrWhiteSpace(f3))
+            {               
+                Configs.TwoNumber _x;
+                switch (f3)
+                {
+                    case "desc":
+                        _p = _p.OrderByDescending(x => x.F3);
+                        break;
+                    case "asc":
+                        _p = _p.OrderBy(x => x.F3);
+                        break;
+                    case "1-3":
+                        _x = Configs.GetNumber("1-3");
+                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
+                        break;
+                    case "3-5":
+                        _x = Configs.GetNumber("3-5");
+                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
+                        break;
+                    case "5-7":
+                        _x = Configs.GetNumber("5-7");
+                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
+                        break;
+                    case "7-9":
+                        _x = Configs.GetNumber("7-9");
+                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
+                        break;
+                    case "9-11":
+                        _x = Configs.GetNumber("9-11");
+                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
+                        break;
+                    case "11-13":
+                        _x = Configs.GetNumber("11-13");
+                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
+                        break;
+                    case "13-15":
+                        _x = Configs.GetNumber("13-15");
+                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
+                        break;
+                    case "15-17":
+                        _x = Configs.GetNumber("15-17");
+                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
+                        break;
+                    case "17-19":
+                        _x = Configs.GetNumber("17-19");
+                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
+                        break;
+                    case "19-20":
+                        _x = Configs.GetNumber("19-20");
+                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
+                        break;
+                    default: 
+                        _x = Configs.GetNumber("0-1");
+                        _p = _p.Where(x => x.F3 <= _x.Number2);
+                        break;
+                }
+            }
+
             var Cat = db.Categories.ToList();
             ViewBag.Category = Cat;
             var LocalData = db.Locals.ToList();
@@ -272,7 +383,7 @@ namespace WebTMDT.Controllers
                 new ProductStatus() { ProductStatusName = "hàng thanh lý" }
             };
 
-          
+
             ViewBag.ProductNgayDang = new List<sortOrder>() {
                 new sortOrder() { TypeSort = "desc", NameSort = "Giảm dần" },
                 new sortOrder() { TypeSort = "asc", NameSort = "Tăng dần" }
@@ -286,140 +397,44 @@ namespace WebTMDT.Controllers
             var _ConcatListGiaBan = ListGiaBan.Concat(myList).AsEnumerable();
             ViewBag.ProductGiaBan = _ConcatListGiaBan;
 
-            var _p = db.Products.Take(1000).Select(p => new ProductShow()
-            {
-                SanPhamId = p.F1,
-                TenSp = p.F2,
-                TinhTrangSp = p.F5,
-                TheLoai = p.F6,
-                GiaBan = p.F3,
-                NgayDang = p.F10,
-                TenNguoiBan = p.AspNetUser.TenNguoiBan,
-                SDTNguoiBan = p.AspNetUser.PhoneNumber,
-                AnhSanPham = p.F11,
-                LocalId = p.F16,
-                SlugCat = Configs.unicodeToNoMark(p.Category.Category2.F2),
-                SlugSubCat = Configs.unicodeToNoMark(p.Category.F2),
-                slugTenSp = Configs.unicodeToNoMark(p.F2 != null ? p.F2 : "no-title"),
-                GianHang = p.AspNetUser.UserName,
-                SlugGianHang = Configs.unicodeToNoMark(p.AspNetUser.TenNguoiBan != null ? p.AspNetUser.TenNguoiBan : "no-title"),
-                SubCatId = p.F15,
-                CatId = p.F17,
-                ParentId = p.F18
-            });
-            int pageSize = 25;
-            if (pg == null) pg = 1;
-            int pageNumber = (pg ?? 1);
-            ViewBag.pg = pg;
+            ViewBag.inputsearch = inputsearch;
+            ViewBag.f18 = f18;
+            ViewBag.f17 = f17;
+            ViewBag.f15 = f15;
+            ViewBag.f16 = f16;
+            ViewBag.f3 = f3;
+            ViewBag.f10 = f10;
+            ViewBag.f5 = f5.Replace("%20", " ");
+            ViewBag.f6 = f6.Replace("%20", " ");
 
-            if (!string.IsNullOrWhiteSpace(inputsearch))
+            List<ProductShow> _lstProducts = new List<ProductShow>();
+            foreach (var p in _p)
             {
-                _p = _p.Where(o => o.TenSp.ToLower().Contains(inputsearch));
-            }
-
-            if (f18 == null) f18 = ""; if (f17 == null) f17 = ""; if (f15 == null) f15 = ""; if (f16 == null) f16 = ""; if (f3 == null) f3 = ""; if (f5 == null) f5 = ""; if (f6 == null) f6 = ""; if (f10 == null) f10 = "";
-            if (f18 != null && f18 != "")
-            {
-                int _id = Convert.ToInt32(f18);
-                _p = _p.Where(o => o.ParentId == _id);
-            }
-
-            if (f17 != null && f17 != "")
-            {
-                int _id = Convert.ToInt32(f17);
-                _p = _p.Where(o => o.CatId == _id);
-            }
-
-            if (f15 != null && f15 != "")
-            {
-                int _id = Convert.ToInt32(f15);
-                _p = _p.Where(o => o.SubCatId == _id);
-            }
-
-            if (f5 != null && f5 != "")
-            {
-                _p = _p.Where(o => o.TheLoai == f5);
-            }
-
-            if (f6 != null && f6 != "")
-            {
-                _p = _p.Where(o => o.TinhTrangSp == f6);
-            }
-
-            if (f10 == null && f10 == "")
-            {
-                _p = _p.OrderByDescending(o => o.NgayDang);
-            }
-            else if (f10 != null && f10 == "desc")
-            {
-                _p = _p.OrderByDescending(o => o.NgayDang);
-            }
-            else if(f10 != null && f10 == "asc")
-            {
-                _p = _p.OrderBy(o => o.NgayDang);
-            }
-
-            if (string.IsNullOrWhiteSpace(f3) && !string.IsNullOrWhiteSpace(f3))
-            {               
-                Configs.TwoNumber _x;
-                switch (f3)
+                var item = new ProductShow()
                 {
-                    case "desc":
-                        _p = _p.OrderByDescending(x => x.GiaBan);
-                        break;
-                    case "asc":
-                        _p = _p.OrderBy(x => x.GiaBan);
-                        break;
-                    case "1-3":
-                        _x = Configs.GetNumber("1-3");
-                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
-                        break;
-                    case "3-5":
-                        _x = Configs.GetNumber("3-5");
-                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
-                        break;
-                    case "5-7":
-                        _x = Configs.GetNumber("5-7");
-                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
-                        break;
-                    case "7-9":
-                        _x = Configs.GetNumber("7-9");
-                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
-                        break;
-                    case "9-11":
-                        _x = Configs.GetNumber("9-11");
-                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
-                        break;
-                    case "11-13":
-                        _x = Configs.GetNumber("11-13");
-                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
-                        break;
-                    case "13-15":
-                        _x = Configs.GetNumber("13-15");
-                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
-                        break;
-                    case "15-17":
-                        _x = Configs.GetNumber("15-17");
-                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
-                        break;
-                    case "17-19":
-                        _x = Configs.GetNumber("17-19");
-                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
-                        break;
-                    case "19-20":
-                        _x = Configs.GetNumber("19-20");
-                        _p = _p.Where(x => x.GiaBan >= _x.Number1 && x.GiaBan <= _x.Number2);
-                        break;
-                    default: 
-                        _x = Configs.GetNumber("0-1");
-                        _p = _p.Where(x => x.GiaBan <= _x.Number2);
-                        break;
-                }
+                    SanPhamId = p.F1,
+                    TenSp = p.F2,
+                    TinhTrangSp = p.F5,
+                    TheLoai = p.F6,
+                    GiaBan = p.F3,
+                    NgayDang = p.F10,
+                    TenNguoiBan = p.AspNetUser.TenNguoiBan,
+                    SDTNguoiBan = p.AspNetUser.PhoneNumber,
+                    AnhSanPham = p.F11,
+                    LocalId = p.F16,
+                    SlugCat = Configs.unicodeToNoMark(p.Category.Category2.F2),
+                    SlugSubCat = Configs.unicodeToNoMark(p.Category.F2),
+                    slugTenSp = Configs.unicodeToNoMark(p.F2 != null ? p.F2 : "no-title"),
+                    GianHang = p.AspNetUser.UserName,
+                    SlugGianHang = Configs.unicodeToNoMark(p.AspNetUser.TenNguoiBan != null ? p.AspNetUser.TenNguoiBan : "no-title"),
+                    SubCatId = p.F15,
+                    CatId = p.F17,
+                    ParentId = p.F18
+                };
+                _lstProducts.Add(item);
             }
 
-
-  
-            return View(_p.ToPagedList(pageNumber, pageSize));
+            return View(_lstProducts.ToPagedList(pageNumber, pageSize));
         }
 
         // Product/ProductDetail/1
