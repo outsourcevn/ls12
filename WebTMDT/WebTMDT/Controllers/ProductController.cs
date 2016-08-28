@@ -418,8 +418,10 @@ namespace WebTMDT.Controllers
             ViewBag.f16 = f16;
             ViewBag.f3 = f3;
             ViewBag.f10 = f10;
-            ViewBag.f5 = f5.Replace("%20", " ");
-            ViewBag.f6 = f6.Replace("%20", " ");
+            ViewBag.f5 = f5;
+            ViewBag.f6 = f6;
+            //ViewBag.f5 = f5.Replace("%20", " ");
+            //ViewBag.f6 = f6.Replace("%20", " ");
 
 
             List<ProductShow> _lstProducts = new List<ProductShow>();

@@ -27,13 +27,13 @@
         <div class="col-md-3">
             @if (ViewBag.ProductTheLoai != null)
             {
-                @Html.DropDownList("Selectf5", new SelectList(ViewBag.ProductTheLoai, "ProductTypeName", "ProductTypeName"), "Chọn thể loại sản phẩm", new { @class = "form-control" })
+                @Html.DropDownList("Selectf6", new SelectList(ViewBag.ProductTheLoai, "ProductTypeName", "ProductTypeName"), "Chọn thể loại sản phẩm", new { @class = "form-control" })
             }
         </div>
         <div class="col-md-3">
             @if (ViewBag.ProductTrangThai != null)
             {
-                @Html.DropDownList("Selectf6", new SelectList(ViewBag.ProductTrangThai, "ProductStatusName", "ProductStatusName"), "Chọn tình trạng sản phẩm", new { @class = "form-control" })
+                @Html.DropDownList("Selectf5", new SelectList(ViewBag.ProductTrangThai, "ProductStatusName", "ProductStatusName"), "Chọn tình trạng sản phẩm", new { @class = "form-control" })
             }
         </div>
         <div class="col-md-3">
@@ -56,7 +56,7 @@
 <div class="row">
     <div class="col-md-12">
 
-        @if (Model != null)
+        @if (Model.Count > 0)
         {
             foreach (var item in Model)
             {
@@ -95,7 +95,7 @@
         }
         else
         {
-            <span>Không có sản phẩm nào.</span>
+            <span>Không tìm thấy sản phẩm nào.</span>
         }
     </div>
 
