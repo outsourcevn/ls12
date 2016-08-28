@@ -96,27 +96,7 @@ namespace WebTMDT.Controllers
             {
                 return RedirectToAction("NotFound", "Home");
             }
-            var Cat = db.Categories.ToList();
-            ViewBag.Category = Cat;
-            var LocalData = db.Locals.ToList();
-            ViewBag.LocalData = LocalData;
-
-            ViewBag.ProductStatus = new List<ProductStatus>() { 
-                new ProductStatus() { ProductStatusName = "Mới 100%" },
-                new ProductStatus() { ProductStatusName = "Mới 90%" },
-                new ProductStatus() { ProductStatusName = "Mới 80%" },
-                new ProductStatus() { ProductStatusName = "Hàng like new" },
-                new ProductStatus() { ProductStatusName = "Hàng cũ" },
-                new ProductStatus() { ProductStatusName = "hàng thanh lý" }
-            };
-
-            ViewBag.ProductType = new List<ProductType>() {
-                new ProductType() { ProductTypeName = "Hàng chính hãng" },
-                new ProductType() { ProductTypeName = "Hàng xách tay" },
-                new ProductType() { ProductTypeName = "Hàng nội địa" },
-                new ProductType() { ProductTypeName = "Hàng trung quốc" },
-                new ProductType() { ProductTypeName = "Hàng Sê cần hen" },
-            };           
+           
             Product product = await db.Products.FindAsync(id);
             if (product == null)
             {
@@ -142,6 +122,28 @@ namespace WebTMDT.Controllers
                 LocalId = product.F16,
                 ProductImages = product.ImageProducts.Select(x => new ProductImages() { ProductId = x.F1, UrlImage = x.F3 }).ToList()
             };
+
+            var Cat = db.Categories.ToList();
+            ViewBag.Category = Cat;
+            var LocalData = db.Locals.ToList();
+            ViewBag.LocalData = LocalData;
+
+            ViewBag.ProductStatus = new List<ProductStatus>() { 
+                new ProductStatus() { ProductStatusName = "Mới 100%" },
+                new ProductStatus() { ProductStatusName = "Mới 90%" },
+                new ProductStatus() { ProductStatusName = "Mới 80%" },
+                new ProductStatus() { ProductStatusName = "Hàng like new" },
+                new ProductStatus() { ProductStatusName = "Hàng cũ" },
+                new ProductStatus() { ProductStatusName = "hàng thanh lý" }
+            };
+
+            ViewBag.ProductType = new List<ProductType>() {
+                new ProductType() { ProductTypeName = "Hàng chính hãng" },
+                new ProductType() { ProductTypeName = "Hàng xách tay" },
+                new ProductType() { ProductTypeName = "Hàng nội địa" },
+                new ProductType() { ProductTypeName = "Hàng trung quốc" },
+                new ProductType() { ProductTypeName = "Hàng Sê cần hen" },
+            };           
 
             ViewBag.CatName = db.Categories.Where(x => x.F1 == _products.CategoryId).FirstOrDefault().F2;
             ViewBag.SubCatName = db.Categories.Where(x => x.F1 == _products.SubCatId).FirstOrDefault().F2;
