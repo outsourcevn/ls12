@@ -18,12 +18,6 @@ namespace WebTMDT.Controllers
             ViewBag.Category = Cat;
             var LocalData = db.Locals.ToList();
             ViewBag.LocalData = LocalData;
-            //var dataCatFirst = (from c in Cat where c.F3 == Cat.FirstOrDefault().F1 select c).FirstOrDefault();
-            //ViewBag.CatIdFirst = dataCatFirst.F1;
-            //ViewBag.CatNameFirst = dataCatFirst.F2;
-            //var dataParentCatFirst = (from c in Cat select c).FirstOrDefault();
-            //ViewBag.ParentCatIdFirst = dataParentCatFirst.F1;
-            //ViewBag.ParentCatNameFirst = dataParentCatFirst.F2;
             return View();
         }
 

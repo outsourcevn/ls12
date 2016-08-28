@@ -16,10 +16,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/31/2016 16:30:30</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>08/26/2016 12:53:32</publishTime>
+      <publishTime>08/29/2016 02:20:21</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>08/26/2016 12:53:32</publishTime>
+      <publishTime>08/29/2016 02:20:20</publishTime>
     </File>
     <File Include="bin/Content/bootstrap-theme.css">
       <publishTime>07/31/2016 16:30:39</publishTime>
@@ -1582,10 +1582,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/31/2016 16:30:30</publishTime>
     </File>
     <File Include="bin/WebTMDT.dll">
-      <publishTime>08/26/2016 12:52:43</publishTime>
+      <publishTime>08/29/2016 02:14:30</publishTime>
     </File>
     <File Include="bin/WebTMDT.pdb">
-      <publishTime>08/26/2016 12:52:43</publishTime>
+      <publishTime>08/29/2016 02:14:30</publishTime>
     </File>
     <File Include="Content/bootstrap-theme.css">
       <publishTime>07/31/2016 16:30:39</publishTime>
@@ -3550,13 +3550,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/31/2016 16:30:39</publishTime>
     </File>
     <File Include="Models/LangSonModel.edmx.diagram">
-      <publishTime>08/24/2016 22:26:50</publishTime>
+      <publishTime>08/27/2016 20:03:50</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>08/25/2016 17:41:05</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>08/26/2016 12:53:22</publishTime>
+      <publishTime>08/29/2016 02:20:10</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>07/31/2016 16:30:39</publishTime>
@@ -3658,7 +3658,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/21/2016 18:13:53</publishTime>
     </File>
     <File Include="Views/Admin/Edit.cshtml">
-      <publishTime>08/22/2016 00:30:35</publishTime>
+      <publishTime>08/28/2016 00:42:49</publishTime>
     </File>
     <File Include="Views/Admin/Index.cshtml">
       <publishTime>08/26/2016 09:07:04</publishTime>
@@ -3670,7 +3670,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/21/2016 18:04:27</publishTime>
     </File>
     <File Include="Views/Admin/_PartialCategoryEdit.cshtml">
-      <publishTime>08/25/2016 22:51:25</publishTime>
+      <publishTime>08/28/2016 00:43:34</publishTime>
     </File>
     <File Include="Views/Categories/Create.cshtml">
       <publishTime>08/26/2016 11:02:29</publishTime>
@@ -3706,7 +3706,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/04/2016 23:57:15</publishTime>
     </File>
     <File Include="Views/Home/_SearchPartial.cshtml">
-      <publishTime>08/25/2016 22:51:42</publishTime>
+      <publishTime>08/29/2016 02:18:13</publishTime>
     </File>
     <File Include="Views/Locals/Create.cshtml">
       <publishTime>08/26/2016 09:37:50</publishTime>
@@ -3748,25 +3748,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/21/2016 02:15:53</publishTime>
     </File>
     <File Include="Views/Product/Edit.cshtml">
-      <publishTime>08/25/2016 01:01:47</publishTime>
+      <publishTime>08/28/2016 00:15:06</publishTime>
     </File>
     <File Include="Views/Product/GianHang.cshtml">
       <publishTime>08/24/2016 16:27:01</publishTime>
     </File>
     <File Include="Views/Product/Index.cshtml">
-      <publishTime>08/23/2016 21:58:14</publishTime>
+      <publishTime>08/28/2016 00:13:04</publishTime>
     </File>
     <File Include="Views/Product/ProductLists.cshtml">
       <publishTime>08/24/2016 16:30:32</publishTime>
     </File>
+    <File Include="Views/Product/Search - Copy.cshtml">
+      <publishTime>08/28/2016 12:45:03</publishTime>
+    </File>
     <File Include="Views/Product/Search.cshtml">
-      <publishTime>08/25/2016 00:22:22</publishTime>
+      <publishTime>08/29/2016 02:14:19</publishTime>
     </File>
     <File Include="Views/Product/_CategoryLocalPartial.cshtml">
-      <publishTime>08/25/2016 22:52:00</publishTime>
+      <publishTime>08/27/2016 20:33:38</publishTime>
     </File>
     <File Include="Views/Product/_PartialCategoryEdit.cshtml">
-      <publishTime>08/25/2016 22:51:54</publishTime>
+      <publishTime>08/28/2016 00:29:16</publishTime>
     </File>
     <File Include="Views/Products222/Create.cshtml">
       <publishTime>08/18/2016 23:03:25</publishTime>
@@ -3808,7 +3811,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/31/2016 16:27:18</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/26/2016 12:53:16</publishTime>
+      <publishTime>08/29/2016 02:20:03</publishTime>
     </File>
   </ItemGroup>
 </Project>

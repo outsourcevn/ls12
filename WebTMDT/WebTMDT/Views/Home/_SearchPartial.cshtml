@@ -32,43 +32,43 @@
 
     <div class="form-group filter_search">
         <div class="col-md-12">
-            @Html.TextBox("ParentId", "", new { @class = "form-control input_search" })
-            @Html.TextBox("CategoryId", "", new { @class = "form-control input_search" })
-            @Html.TextBox("SubCategoryId", "", new { @class = "form-control input_search" })
-            @Html.TextBox("LocalId", "", new { @class = "form-control input_search" })
-            @Html.TextBox("TheLoai", "", new { @class = "form-control input_option" })
-            @Html.TextBox("TinhTrang", "", new { @class = "form-control input_option" })
+            @Html.TextBox("f18", "", new { @class = "form-control input_search" })
+            @Html.TextBox("f17", "", new { @class = "form-control input_search" })
+            @Html.TextBox("f15", "", new { @class = "form-control input_search" })
+            @Html.TextBox("f16", "", new { @class = "form-control input_search" })
+            @Html.TextBox("f5", "", new { @class = "form-control input_option" })
+            @Html.TextBox("f6", "", new { @class = "form-control input_option" })
         </div>
     </div>
          @*<div class="form-group filter_search">
         <div class="col-md-4 col-xs-12">
-            @Html.TextBox("ParentId", "", new { @class = "form-control input_search" })
+            @Html.TextBox("f18", "", new { @class = "form-control input_search" })
         </div>
         <div class="col-md-4 col-xs-12">
-            @Html.TextBox("CategoryId", "", new { @class = "form-control input_search" })
+            @Html.TextBox("f17", "", new { @class = "form-control input_search" })
         </div>
         <div class="col-md-4 col-xs-12">
-            @Html.TextBox("SubCategoryId", "", new { @class = "form-control input_search" })
+            @Html.TextBox("f15", "", new { @class = "form-control input_search" })
         </div>
     </div>
     <div class="form-group filter_search">
         <div class="col-md-4 col-xs-12">
-            @Html.TextBox("LocalId", "", new { @class = "form-control input_search" })
+            @Html.TextBox("f16", "", new { @class = "form-control input_search" })
         </div>
         <div class="col-md-4 col-xs-12">
-            @Html.TextBox("TheLoai", "", new { @class = "form-control input_query_2" })
+            @Html.TextBox("f5", "", new { @class = "form-control input_query_2" })
         </div>
         <div class="col-md-4 col-xs-12">
-            @Html.TextBox("TinhTrang", "", new { @class = "form-control input_query_2" })
+            @Html.TextBox("f6", "", new { @class = "form-control input_query_2" })
         </div>
     </div>*@
-         @*@Html.TextBox("CategoryId", "", new { @class = "input-sm input_search" })
-        @Html.TextBox("SubCategoryId", "", new { @class = "input-sm input_search" })
-        @Html.TextBox("LocalId", "", new { @class = "input-sm input_search" })
-        @Html.TextBox("TheLoai", "", new { @class = "input-sm input_query" })
-        @Html.TextBox("TinhTrang", "", new { @class = "input-sm input_query" })*@
-         @Html.Hidden("NgayDang", "")
-         @Html.Hidden("GiaBan", "")
+         @*@Html.TextBox("f17", "", new { @class = "input-sm input_search" })
+        @Html.TextBox("f15", "", new { @class = "input-sm input_search" })
+        @Html.TextBox("f16", "", new { @class = "input-sm input_search" })
+        @Html.TextBox("f5", "", new { @class = "input-sm input_query" })
+        @Html.TextBox("f6", "", new { @class = "input-sm input_query" })*@
+         @Html.Hidden("f10", "")
+         @Html.Hidden("f3", "")
     <div class="form-group select_search">
         <div class="col-md-3">
             <div class="dropdown" id="selectDM1">
@@ -166,7 +166,7 @@
 
 <script type="text/javascript">
     //function validate() {
-    //    if (document.getElementById("ParentId").value !== "" || document.getElementById("CategoryId").value !== "" || document.getElementById("SubCategoryId").value !== "") {
+    //    if (document.getElementById("f18").value !== "" || document.getElementById("f17").value !== "" || document.getElementById("f15").value !== "") {
     //        return true;
     //    } else {
     //        alert("Vui lòng chọn một danh mục để tìm kiếm");
@@ -175,7 +175,7 @@
     //}
 
     function validate() {
-        if (document.getElementById("ParentId").value === "" && document.getElementById("CategoryId").value === "" && document.getElementById("SubCategoryId").value === "" && document.getElementById("inputsearch").value === "" && document.getElementById("LocalId").value === "") {
+        if (document.getElementById("f18").value === "" && document.getElementById("f17").value === "" && document.getElementById("f15").value === "" && document.getElementById("inputsearch").value === "" && document.getElementById("f16").value === "") {
             alert("Vui lòng nhập từ khóa hoặc chọn một danh mục để tìm kiếm");
             return false;
         } else {
@@ -183,25 +183,18 @@
         };
     }
 
-    $(document).ready(function () {
-        //function empty() {
-        //    var x;
-        //    x = document.getElementById("roll-input").value;
-        //    if (x == "") {
-        //        alert("Enter a Valid Roll Number");
-        //        return false;
-        //    };
-        //}
 
+
+    $(document).ready(function () {
         $('input.input_search').tagsinput({
             itemValue: 'id',
             itemText: 'text'
         });       
         
-        var parent = $('input#ParentId');
-        var cat = $('input#CategoryId');
-        var subcat = $('input#SubCategoryId');
-        var local = $('input#LocalId');
+        var parent = $('input#f18');
+        var cat = $('input#f17');
+        var subcat = $('input#f15');
+        var local = $('input#f16');
         $('#selectDM1 > ul > li.dropdown-submenu > a').on('click', function (e) {
             e.preventDefault();
             var _id = $(this).data('id');
@@ -291,11 +284,11 @@
     })
 </script>
 
-@if (ViewBag.ParentCatIdFirst != null && ViewBag.ParentCatNameFirst != null)
+@if (ViewBag.f18 != null && ViewBag.f18n != null)
 {
     <script>
         $(document).ready(function() {
-            $('input#ParentId').tagsinput('add', { id: @ViewBag.ParentCatIdFirst, text: "@Html.Raw(ViewBag.ParentCatNameFirst)" });
+            $('input#f18').tagsinput('add', { id: @ViewBag.f18, text: "@Html.Raw(ViewBag.f18n)" });
         })
     </script>
 }
@@ -303,16 +296,16 @@ else
 {
     <script>
         $(document).ready(function() {
-            $('input#ParentId').tagsinput('removeAll');
+            $('input#f18').tagsinput('removeAll');
         })
     </script>
 }
 
-@if (ViewBag.CatIdFirst != null && ViewBag.CatNameFirst != null)
+@if (ViewBag.f17 != null && ViewBag.f17n != null)
 {
     <script>
         $(document).ready(function() {
-            $('input#CategoryId').tagsinput('add', { id: @ViewBag.CatIdFirst, text: "@Html.Raw(ViewBag.CatNameFirst)" });
+            $('input#f17').tagsinput('add', { id: @ViewBag.f17, text: "@Html.Raw(ViewBag.f17n)" });
         })
     </script>
 }
@@ -320,16 +313,16 @@ else
 {
     <script>
         $(document).ready(function() {
-            $('input#CategoryId').tagsinput('removeAll');
+            $('input#f17').tagsinput('removeAll');
         })
     </script>
 }
 
-@if (ViewBag.SubCatIdFirst != null && ViewBag.SubCatNameFirst != null)
+@if (ViewBag.f15 != null && ViewBag.f15n != null)
 {
     <script>
         $(document).ready(function() {
-            $('input#SubCategoryId').tagsinput('add', { id: @ViewBag.SubCatIdFirst, text: "@Html.Raw(ViewBag.SubCatNameFirst)" });
+            $('input#f15').tagsinput('add', { id: @ViewBag.f15, text: "@Html.Raw(ViewBag.f15n)" });
         })
     </script>
 }
@@ -337,16 +330,16 @@ else
 {
     <script>
         $(document).ready(function() {
-            $('input#SubCategoryId').tagsinput('removeAll');
+            $('input#f15').tagsinput('removeAll');
         })
     </script>
 }
 
-@if (ViewBag.LocalId != null && ViewBag.LocalName != null)
+@if (ViewBag.f16 != null && ViewBag.f16n != null)
 {
     <script>
         $(document).ready(function() {
-            $('input#LocalId').tagsinput('add', { id: @ViewBag.LocalId, text: "@Html.Raw(ViewBag.LocalName)" });
+            $('input#f16').tagsinput('add', { id: @ViewBag.f16, text: "@Html.Raw(ViewBag.f16n)" });
         })
     </script>
 }
@@ -354,17 +347,17 @@ else
 {
     <script>
         $(document).ready(function() {
-            $('input#LocalId').tagsinput('removeAll');
+            $('input#f16').tagsinput('removeAll');
         })
     </script>
 }
 
-@if (ViewBag.TheLoai != null)
+@if (ViewBag.f5 != null)
 {
     <script>
         $(document).ready(function() {
-            $('input#TheLoai').tagsinput('add', "@Html.Raw(ViewBag.TheLoai)");
-            $('#SelectTheLoai').val('@Html.Raw(ViewBag.TheLoai)');
+            $('input#f5').tagsinput('add', "@Html.Raw(ViewBag.f5)");
+            $('#Selectf5').val('@Html.Raw(ViewBag.f5)');
         })
     </script>
 }
@@ -372,17 +365,17 @@ else
 {
     <script>
         $(document).ready(function() {
-            $('input#TheLoai').tagsinput('removeAll');
+            $('input#f5').tagsinput('removeAll');
         })
     </script>
 }
 
-@if (ViewBag.TinhTrang != null)
+@if (ViewBag.f6 != null)
 {
     <script>
         $(document).ready(function() {
-            $('input#TinhTrang').tagsinput('add', "@Html.Raw(ViewBag.TinhTrang)");
-            $('#SelectTinhTrang').val('@Html.Raw(ViewBag.TinhTrang)');
+            $('input#f6').tagsinput('add', "@Html.Raw(ViewBag.f6)");
+            $('#Selectf6').val('@Html.Raw(ViewBag.f6)');
         })
     </script>
 }
@@ -390,25 +383,25 @@ else
 {
     <script>
         $(document).ready(function() {
-            $('input#TinhTrang').tagsinput('removeAll');
+            $('input#f6').tagsinput('removeAll');
         })
     </script>
 }
 
-@if (ViewBag.NgayDang != null)
+@if (ViewBag.f10 != null)
 {
     <script>
         $(document).ready(function() {
-            $('#SelectNgayDang').val('@Html.Raw(ViewBag.NgayDang)');
+            $('#Selectf10').val('@Html.Raw(ViewBag.f10)');
         })
     </script>
 }
 
-@if (ViewBag.GiaBan != null)
+@if (ViewBag.f3 != null)
 {
     <script>
         $(document).ready(function() {
-            $('#SelectGiaBan').val('@Html.Raw(ViewBag.GiaBan)');
+            $('#Selectf3').val('@Html.Raw(ViewBag.f3)');
         })
     </script>
 }

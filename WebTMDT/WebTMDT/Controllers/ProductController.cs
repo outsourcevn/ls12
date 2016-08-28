@@ -268,18 +268,32 @@ namespace WebTMDT.Controllers
             {
                 int _id = Convert.ToInt32(f18);
                 _p = _p.Where(o => o.F18 == _id);
+                var _cat = db.Categories.Where(o => o.F1 == _id).FirstOrDefault();
+                ViewBag.f18n = _cat.F2;
             }
 
             if (f17 != null && f17 != "")
             {
                 int _id = Convert.ToInt32(f17);
                 _p = _p.Where(o => o.F17 == _id);
+                var _cat = db.Categories.Where(o => o.F1 == _id).FirstOrDefault();
+                ViewBag.f17n = _cat.F2;
             }
 
             if (f15 != null && f15 != "")
             {
                 int _id = Convert.ToInt32(f15);
                 _p = _p.Where(o => o.F15 == _id);
+                var _cat = db.Categories.Where(o => o.F1 == _id).FirstOrDefault();
+                ViewBag.f15n = _cat.F2;
+            }
+
+            if (f16 != null && f16 != "")
+            {
+                int _id = Convert.ToInt32(f16);
+                _p = _p.Where(o => o.F16 == _id);
+                var _local = db.Locals.Where(o => o.F1 == _id).FirstOrDefault();
+                ViewBag.f16n = _local.F2;
             }
 
             if (f5 != null && f5 != "")
@@ -305,7 +319,7 @@ namespace WebTMDT.Controllers
                 _p = _p.OrderBy(o => o.F10);
             }
 
-            if (string.IsNullOrWhiteSpace(f3) && !string.IsNullOrWhiteSpace(f3))
+            if (f3 != null &&  f3 != "")
             {               
                 Configs.TwoNumber _x;
                 switch (f3)
@@ -406,6 +420,7 @@ namespace WebTMDT.Controllers
             ViewBag.f10 = f10;
             ViewBag.f5 = f5.Replace("%20", " ");
             ViewBag.f6 = f6.Replace("%20", " ");
+
 
             List<ProductShow> _lstProducts = new List<ProductShow>();
             foreach (var p in _p)

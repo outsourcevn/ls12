@@ -27,25 +27,25 @@
         <div class="col-md-3">
             @if (ViewBag.ProductTheLoai != null)
             {
-                @Html.DropDownList("SelectTheLoai", new SelectList(ViewBag.ProductTheLoai, "ProductTypeName", "ProductTypeName"), "Chọn thể loại sản phẩm", new { @class = "form-control" })
+                @Html.DropDownList("Selectf5", new SelectList(ViewBag.ProductTheLoai, "ProductTypeName", "ProductTypeName"), "Chọn thể loại sản phẩm", new { @class = "form-control" })
             }
         </div>
         <div class="col-md-3">
             @if (ViewBag.ProductTrangThai != null)
             {
-                @Html.DropDownList("SelectTinhTrang", new SelectList(ViewBag.ProductTrangThai, "ProductStatusName", "ProductStatusName"), "Chọn tình trạng sản phẩm", new { @class = "form-control" })
+                @Html.DropDownList("Selectf6", new SelectList(ViewBag.ProductTrangThai, "ProductStatusName", "ProductStatusName"), "Chọn tình trạng sản phẩm", new { @class = "form-control" })
             }
         </div>
         <div class="col-md-3">
             @if (ViewBag.ProductNgayDang != null)
             {
-                @Html.DropDownList("SelectNgayDang", new SelectList(ViewBag.ProductNgayDang, "TypeSort", "NameSort"), "Ngày đăng", new { @class = "form-control" })
+                @Html.DropDownList("Selectf10", new SelectList(ViewBag.ProductNgayDang, "TypeSort", "NameSort"), "Ngày đăng", new { @class = "form-control" })
             }
         </div>
         <div class="col-md-3">
             @if (ViewBag.ProductGiaBan != null)
             {
-                @Html.DropDownList("SelectGiaBan", new SelectList(ViewBag.ProductGiaBan, "TypeSort", "NameSort"), "Giá bán", new { @class = "form-control" })
+                @Html.DropDownList("Selectf3", new SelectList(ViewBag.ProductGiaBan, "TypeSort", "NameSort"), "Giá bán", new { @class = "form-control" })
             }
         </div>
     </div>
@@ -104,31 +104,31 @@
 
 <script>
     $(document).ready(function () {
-        $('#SelectTheLoai').change(function () {
-            $('input#TheLoai').tagsinput('removeAll');
-            $('input#TheLoai').tagsinput('add', $(this).val());
+        $('#Selectf5').change(function () {
+            $('input#f5').tagsinput('removeAll');
+            $('input#f5').tagsinput('add', $(this).val());
             if ($(this).val() !== "") {
                 $('#form-search').submit();
             }
         });
-        $('#SelectTinhTrang').change(function () {
-            $('input#TinhTrang').tagsinput('removeAll');
-            $('input#TinhTrang').tagsinput('add', $(this).val());
+        $('#Selectf6').change(function () {
+            $('input#f6').tagsinput('removeAll');
+            $('input#f6').tagsinput('add', $(this).val());
             if ($(this).val() !== "") {
                 $('#form-search').submit();
             }
         });
 
-        $('#SelectNgayDang').change(function () {
-            $('input#NgayDang').val($(this).val());
-            $('input#GiaBan').val('');
+        $('#Selectf10').change(function () {
+            $('input#f10').val($(this).val());
+            //$('input#f3').val('');
             if ($(this).val() !== "") {
                 $('#form-search').submit();
             }
         })
-        $('#SelectGiaBan').change(function () {
-            $('input#NgayDang').val('');
-            $('input#GiaBan').val($(this).val());
+        $('#Selectf3').change(function () {
+            //$('input#f10').val('');
+            $('input#f3').val($(this).val());
             if ($(this).val() !== "") {
                 $('#form-search').submit();
             }
