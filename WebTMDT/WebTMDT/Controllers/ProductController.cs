@@ -251,9 +251,9 @@ namespace WebTMDT.Controllers
         [AllowAnonymous]
         public ActionResult Search(string inputsearch, string f5, string f6, string f3, string f10, string f15, string f16, string f17, string f18, int? pg)
         {         
-            var _p = db.Products.Take(1000);           
+            var _p = db.Products.Select(p=>p);           
 
-            int pageSize = 10;
+            int pageSize = 25;
             if (pg == null) pg = 1;
             int pageNumber = (pg ?? 1);
             ViewBag.pg = pg;
