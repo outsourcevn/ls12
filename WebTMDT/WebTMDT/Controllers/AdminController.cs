@@ -172,7 +172,7 @@ namespace WebTMDT.Controllers
                     _product.F7 = product.ProductMethod ?? null;
                     _product.F8 = product.ProductGuarantee ?? null;
                     _product.F9 = product.ProductPromotion ?? null;
-                    _product.F10 = DateTime.UtcNow;
+                    _product.F10 = DateTime.Now;
                     _product.F11 = product.ProductAvatar ?? null;
                     _product.F12 = product.ProductDescription ?? null;
                     _product.F13 = null;
