@@ -210,6 +210,7 @@ namespace WebTMDT.Models
         public int? SubCatId { get; set; }
         public int? CatId { get; set; }
         public int? ParentId { get; set; }
+        public string DiaDiem { get; set; }
     }
 
     public class EntityProduct
@@ -223,6 +224,10 @@ namespace WebTMDT.Models
         public string TenNguoiBan { get; set; }
         public string SoDienThoaiNgBan { get; set; }
         public string AnhSanPham { get; set; }
+        public string DiaDiem { get; set; }
+        public string SlugCat { get; set; }
+        public string slugTenSp { get; set; }
+        public int? SubCatId { get; set; }
     }
 
     public class sortOrder

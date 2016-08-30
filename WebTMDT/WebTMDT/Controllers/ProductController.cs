@@ -38,26 +38,23 @@ namespace WebTMDT.Controllers
             ViewBag.Category = Cat;
             var LocalData = db.Locals.ToList();
             ViewBag.LocalData = LocalData;
-
+            ViewBag.ProductType = new List<ProductType>() {
+                new ProductType() { ProductTypeName = "Hàng chính hãng" },
+                new ProductType() { ProductTypeName = "Hàng xách tay" },
+                new ProductType() { ProductTypeName = "Hàng lỗi" },
+                new ProductType() { ProductTypeName = "Hàng xuất khẩu" },
+                new ProductType() { ProductTypeName = "Hàng khác" },
+            };
             ViewBag.ProductStatus = new List<ProductStatus>() { 
                 new ProductStatus() { ProductStatusName = "Mới 100%" },
                 new ProductStatus() { ProductStatusName = "Mới 90%" },
                 new ProductStatus() { ProductStatusName = "Mới 80%" },
                 new ProductStatus() { ProductStatusName = "Hàng like new" },
                 new ProductStatus() { ProductStatusName = "Hàng cũ" },
-                new ProductStatus() { ProductStatusName = "hàng thanh lý" }
+                new ProductStatus() { ProductStatusName = "Hàng thanh lý" },
+                new ProductStatus() { ProductStatusName = "Hàng cho không" },
+                new ProductStatus() { ProductStatusName = "Hàng khác" }
             };
-
-            ViewBag.ProductType = new List<ProductType>() {
-                new ProductType() { ProductTypeName = "Hàng chính hãng" },
-                new ProductType() { ProductTypeName = "Hàng xách tay" },
-                new ProductType() { ProductTypeName = "Hàng nội địa" },
-                new ProductType() { ProductTypeName = "Hàng trung quốc" },
-                new ProductType() { ProductTypeName = "Hàng Sê cần hen" },
-            };
-
-            
-
 
             return View();
         }
@@ -384,9 +381,9 @@ namespace WebTMDT.Controllers
             ViewBag.ProductTheLoai = new List<ProductType>() {
                 new ProductType() { ProductTypeName = "Hàng chính hãng" },
                 new ProductType() { ProductTypeName = "Hàng xách tay" },
-                new ProductType() { ProductTypeName = "Hàng nội địa" },
-                new ProductType() { ProductTypeName = "Hàng trung quốc" },
-                new ProductType() { ProductTypeName = "Hàng Sê cần hen" },
+                new ProductType() { ProductTypeName = "Hàng lỗi" },
+                new ProductType() { ProductTypeName = "Hàng xuất khẩu" },
+                new ProductType() { ProductTypeName = "Hàng khác" },
             };
             ViewBag.ProductTrangThai = new List<ProductStatus>() { 
                 new ProductStatus() { ProductStatusName = "Mới 100%" },
@@ -394,7 +391,9 @@ namespace WebTMDT.Controllers
                 new ProductStatus() { ProductStatusName = "Mới 80%" },
                 new ProductStatus() { ProductStatusName = "Hàng like new" },
                 new ProductStatus() { ProductStatusName = "Hàng cũ" },
-                new ProductStatus() { ProductStatusName = "hàng thanh lý" }
+                new ProductStatus() { ProductStatusName = "Hàng thanh lý" },
+                new ProductStatus() { ProductStatusName = "Hàng cho không" },
+                new ProductStatus() { ProductStatusName = "Hàng khác" }
             };
 
 
@@ -446,7 +445,8 @@ namespace WebTMDT.Controllers
                     SlugGianHang = Configs.unicodeToNoMark(p.AspNetUser.TenNguoiBan != null ? p.AspNetUser.TenNguoiBan : "no-title"),
                     SubCatId = p.F15,
                     CatId = p.F17,
-                    ParentId = p.F18
+                    ParentId = p.F18,
+                    DiaDiem = p.Local.F2
                 };
                 _lstProducts.Add(item);
             }
@@ -539,23 +539,24 @@ namespace WebTMDT.Controllers
             ViewBag.Category = Cat;
             var LocalData = db.Locals.ToList();
             ViewBag.LocalData = LocalData;
-
+            ViewBag.ProductType = new List<ProductType>() {
+                new ProductType() { ProductTypeName = "Hàng chính hãng" },
+                new ProductType() { ProductTypeName = "Hàng xách tay" },
+                new ProductType() { ProductTypeName = "Hàng lỗi" },
+                new ProductType() { ProductTypeName = "Hàng xuất khẩu" },
+                new ProductType() { ProductTypeName = "Hàng khác" },
+            };
             ViewBag.ProductStatus = new List<ProductStatus>() { 
                 new ProductStatus() { ProductStatusName = "Mới 100%" },
                 new ProductStatus() { ProductStatusName = "Mới 90%" },
                 new ProductStatus() { ProductStatusName = "Mới 80%" },
                 new ProductStatus() { ProductStatusName = "Hàng like new" },
                 new ProductStatus() { ProductStatusName = "Hàng cũ" },
-                new ProductStatus() { ProductStatusName = "hàng thanh lý" }
+                new ProductStatus() { ProductStatusName = "Hàng thanh lý" },
+                new ProductStatus() { ProductStatusName = "Hàng cho không" },
+                new ProductStatus() { ProductStatusName = "Hàng khác" }
             };
-
-            ViewBag.ProductType = new List<ProductType>() {
-                new ProductType() { ProductTypeName = "Hàng chính hãng" },
-                new ProductType() { ProductTypeName = "Hàng xách tay" },
-                new ProductType() { ProductTypeName = "Hàng nội địa" },
-                new ProductType() { ProductTypeName = "Hàng trung quốc" },
-                new ProductType() { ProductTypeName = "Hàng Sê cần hen" },
-            };
+            
            // this.ApplicationDbContext = new ApplicationDbContext();
            // this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
             string userId = User.Identity.GetUserId();
@@ -751,6 +752,10 @@ namespace WebTMDT.Controllers
                             TenNguoiBan = item.AspNetUser.TenNguoiBan,
                             SoDienThoaiNgBan = item.AspNetUser.PhoneNumber,
                             AnhSanPham = item.F11,
+                            DiaDiem = item.Local.F2,
+                            SlugCat = Configs.unicodeToNoMark(item.Category.Category2.F2),
+                            slugTenSp = Configs.unicodeToNoMark(item.F2 != null ? item.F2 : "no-title"),
+                            SubCatId = item.F15
                         };
                         lstProduct.Add(pr);
                     }

@@ -286,6 +286,8 @@
     <Content Include="Content\bootstrap.min.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Images\logo-tmdt.png" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\jsTree\jstree.js" />
     <Content Include="Content\jsTree\jstree.min.js" />
     <Content Include="Content\jsTree\themes\default-dark\32px.png" />
