@@ -25,47 +25,47 @@ namespace WebTMDT
 
 
             // In Startup iam creating first Admin Role and creating a default Admin User    
-            if (!roleManager.RoleExists("Administrator"))
-            {
-                // first we create Admin rool   
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Administrator";
-                roleManager.Create(role);
+            //if (!roleManager.RoleExists("Administrator"))
+            //{
+            //    // first we create Admin rool   
+            //    var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+            //    role.Name = "Administrator";
+            //    roleManager.Create(role);
 
-                //Here we create a Admin super user who will maintain the website                  
+            //    //Here we create a Admin super user who will maintain the website                  
 
-                var user = new ApplicationUser();
-                user.UserName = "admin";
-                user.Email = "muabanraovat63@gmail.com";
+            //    var user = new ApplicationUser();
+            //    user.UserName = "admin";
+            //    user.Email = "muabanraovat63@gmail.com";
 
-                string userPWD = "abc@123";
+            //    string userPWD = "abc@123";
 
-                var chkUser = UserManager.Create(user, userPWD);
+            //    var chkUser = UserManager.Create(user, userPWD);
 
-                //Add default User to Role Admin   
-                if (chkUser.Succeeded)
-                {
-                    var result1 = UserManager.AddToRole(user.Id, "Administrator");
-                }
-            }
+            //    //Add default User to Role Admin   
+            //    if (chkUser.Succeeded)
+            //    {
+            //        var result1 = UserManager.AddToRole(user.Id, "Administrator");
+            //    }
+            //}
 
             // creating Creating Manager role    
-            if (!roleManager.RoleExists("Manager"))
-            {
-                var role = new IdentityRole();
-                role.Name = "Manager";
-                roleManager.Create(role);
+            //if (!roleManager.RoleExists("Manager"))
+            //{
+            //    var role = new IdentityRole();
+            //    role.Name = "Manager";
+            //    roleManager.Create(role);
 
-            }
+            //}
 
-            // creating Creating Employee role    
-            if (!roleManager.RoleExists("Employee"))
-            {
-                var role = new IdentityRole();
-                role.Name = "Employee";
-                roleManager.Create(role);
+            //// creating Creating Employee role    
+            //if (!roleManager.RoleExists("Employee"))
+            //{
+            //    var role = new IdentityRole();
+            //    role.Name = "Employee";
+            //    roleManager.Create(role);
 
-            }
+            //}
         } 
     }
 }
