@@ -247,7 +247,7 @@ namespace WebTMDT.Controllers
                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 string _bodyMail = string.Format("Xin chào {0}. Đây là email khôi phục tài khoản đăng nhập. Vui lòng nhấn vào link sau để lấy lại mật khẩu <a href='{1}'>{2}</a><br/><p>Bạn có thể bỏ qua email này nếu không phải bạn.</p>", user.UserName, callbackUrl, callbackUrl);
-                mail("muabanraovat63@gmail.com", user.Email,"Ngày " + DateTime.Now.ToString() + " Email khôi phục mật khẩu tài khoản " + user.UserName, "chanhniem1", _bodyMail);
+                mail("muabanraovat63@gmail.com", user.Email,"Ngày " + DateTime.Now.ToString() + " Email khôi phục mật khẩu tài khoản " + user.UserName, "Huynguyenviet1", _bodyMail);
                 //await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");

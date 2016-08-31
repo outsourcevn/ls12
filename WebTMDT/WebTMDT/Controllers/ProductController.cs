@@ -13,6 +13,7 @@ using PagedList;
 using System.Net;
 using System.Data.Entity;
 using System.Globalization;
+using System.ComponentModel;
 
 namespace WebTMDT.Controllers
 {
@@ -125,7 +126,12 @@ namespace WebTMDT.Controllers
             return RedirectToAction("Index");
 
         }
-
+        private string _fullPath_ = "";
+        private string _fileName_ = "";
+        SprightlySoftAWS.S3.CalculateHash MyCalculateHash;
+        SprightlySoftAWS.S3.Upload MyUpload;
+        System.ComponentModel.BackgroundWorker UploadBackgroundWorker;
+        System.ComponentModel.BackgroundWorker CalculateHashBackgroundWorker;
         [HttpPost]
         public ActionResult Upload()
         {
@@ -133,27 +139,200 @@ namespace WebTMDT.Controllers
             var file = Request.Files[0];
             if (!Configs.IsImage(file))
             {
-                return Json(relativeUrl, JsonRequestBehavior.AllowGet); ;
+                return Json(relativeUrl, JsonRequestBehavior.AllowGet); 
             }
-            var fileName = Path.GetFileName(file.FileName);
-            string path = Server.MapPath("~/Content/Images/Products/");
-            FileInfo fileInfo = new FileInfo(Server.MapPath("~/Content/Images/Products/" + fileName));
-            if (fileInfo.Exists)
+            var fileName = String.Format("{0}.jpg", Guid.NewGuid().ToString()); 
+            string path = Server.MapPath("~/Content/Images/Products/")+fileName;
+            relativeUrl = "/Content/Images/Products/" + fileName;
+            file.SaveAs(path);
+            _fullPath_ = path;
+            _fileName_ = fileName;
+            init();
+            //FileInfo fileInfo = new FileInfo(Server.MapPath("~/Content/Images/Products/" + fileName));
+            //if (fileInfo.Exists)
+            //{
+            //    fileName = string.Format("{0:dd_MM_yyyy_hh_mm_ss_tt}_" + fileName, DateTime.Now);
+            //    string strpath = Path.Combine(path, fileName);
+            //    file.SaveAs(strpath);
+            //    relativeUrl = "/Content/Images/Products/" + fileName;
+            //}
+            //else
+            //{
+            //    string strpath = Path.Combine(path, fileName);
+            //    file.SaveAs(strpath);
+            //    relativeUrl = "/Content/Images/Products/" + fileName;
+            //}
+            return Json(relativeUrl, JsonRequestBehavior.AllowGet);
+        }
+        public async Task init()
+        {
+            MyCalculateHash = new SprightlySoftAWS.S3.CalculateHash();
+            //yCalculateHash.ProgressChangedEvent += MyCalculateHash_ProgressChangedEvent;
+
+            MyUpload = new SprightlySoftAWS.S3.Upload();
+            //MyUpload.ProgressChangedEvent += MyUpload_ProgressChangedEvent;
+
+            CalculateHashBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            CalculateHashBackgroundWorker.DoWork += CalculateHashBackgroundWorker_DoWork;
+            CalculateHashBackgroundWorker.RunWorkerCompleted += CalculateHashBackgroundWorker_RunWorkerCompleted;
+
+            UploadBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            UploadBackgroundWorker.DoWork += UploadBackgroundWorker_DoWork;
+            UploadBackgroundWorker.RunWorkerCompleted += UploadBackgroundWorker_RunWorkerCompleted;
+            //Application.DoEvents();
+            StreamWriter SW = new StreamWriter(HttpContext.Server.MapPath("../") + "init.txt");
+            SW.WriteLine("public void init()");
+            SW.Close();
+            //Run the hash calculation in a BackgroundWorker process.  Calculating the hash of a
+            //large file will take a while.  Running the process in a BackgroundWorker will prevent
+            //the form from locking up.
+
+            //Use a hash table to pass parameters to the function in the BackgroundWorker.
+            Task task = new Task(ProcessDataAsync);
+            task.Start();
+            task.Wait();
+
+        }
+        public async void ProcessDataAsync()
+        {
+            // Start the HandleFile method.
+            Task<string> task = ok();
+            string x = await task;
+
+        }
+        public async Task<string> ok()
+        {
+            System.Collections.Hashtable CalculateHashHashTable = new System.Collections.Hashtable();
+            CalculateHashHashTable.Add("LocalFileName", _fullPath_);
+            CalculateHashBackgroundWorker.RunWorkerAsync(CalculateHashHashTable);
+            StreamWriter SW = new StreamWriter(HttpContext.Server.MapPath("../") + "ok.txt");
+            SW.WriteLine("public async Task<string> ok()");
+            SW.Close();
+            return "ok";
+        }
+        private void CalculateHashBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //Call the CalculateMD5FromFile function and set the result.  When the function is complete
+            //the RunWorkerCompleted event will fire.  Use the LocalFileName value from the passed hash table.
+            System.Collections.Hashtable CalculateHashHashTable = e.Argument as System.Collections.Hashtable;
+            e.Result = MyCalculateHash.CalculateMD5FromFile(CalculateHashHashTable["LocalFileName"].ToString());
+        }
+        private void CalculateHashBackgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            //If the CalculateMD5FromFile function was successful upload the file.
+            if (MyCalculateHash.ErrorNumber == 0)
             {
-                fileName = string.Format("{0:dd_MM_yyyy_hh_mm_ss_tt}_" + fileName, DateTime.Now);
-                string strpath = Path.Combine(path, fileName);
-                file.SaveAs(strpath);
-                relativeUrl = "/Content/Images/Products/" + fileName;
+                StreamWriter SW = new StreamWriter(HttpContext.Server.MapPath("../") + "startupload1.txt");
+                SW.WriteLine("0k");
+                SW.Close();
+
+                //Set the extra request headers to send with the upload
+                Dictionary<String, String> ExtraRequestHeaders = new Dictionary<String, String>();
+
+                ExtraRequestHeaders.Add("Content-Type", "image/jpeg");
+                //ExtraRequestHeaders.Add("x-amz-acl", "public-read");
+
+
+                //Use the MD5 hash that was calculated previously.
+                ExtraRequestHeaders.Add("Content-MD5", e.Result.ToString());
+
+
+
+                String RequestURL;
+                RequestURL = MyUpload.BuildS3RequestURL(true, "s3.amazonaws.com", "bananhso", _fileName_, "");
+
+                String RequestMethod = "PUT";
+
+                ExtraRequestHeaders.Add("x-amz-date", DateTime.UtcNow.ToString("r"));
+
+                String AuthorizationValue;
+                AuthorizationValue = MyUpload.GetS3AuthorizationValue(RequestURL, RequestMethod, ExtraRequestHeaders, "AKIAIR2TUTKM6EM5Q6WQ", "Uc5myRRoncvKFGXrL9gzaK5YwHYh6OXAUqZal4Tu");
+                ExtraRequestHeaders.Add("Authorization", AuthorizationValue);
+                SW = new StreamWriter(HttpContext.Server.MapPath("../") + "startupload2.txt");
+                SW.WriteLine(_fullPath_);
+                SW.Close();
+                //Create a hash table of of parameters to sent to the upload function.
+                System.Collections.Hashtable UploadHashTable = new System.Collections.Hashtable();
+                UploadHashTable.Add("RequestURL", RequestURL);
+                UploadHashTable.Add("RequestMethod", RequestMethod);
+                UploadHashTable.Add("ExtraRequestHeaders", ExtraRequestHeaders);
+                UploadHashTable.Add("LocalFileName", _fullPath_);
+
+                //Run the UploadFile call in a BackgroundWorker to prevent the Window from freezing.
+                try
+                {
+                    UploadBackgroundWorker.RunWorkerAsync(UploadHashTable);
+                }
+                catch (Exception notup)
+                {
+                    _fullPath_ = "";
+                }
+                SW = new StreamWriter(HttpContext.Server.MapPath("../") + "CalculateHashBackgroundWorker_RunWorkerCompleted.txt");
+                SW.WriteLine("private void CalculateHashBackgroundWorker_RunWorkerCompleted");
+                SW.Close();
             }
             else
             {
-                string strpath = Path.Combine(path, fileName);
-                file.SaveAs(strpath);
-                relativeUrl = "/Content/Images/Products/" + fileName;
+                _fullPath_ = "";
             }
-            return Json(relativeUrl, JsonRequestBehavior.AllowGet);
         }
+        private void UploadBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //Run the UploadFile call.
+            System.Collections.Hashtable UploadHashTable = e.Argument as System.Collections.Hashtable;
+            e.Result = MyUpload.UploadFile(UploadHashTable["RequestURL"].ToString(), UploadHashTable["RequestMethod"].ToString(), UploadHashTable["ExtraRequestHeaders"] as Dictionary<String, String>, UploadHashTable["LocalFileName"].ToString());
+        }
+        private void UploadBackgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            //System.Diagnostics.Debug.Print("");
+            //System.Diagnostics.Debug.Print(MyUpload.LogData);
+            //System.Diagnostics.Debug.Print("");
 
+            //EnableDisableEnd();
+
+            if (Convert.ToBoolean(e.Result) == true)
+            {
+                //MessageBox.Show("Upload complete.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                StreamWriter SW = new StreamWriter(HttpContext.Server.MapPath("../") + "uploadok.txt");
+                SW.WriteLine("uploadok");
+                SW.Close();
+                //try
+                //{
+
+                //    if (System.IO.File.Exists(_fullPath_))
+                //    {
+                //        System.IO.File.Delete(_fullPath_);
+                //    }
+                //}
+                //catch (Exception ex2) { }
+                _fullPath_ = "";
+            }
+            else
+            {
+                _fullPath_ = "";
+                //Show the error message.
+                String ResponseMessage;
+
+                if (MyUpload.ResponseString == "")
+                {
+                    ResponseMessage = MyUpload.ErrorDescription;
+                }
+                else
+                {
+                    System.Xml.XmlDocument XmlDoc = new System.Xml.XmlDocument();
+                    XmlDoc.LoadXml(MyUpload.ResponseString);
+
+                    System.Xml.XmlNode XmlNode;
+                    XmlNode = XmlDoc.SelectSingleNode("/Error/Message");
+
+                    ResponseMessage = XmlNode.InnerText;
+                }
+                StreamWriter SW = new StreamWriter(HttpContext.Server.MapPath("../") + "upload.txt");
+                SW.WriteLine(ResponseMessage);
+                SW.Close();
+                //MessageBox.Show(ResponseMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         [HttpPost]
         public ActionResult UploadImage(HttpPostedFileBase ProductImages)
         {
