@@ -39,23 +39,8 @@ namespace WebTMDT.Controllers
             ViewBag.Category = Cat;
             var LocalData = db.Locals.ToList();
             ViewBag.LocalData = LocalData;
-            ViewBag.ProductType = new List<ProductType>() {
-                new ProductType() { ProductTypeName = "Hàng chính hãng" },
-                new ProductType() { ProductTypeName = "Hàng xách tay" },
-                new ProductType() { ProductTypeName = "Hàng lỗi" },
-                new ProductType() { ProductTypeName = "Hàng xuất khẩu" },
-                new ProductType() { ProductTypeName = "Hàng khác" },
-            };
-            ViewBag.ProductStatus = new List<ProductStatus>() { 
-                new ProductStatus() { ProductStatusName = "Mới 100%" },
-                new ProductStatus() { ProductStatusName = "Mới 90%" },
-                new ProductStatus() { ProductStatusName = "Mới 80%" },
-                new ProductStatus() { ProductStatusName = "Hàng like new" },
-                new ProductStatus() { ProductStatusName = "Hàng cũ" },
-                new ProductStatus() { ProductStatusName = "Hàng thanh lý" },
-                new ProductStatus() { ProductStatusName = "Hàng cho không" },
-                new ProductStatus() { ProductStatusName = "Hàng khác" }
-            };
+            ViewBag.ProductType = Configs.CreateListProductType();
+            ViewBag.ProductStatus = Configs.CreateListProductStatus();
 
             return View();
         }
@@ -718,23 +703,8 @@ namespace WebTMDT.Controllers
             ViewBag.Category = Cat;
             var LocalData = db.Locals.ToList();
             ViewBag.LocalData = LocalData;
-            ViewBag.ProductType = new List<ProductType>() {
-                new ProductType() { ProductTypeName = "Hàng chính hãng" },
-                new ProductType() { ProductTypeName = "Hàng xách tay" },
-                new ProductType() { ProductTypeName = "Hàng lỗi" },
-                new ProductType() { ProductTypeName = "Hàng xuất khẩu" },
-                new ProductType() { ProductTypeName = "Hàng khác" },
-            };
-            ViewBag.ProductStatus = new List<ProductStatus>() { 
-                new ProductStatus() { ProductStatusName = "Mới 100%" },
-                new ProductStatus() { ProductStatusName = "Mới 90%" },
-                new ProductStatus() { ProductStatusName = "Mới 80%" },
-                new ProductStatus() { ProductStatusName = "Hàng like new" },
-                new ProductStatus() { ProductStatusName = "Hàng cũ" },
-                new ProductStatus() { ProductStatusName = "Hàng thanh lý" },
-                new ProductStatus() { ProductStatusName = "Hàng cho không" },
-                new ProductStatus() { ProductStatusName = "Hàng khác" }
-            };
+            ViewBag.ProductType = Configs.CreateListProductType();
+            ViewBag.ProductStatus = Configs.CreateListProductStatus();
             
            // this.ApplicationDbContext = new ApplicationDbContext();
            // this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));

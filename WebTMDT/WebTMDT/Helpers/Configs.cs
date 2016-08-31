@@ -181,6 +181,48 @@ namespace WebTMDT.Helpers
             }           
         }
 
+         //ViewBag.ProductType = new List<ProductType>() {
+         //       new ProductType() { ProductTypeName = "Hàng chính hãng" },
+         //       new ProductType() { ProductTypeName = "Hàng xách tay" },
+         //       new ProductType() { ProductTypeName = "Hàng lỗi" },
+         //       new ProductType() { ProductTypeName = "Hàng xuất khẩu" },
+         //       new ProductType() { ProductTypeName = "Hàng khác" },
+         //   };
+         //   ViewBag.ProductStatus = new List<ProductStatus>() { 
+         //       new ProductStatus() { ProductStatusName = "Mới 100%" },
+         //       new ProductStatus() { ProductStatusName = "Mới 90%" },
+         //       new ProductStatus() { ProductStatusName = "Mới 80%" },
+         //       new ProductStatus() { ProductStatusName = "Hàng like new" },
+         //       new ProductStatus() { ProductStatusName = "Hàng cũ" },
+         //       new ProductStatus() { ProductStatusName = "Hàng thanh lý" },
+         //       new ProductStatus() { ProductStatusName = "Hàng cho không" },
+         //       new ProductStatus() { ProductStatusName = "Hàng khác" }
+         //   };
+        public static IEnumerable<ProductType> CreateListProductType()
+        {
+            List<ProductType> p = new List<ProductType>();
+            p.Add(new ProductType() {ProductTypeName = "Hàng chính hãng"});
+            p.Add(new ProductType() {ProductTypeName = "Hàng xách tay"});
+            p.Add(new ProductType() {ProductTypeName = "Hàng lỗi"});
+            p.Add(new ProductType() {ProductTypeName = "Hàng xuất khẩu"});
+            p.Add(new ProductType() {ProductTypeName = "Hàng khác"});
+            return p;
+        }
+
+        public static IEnumerable<ProductStatus> CreateListProductStatus()
+        {
+            List<ProductStatus> p = new List<ProductStatus>();
+            p.Add(new ProductStatus() { ProductStatusName = "Mới 100%" });
+            p.Add(new ProductStatus() { ProductStatusName = "Mới 90%" });
+            p.Add(new ProductStatus() { ProductStatusName = "Mới 80%" });
+            p.Add(new ProductStatus() { ProductStatusName = "Hàng like new" });
+            p.Add(new ProductStatus() { ProductStatusName = "Hàng cũ" });
+            p.Add(new ProductStatus() { ProductStatusName = "Hàng thanh lý" });
+            p.Add(new ProductStatus() { ProductStatusName = "Hàng cho không" });
+            p.Add(new ProductStatus() { ProductStatusName = "Hàng khác" });
+            return p;
+        }
+
 
     }
 }

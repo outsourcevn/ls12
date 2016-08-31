@@ -9,7 +9,7 @@ namespace WebTMDT.Models
     // The ViewModel is now a hirearchical model, where each item has a list of children.
     public class CatViewModel
     {
-        public int CatId {get; set;}
+        public int CatId { get; set; }
         public string CatName { get; set; }
         public IEnumerable<CatViewModel> ChildrenCat { get; set; }
     }
@@ -17,7 +17,7 @@ namespace WebTMDT.Models
     public class DanhMucCon
     {
         public int Id { get; set; }
-        public string Name { get; set; } 
+        public string Name { get; set; }
     }
 
     public class LocalViewModel
@@ -33,7 +33,8 @@ namespace WebTMDT.Models
         public string CatName { get; set; }
         public int? ParentId { get; set; }
         public IList<DanhMuc> DanhMucs { get; set; }
-        public DanhMuc() {
+        public DanhMuc()
+        {
             DanhMucs = new List<DanhMuc>();
         }
     }
@@ -53,19 +54,19 @@ namespace WebTMDT.Models
         //[Required(ErrorMessage = "Vui lòng nhập {0}.")]
         [Display(Name = "Tên và mô tả ngắn về sản phẩm")]
         public string ProductName { get; set; }
-        [Display(Name="Giá bán")]
+        [Display(Name = "Giá bán")]
         //[RegularExpression("([1-9][0-9]*)", ErrorMessage = "Giá bán phải là số.")]
         //[Required(ErrorMessage="Vui lòng nhập {0} sản phẩm")]
         public string ProductPrice { get; set; }
-        [Display(Name="VAT")]
+        [Display(Name = "VAT")]
         public bool ProductVAT { get; set; }
-        [Display(Name="Tình trạng sản phẩm")]
+        [Display(Name = "Tình trạng sản phẩm")]
         //[Required(ErrorMessage="Vui lòng nhập {0}")]
         public string ProductStatus { get; set; }
         [Display(Name = "Thể loại sản phẩm")]
         //[Required(ErrorMessage = "Vui lòng nhập {0}")]
         public string ProductType { get; set; }
-        [Display(Name="Cách thức giao hàng")]
+        [Display(Name = "Cách thức giao hàng")]
         //[Required(ErrorMessage="Vui lòng nhập {0}")]
         public string ProductMethod { get; set; }
         [Display(Name = "Bảo hành")]
@@ -81,10 +82,11 @@ namespace WebTMDT.Models
         [Display(Name = "Ảnh đại diện sản phẩm")]
         public string ProductAvatar { get; set; }
         public string ProductDescription { get; set; }
-        public string ProductMore { get; set; }   
-        [Required(ErrorMessage="Vui lòng chọn danh mục sản phẩm")]
+        public string ProductMore { get; set; }
+        [Required(ErrorMessage = "Vui lòng chọn danh mục sản phẩm")]
         [Range(1, int.MaxValue, ErrorMessage = "Giá trị {0} phải là số")]
         public Nullable<int> SubCatId { get; set; }
+        [Required(ErrorMessage = "Vui lòng chọn địa chỉ")]
         public Nullable<int> LocalId { get; set; }
         public ICollection<ProductImages> ProductImages { get; set; }
         public Nullable<int> ParentCatId { get; set; }
@@ -156,7 +158,7 @@ namespace WebTMDT.Models
     }
 
     public class ProductImages
-    {        
+    {
         public Nullable<long> ProductId { get; set; }
         public string UrlImage { get; set; }
     }
@@ -191,7 +193,7 @@ namespace WebTMDT.Models
     }
 
     public class ProductShow
-    {       
+    {
         public long SanPhamId { get; set; }
         public string TenSp { get; set; }
         public string slugTenSp { get; set; }
