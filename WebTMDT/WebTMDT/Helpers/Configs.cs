@@ -119,13 +119,13 @@ namespace WebTMDT.Helpers
 
         public static List<sortOrder> KhoangGia()
         {
-            var numbersArray = Enumerable.Range(1, 21).ToArray();
+            var numbersArray = Enumerable.Range(1, 20).ToArray();
             List<int> List_int1 = new List<int>();
             for (int i = 1; i <= numbersArray.Length; i += 2)
             {
                 List_int1.Add(i);
             }
-            List_int1.Add(21);
+            List_int1.Add(20);
 
             List<sortOrder> myList = new List<sortOrder>();
 
