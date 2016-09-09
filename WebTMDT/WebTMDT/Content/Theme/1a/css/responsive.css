@@ -91,6 +91,14 @@
     p.lead { display: none;}
     .slider .carousel-indicators { bottom: 0px; }
     .ipad-wrapper .app-wrap {left: 3%;}
+     .dropdown-submenu > .dropdown-menu{
+        left:30%;
+    }
+    #contactemail1,#contactphone1{
+        position: relative;
+        display: block;
+        width: 100%;
+    }
 }
 @media (max-width: 360px) { 
 	#tf-services,
@@ -128,6 +136,14 @@
 	    display: inline-block;
 	}
 	.blog .post-meta {min-height: 55px;}
+    .dropdown-submenu > .dropdown-menu{
+        left:30%;
+    }
+    #contactemail1,#contactphone1{
+        position: relative;
+        display: block;
+        width: 100%;
+    }
 }
 @media (max-width: 320px) { 
 	.post-wrap .post .media-body p {display: none;}
@@ -140,4 +156,12 @@
 	.post-tab .nav-tabs > li > a {
 	    padding: 5px 10px;
 	}
+    .dropdown-submenu > .dropdown-menu{
+        left:30%;
+    }
+    #contactemail1,#contactphone1{
+        position: relative;
+        display: block;
+        width: 100%;
+    }
 }

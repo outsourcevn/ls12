@@ -12,7 +12,7 @@
     <!-- Input Your Home Content Here -->
     <div class="row text-center">
         <!-- contact form outer row with centered text-->
-        <h2>Tìm kiếm sản phẩm</h2>
+        <h2>Sử dụng bộ lọc bên dưới để tìm kiếm sản phẩm nhanh nhất</h2>
         <div class="col-md-12">
             <!-- col 10 with offset 1 to centered -->
             @Html.Partial("~/Views/Home/_SearchPartial.cshtml")
@@ -73,7 +73,7 @@
                             <div class="col-sm-12">
                                 <h3><a href="@string.Format("/{0}/{1}/{2}-{3}.html", @item.SlugCat, @item.SubCatId, @item.slugTenSp, @item.SanPhamId)">@item.TenSp</a></h3>
                                 <p><b>Tình trạng: </b> @item.TinhTrangSp</p>
-                                <p><b>Ngày đăng: </b>@item.NgayDang</p>
+                                <p><b>Ngày đăng: </b>@String.Format("{0:dd/MM/yyyy HH:mm:ss tt}", item.NgayDang)</p>
                                 <p><b>Thể loại: </b> @item.TheLoai</p>
                                 <p><b>Tên cửa hàng: </b><a href="@string.Format("/gianhang/{0}/{1}", @item.GianHang, @item.SlugGianHang)">@item.TenNguoiBan</a></p>
                                 <p><b>Địa điểm: </b>@item.DiaDiem</p>

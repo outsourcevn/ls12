@@ -43,9 +43,12 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="AWSSDK">
-      <HintPath>..\..\AWSSDK.dll</HintPath>
+
+    <Reference Include="AWSSDK, Version=2.3.55.0, Culture=neutral, PublicKeyToken=9f476d3089b52be3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AWSSDK.dll</HintPath>
     </Reference>
+
     <Reference Include="Microsoft.CSharp">
       <Private>True</Private>
     </Reference>
@@ -61,8 +64,9 @@
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SprightlySoftAWS">
-      <HintPath>..\..\SprightlySoftAWS.dll</HintPath>
+    <Reference Include="SprightlySoftAWS, Version=2.16.936.0, Culture=neutral, PublicKeyToken=bd0572081ed9ebf3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\SprightlySoftAWS.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>True</Private>

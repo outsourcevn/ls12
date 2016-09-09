@@ -200,7 +200,7 @@ namespace WebTMDT.Models
         public string TinhTrangSp { get; set; }
         public DateTime? NgayDang { get; set; }
         public string TheLoai { get; set; }
-        public int? GiaBan { get; set; }
+        public long? GiaBan { get; set; }
         public string TenNguoiBan { get; set; }
         public string SDTNguoiBan { get; set; }
         public string AnhSanPham { get; set; }
@@ -222,7 +222,7 @@ namespace WebTMDT.Models
         public string TinhTrangSp { get; set; }
         public DateTime? NgayDang { get; set; }
         public string TheLoai { get; set; }
-        public int? GiaBan { get; set; }
+        public long? GiaBan { get; set; }
         public string TenNguoiBan { get; set; }
         public string SoDienThoaiNgBan { get; set; }
         public string AnhSanPham { get; set; }

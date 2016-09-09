@@ -13,16 +13,16 @@
         <EntityTypeShape EntityType="langson12Model.ImageProduct" Width="1.5" PointX="10.5" PointY="5.75" />
         <EntityTypeShape EntityType="langson12Model.Local" Width="1.5" PointX="6" PointY="1" />
         <EntityTypeShape EntityType="langson12Model.Log" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="langson12Model.Product" Width="1.5" PointX="8.25" PointY="4" />
         <AssociationConnector Association="langson12Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="langson12Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="langson12Model.FK_Product_AspNetUsers" />
         <AssociationConnector Association="langson12Model.FK_Category_Category" />
+        <AssociationConnector Association="langson12Model.FK_Local_Local" />
+        <AssociationConnector Association="langson12Model.AspNetUserRoles" />
+        <EntityTypeShape EntityType="langson12Model.Product" Width="1.5" PointX="8.25" PointY="2.5" />
+        <AssociationConnector Association="langson12Model.FK_Product_AspNetUsers" />
         <AssociationConnector Association="langson12Model.FK_Product_Category" />
         <AssociationConnector Association="langson12Model.FK_ImageProduct_Product" />
-        <AssociationConnector Association="langson12Model.FK_Local_Local" />
         <AssociationConnector Association="langson12Model.FK_Product_Local" />
-        <AssociationConnector Association="langson12Model.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

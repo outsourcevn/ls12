@@ -119,34 +119,38 @@ namespace WebTMDT.Helpers
 
         public static List<sortOrder> KhoangGia()
         {
-            var numbersArray = Enumerable.Range(1, 20).ToArray();
+            var numbersArray = Enumerable.Range(1, 21).ToArray();
             List<int> List_int1 = new List<int>();
             for (int i = 1; i <= numbersArray.Length; i += 2)
             {
                 List_int1.Add(i);
             }
-            List_int1.Add(20);
+            List_int1.Add(21);
 
             List<sortOrder> myList = new List<sortOrder>();
 
-            for (int i = 0; i < List_int1.Count; i++)
+            for (int i = 0; i < List_int1.Count-1; i++)
             {
-                if (i == 10)
-                {
-                    break;
-                }
+                //if (i == 10)
+                //{
+                //    break;
+                //}
                 var _x = string.Format("{0}-{1}", List_int1[i], List_int1[i + 1]);
                 CultureInfo vi_VN = new CultureInfo("vi-VN");
                 var _y = string.Format(vi_VN.NumberFormat, "Từ {0:n0}- đến {1:n0}", List_int1[i] * 1000000, List_int1[i + 1] * 1000000);
                 myList.Add(new sortOrder() { NameSort = _y, TypeSort = _x });
             }
+            var _x1 = string.Format("{0}-{1}", List_int1[List_int1.Count - 1], 10000000000);
+            CultureInfo vi_VN2 = new CultureInfo("vi-VN");
+            var _y1 = string.Format(vi_VN2.NumberFormat, "Từ {0:n0}- đến {1:n0}", List_int1[List_int1.Count - 1] * 1000000, 10000000000);
+            myList.Add(new sortOrder() { NameSort = _y1, TypeSort = _x1 });
             return myList;
         }
 
         public class TwoNumber
         {
-            public int Number1 { get; set; }
-            public int Number2 { get; set; }
+            public long Number1 { get; set; }
+            public long Number2 { get; set; }
         }
 
         public static TwoNumber GetNumber(string textNumber)
@@ -154,8 +158,8 @@ namespace WebTMDT.Helpers
             // textNumber = "3-5";
             string[] x = textNumber.Split('-');
             TwoNumber _tw = new TwoNumber();
-            _tw.Number1 = int.Parse(x[0]) * 1000000;
-            _tw.Number2 = int.Parse(x[1]) * 1000000;
+            _tw.Number1 = long.Parse(x[0]) * 1000000;
+            _tw.Number2 = long.Parse(x[1]) * 1000000;
             return _tw;
         }
 
