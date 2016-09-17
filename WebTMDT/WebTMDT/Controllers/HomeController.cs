@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml;
+using WebTMDT.Helpers;
 using WebTMDT.Models;
 
 namespace WebTMDT.Controllers
@@ -84,6 +87,78 @@ namespace WebTMDT.Controllers
         {
             var x = new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             return View(x);
+        }
+        public string generateSiteMap()
+        {
+
+            try
+            {
+
+                XmlWriterSettings settings = null;
+                string xmlDoc = null;
+                var p = db.Products.ToList();
+                settings = new XmlWriterSettings();
+                settings.Indent = true;
+                settings.Encoding = Encoding.UTF8;
+                xmlDoc = HttpRuntime.AppDomainAppPath + "sitemap.xml";//HttpContext.Server.MapPath("../") + 
+                float percent = 0.85f;
+
+                string urllink = "";
+                using (XmlTextWriter writer = new XmlTextWriter(xmlDoc, Encoding.UTF8))
+                {
+                    writer.WriteStartDocument();
+                    writer.WriteStartElement("urlset");
+                    writer.WriteAttributeString("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9");
+
+                    writer.WriteStartElement("url");
+                    writer.WriteElementString("loc", "http://langson12.net");
+                    writer.WriteElementString("changefreq", "always");
+                    writer.WriteElementString("priority", "1");
+                    writer.WriteEndElement();
+
+                    for (int i = 0; i < p.Count; i++)
+                    {
+                        try
+                        {
+                            writer.WriteStartElement("url");
+                            urllink = "http://langson12.net/" + Configs.unicodeToNoMark(db.Categories.Find(p[i].F15).F2) + "/" + Configs.unicodeToNoMark(p[i].F2) + "-" + p[i].F1+".html";
+                            writer.WriteElementString("loc", urllink);
+                            //writer.WriteElementString("lastmod", DR["datetime"].ToString());
+                            try
+                            {
+                                if (i < 500)
+                                {
+                                    writer.WriteElementString("changefreq", "hourly");
+                                    percent = 0.85f;
+                                }
+                                else
+                                {
+                                    writer.WriteElementString("changefreq", "monthly");
+                                    percent = 0.70f;
+                                }
+                            }
+                            catch (Exception ex1)
+                            {
+                            }
+
+                            writer.WriteElementString("priority", percent.ToString("0.00"));
+                            writer.WriteEndElement();
+                        }
+                        catch (Exception ex2)
+                        {
+                        }
+                    }
+
+                    writer.WriteEndElement();
+                    writer.WriteEndDocument();
+                }
+
+            }
+            catch (Exception extry)
+            {
+                //StreamWriter sw = new StreamWriter();
+            }
+            return "ok";
         }
     }
 }

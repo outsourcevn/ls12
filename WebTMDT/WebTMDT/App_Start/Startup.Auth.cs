@@ -57,8 +57,8 @@ namespace WebTMDT
 
             var options = new FacebookAuthenticationOptions
             {
-                AppId = "520624664798810",
-                AppSecret = "cfc13c337ac561ca07cfaddab431886b",
+                AppId = "1218293774880623",
+                AppSecret = "76d8858819aa61a96f69ea593bddcee0",
                 CallbackPath = new PathString("/oauth-redirect/facebook")
             };
             app.UseFacebookAuthentication(options);

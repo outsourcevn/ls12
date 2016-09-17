@@ -16,7 +16,7 @@ namespace WebTMDT
 
             routes.RouteExistingFiles = true;
 
-            routes.Add("ProductDetail", new SeoFriendlyRoute("{danhmuc}/{danhmuccon}/{tensanpham}-{id}.html",
+            routes.Add("ProductDetail", new SeoFriendlyRoute("{danhmuc}/{tensanpham}-{id}.html",
                 new RouteValueDictionary(
                     new
                     {
@@ -25,7 +25,7 @@ namespace WebTMDT
                         id = UrlParameter.Optional,
                         tensanpham = UrlParameter.Optional,
                         danhmuc = UrlParameter.Optional,
-                        danhmuccon = UrlParameter.Optional,
+                        
                     }),
                 new MvcRouteHandler()));
 

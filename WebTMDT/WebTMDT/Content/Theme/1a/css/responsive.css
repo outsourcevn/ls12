@@ -144,6 +144,10 @@
         display: block;
         width: 100%;
     }
+    #selectDM2,#selectDiadiem,#btn-timkiem{
+        margin-top:10px;
+        padding-top:10px;
+    }
 }
 @media (max-width: 320px) { 
 	.post-wrap .post .media-body p {display: none;}
@@ -163,5 +167,9 @@
         position: relative;
         display: block;
         width: 100%;
+    }
+    #selectDM2,#selectDiadiem,#btn-timkiem{
+        margin-top:10px;
+        padding-top:10px;
     }
 }
