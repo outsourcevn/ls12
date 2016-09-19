@@ -21,7 +21,6 @@ namespace WebTMDT
     {
         public Task SendAsync(IdentityMessage message)
         {
-
             // Plug in your email service here to send an email.
             //mail("muabanraovat63@gmail.com", "", message.Subject, "chanhniem1", message.Body);            
             return Task.FromResult(0);
