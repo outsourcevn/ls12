@@ -43,12 +43,10 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-
     <Reference Include="AWSSDK, Version=2.3.55.0, Culture=neutral, PublicKeyToken=9f476d3089b52be3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\AWSSDK.dll</HintPath>
     </Reference>
-
     <Reference Include="Microsoft.CSharp">
       <Private>True</Private>
     </Reference>
@@ -1987,6 +1985,8 @@
     <Content Include="Views\Locals\Edit.cshtml" />
     <Content Include="Views\Locals\Index.cshtml" />
     <Content Include="Views\Product\Search - Copy.cshtml" />
+    <Content Include="Views\Home\ShowCat1.cshtml" />
+    <Content Include="Views\Home\ShowCat2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
