@@ -4,14 +4,27 @@
 <script src="~/Content/Theme/1a/Plugin/jquery.number.min.js"></script>
 
 @{
-    if (ViewBag.f18n != null || ViewBag.f17n != null || ViewBag.f15n != null || ViewBag.f16n != null)
-    {
-        ViewBag.Title = ViewBag.f18n + ViewBag.f17n + ViewBag.f15n + ViewBag.f16n;
-    }
-    else
+    ViewBag.Title = "";
+    if (ViewBag.f18n == null && ViewBag.f17n == null && ViewBag.f15n == null && ViewBag.f16n == null)
     {
         ViewBag.Title = "Tìm kiếm sản phẩm";
     }
+    if (ViewBag.f18n != null)
+    {
+        ViewBag.Title += ViewBag.f18n + " ";
+    }
+    if (ViewBag.f17n != null)
+	{
+		 ViewBag.Title += ViewBag.f17n + " ";
+	}
+    if (ViewBag.f15n != null)
+    {
+        ViewBag.Title += ViewBag.f15n + " ";
+    }
+    if (ViewBag.f16n != null)
+    {
+        ViewBag.Title += ViewBag.f16n + " ";
+    }    
     
     Layout = "~/Views/Shared/_LayoutProduct.cshtml";
 }
