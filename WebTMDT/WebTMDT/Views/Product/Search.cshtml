@@ -4,7 +4,15 @@
 <script src="~/Content/Theme/1a/Plugin/jquery.number.min.js"></script>
 
 @{
-    ViewBag.Title = "Tìm kiếm sản phẩm " + ViewBag.f18n + ViewBag.f17n + ViewBag.f15n + ViewBag.f16n;
+    if (ViewBag.f18n != null || ViewBag.f17n != null || ViewBag.f15n != null || ViewBag.f16n != null)
+    {
+        ViewBag.Title = ViewBag.f18n + ViewBag.f17n + ViewBag.f15n + ViewBag.f16n;
+    }
+    else
+    {
+        ViewBag.Title = "Tìm kiếm sản phẩm";
+    }
+    
     Layout = "~/Views/Shared/_LayoutProduct.cshtml";
 }
 
