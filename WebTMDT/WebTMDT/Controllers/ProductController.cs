@@ -14,8 +14,6 @@ using System.Net;
 using System.Data.Entity;
 using System.Globalization;
 using System.ComponentModel;
-using System.Xml;
-using System.Text;
 
 namespace WebTMDT.Controllers
 {
@@ -63,7 +61,7 @@ namespace WebTMDT.Controllers
             string userId = User.Identity.GetUserId();
             //var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (!string.IsNullOrEmpty(userId))
-            {               
+            {
                 Product _product = new Product();
                 _product.F2 = model.ProductName ?? null;
                 string strGiaBanSp = model.ProductPrice != null ? model.ProductPrice.Replace(",", "").ToString() : null;
@@ -103,7 +101,7 @@ namespace WebTMDT.Controllers
                 }
                 TempData["SubCatId"] = model.SubCatId;
                 TempData["LocalId"] = model.LocalId;
-                
+
                 TempData["SubCatName"] = _subcat.F2;
                 TempData["CatName"] = _subcat.Category2.F2;
                 TempData["LocalName"] = db.Locals.Where(x => x.F1 == model.LocalId).FirstOrDefault().F2;
@@ -126,10 +124,10 @@ namespace WebTMDT.Controllers
             var file = Request.Files[0];
             if (!Configs.IsImage(file))
             {
-                return Json(relativeUrl, JsonRequestBehavior.AllowGet); 
+                return Json(relativeUrl, JsonRequestBehavior.AllowGet);
             }
-            var fileName = String.Format("{0}.jpg", Guid.NewGuid().ToString()); 
-            string path = Server.MapPath("~/Content/Images/Products/")+fileName;
+            var fileName = String.Format("{0}.jpg", Guid.NewGuid().ToString());
+            string path = Server.MapPath("~/Content/Images/Products/") + fileName;
             relativeUrl = "/Content/Images/Products/" + fileName;
             file.SaveAs(path);
             _fullPath_ = path;
@@ -413,8 +411,8 @@ namespace WebTMDT.Controllers
         // GET: /Product/search
         [AllowAnonymous]
         public ActionResult Search(string inputsearch, string f5, string f6, string f3, string f10, string f15, string f16, string f17, string f18, int? pg)
-        {         
-            var _p = db.Products.Select(p=>p);           
+        {
+            var _p = db.Products.Select(p => p);
 
             int pageSize = 25;
             if (pg == null) pg = 1;
@@ -477,13 +475,13 @@ namespace WebTMDT.Controllers
             {
                 _p = _p.OrderByDescending(o => o.F10);
             }
-            else if(f10 != null && f10 == "asc")
+            else if (f10 != null && f10 == "asc")
             {
                 _p = _p.OrderBy(o => o.F10);
             }
 
-            if (f3 != null &&  f3 != "")
-            {               
+            if (f3 != null && f3 != "")
+            {
                 Configs.TwoNumber _x;
                 switch (f3)
                 {
@@ -533,7 +531,7 @@ namespace WebTMDT.Controllers
                     //    _x = Configs.GetNumber("19-20");
                     //    _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
                     //    break;
-                    default: 
+                    default:
                         _x = Configs.GetNumber(f3);
                         _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
                         break;
@@ -544,23 +542,8 @@ namespace WebTMDT.Controllers
             ViewBag.Category = Cat;
             var LocalData = db.Locals.ToList();
             ViewBag.LocalData = LocalData;
-            ViewBag.ProductTheLoai = new List<ProductType>() {
-                new ProductType() { ProductTypeName = "Hàng chính hãng" },
-                new ProductType() { ProductTypeName = "Hàng xách tay" },
-                new ProductType() { ProductTypeName = "Hàng lỗi" },
-                new ProductType() { ProductTypeName = "Hàng xuất khẩu" },
-                new ProductType() { ProductTypeName = "Hàng khác" },
-            };
-            ViewBag.ProductTrangThai = new List<ProductStatus>() { 
-                new ProductStatus() { ProductStatusName = "Mới 100%" },
-                new ProductStatus() { ProductStatusName = "Mới 90%" },
-                new ProductStatus() { ProductStatusName = "Mới 80%" },
-                new ProductStatus() { ProductStatusName = "Hàng like new" },
-                new ProductStatus() { ProductStatusName = "Hàng cũ" },
-                new ProductStatus() { ProductStatusName = "Hàng thanh lý" },
-                new ProductStatus() { ProductStatusName = "Hàng cho không" },
-                new ProductStatus() { ProductStatusName = "Hàng khác" }
-            };
+            ViewBag.ProductTheLoai = Configs.CreateListProductType();
+            ViewBag.ProductTrangThai = Configs.CreateListProductStatus();
 
 
             ViewBag.ProductNgayDang = new List<sortOrder>() {
@@ -587,7 +570,7 @@ namespace WebTMDT.Controllers
             ViewBag.f6 = f6;
             //ViewBag.f5 = f5.Replace("%20", " ");
             //ViewBag.f6 = f6.Replace("%20", " ");
-
+            
 
             List<ProductShow> _lstProducts = new List<ProductShow>();
             foreach (var p in _p)
@@ -687,8 +670,8 @@ namespace WebTMDT.Controllers
                     int pageNumber = (page ?? 1);
                     var onePageOfProducts = lstProduct.ToPagedList(pageNumber, pageSize);
                     ViewBag.ProductLists = onePageOfProducts;
-                }    
-                                
+                }
+
             }
 
             return View();
@@ -707,9 +690,9 @@ namespace WebTMDT.Controllers
             ViewBag.LocalData = LocalData;
             ViewBag.ProductType = Configs.CreateListProductType();
             ViewBag.ProductStatus = Configs.CreateListProductStatus();
-            
-           // this.ApplicationDbContext = new ApplicationDbContext();
-           // this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+
+            // this.ApplicationDbContext = new ApplicationDbContext();
+            // this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
             string userId = User.Identity.GetUserId();
             Product product = await db.Products.FindAsync(id);
             if (product == null)
@@ -717,7 +700,7 @@ namespace WebTMDT.Controllers
                 ViewBag.ProductNotFound = "Sản phẩm không tồn tại hoặc đã bị xóa.";
                 return View();
             }
-           
+
             if (product.F14 != userId)
             {
                 ViewBag.ProductNotFound = "Bạn không có quyền sửa sản phẩm của người khác nhé.";
@@ -726,7 +709,7 @@ namespace WebTMDT.Controllers
             var _products = new ProductEditViewModel()
             {
                 ProductId = product.F1,
-                ProductName = product.F2,                
+                ProductName = product.F2,
                 ProductPrice = product.F3.ToString(),
                 ProductVAT = (bool)product.F4,
                 ProductStatus = product.F5,
@@ -753,7 +736,7 @@ namespace WebTMDT.Controllers
         [HttpPost, ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ProductEditViewModel product, string hinh_0, string hinh_1, string hinh_2)
-        {    
+        {
             if (ModelState.IsValid)
             {
                 var _product = db.Products.Find(product.ProductId);
@@ -815,7 +798,7 @@ namespace WebTMDT.Controllers
                         {
                             imageproduct1.F3 = hinh_1 ?? null;
                             db.SaveChanges();
-                        }                        
+                        }
                         if (!string.IsNullOrWhiteSpace(hinh_2))
                         {
                             ImageProduct _imageProduct = new ImageProduct();
@@ -824,7 +807,7 @@ namespace WebTMDT.Controllers
                             db.ImageProducts.Add(_imageProduct);
                             db.SaveChanges();
                         }
-                
+
                     }
 
                     if (_images.Count == 1)
@@ -847,7 +830,7 @@ namespace WebTMDT.Controllers
                                 db.ImageProducts.Add(_imageProduct);
                                 db.SaveChanges();
                             }
-                        }                        
+                        }
                     }
 
                     if (_images.Count == 0)
@@ -865,21 +848,21 @@ namespace WebTMDT.Controllers
                                 db.SaveChanges();
                             }
                         }
-                        
+
                     }
-                    
+
                 }
 
                 TempData["UpdateProduct"] = "Cập nhật sản phẩm <b>" + product.ProductName + "</b> thành công.";
                 return RedirectToRoute("ProductEdit");
             }
-            
+
             return View(product);
         }
 
         [AllowAnonymous]
         public async Task<ActionResult> GianHang(int? page, string username)
-        {            
+        {
             if (!string.IsNullOrWhiteSpace(username))
             {
                 this.ApplicationDbContext = new ApplicationDbContext();
@@ -922,10 +905,10 @@ namespace WebTMDT.Controllers
                     }
 
                 }
-            }           
+            }
 
             return View();
-          
+
         }
 
         [HttpPost]
@@ -941,7 +924,7 @@ namespace WebTMDT.Controllers
                     _log.Keyword = inputsearch;
                     _log.Count += 1;
                     db.SaveChanges();
-                    x = "Cập nhật thành công";                    
+                    x = "Cập nhật thành công";
                 }
                 else
                 {
@@ -950,12 +933,12 @@ namespace WebTMDT.Controllers
                     _logNew.Count = 1;
                     db.Logs.Add(_logNew);
                     db.SaveChanges();
-                    x = "Thêm log thành công";                    
+                    x = "Thêm log thành công";
                 }
             }
             return Json(x, JsonRequestBehavior.AllowGet);
         }
-        
+
 
     }
 }
