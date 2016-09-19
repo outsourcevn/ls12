@@ -153,7 +153,7 @@ namespace WebTMDT.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập {0}.")]
-        [Display(Name = "Tên người bán/cửa hàng")]
+        [Display(Name = "Họ và tên")]
         public string TenNguoiBan { get; set; }
     }
 
