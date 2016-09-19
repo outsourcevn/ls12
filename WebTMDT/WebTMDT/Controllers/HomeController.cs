@@ -88,6 +88,21 @@ namespace WebTMDT.Controllers
             var x = new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             return View(x);
         }
+
+        //[ChildActionOnly]
+        //public ActionResult ShowCat1()
+        //{
+        //    var data = db.Categories.Where(x => x.F3 == null).ToList();
+        //    return PartialView("ShowCat1", data);
+        //}
+
+        //[HttpPost]
+        //public ActionResult ShowCat2(int? id)
+        //{
+        //    var data = db.Categories.Where(x => x.F3 == id).ToList();
+        //    return Json(data, JsonRequestBehavior.AllowGet);
+        //}
+
         public string generateSiteMap()
         {
 
