@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Cong Viec\Langson12SVN\trunk\WebTMDT\WebTMDT\Models\LangSonModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Project\GitHub\EcomercerVn\langson12.net\trunk\WebTMDT\WebTMDT\Models\LangSonModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

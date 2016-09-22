@@ -22,7 +22,7 @@ namespace WebTMDT.Models
     
         public long F1 { get; set; }
         public string F2 { get; set; }
-        public Nullable<int> F3 { get; set; }
+        public Nullable<long> F3 { get; set; }
         public Nullable<bool> F4 { get; set; }
         public string F5 { get; set; }
         public string F6 { get; set; }

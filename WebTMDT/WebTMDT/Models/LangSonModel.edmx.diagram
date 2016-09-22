@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4015c305fc044cbe92b7a5fce1637cc4" Name="Diagram1">
-        <EntityTypeShape EntityType="langson12Model.AspNetRole" Width="1.5" PointX="0.75" PointY="5.375" />
-        <EntityTypeShape EntityType="langson12Model.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="11.875" />
-        <EntityTypeShape EntityType="langson12Model.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="4" />
-        <EntityTypeShape EntityType="langson12Model.AspNetUser" Width="1.5" PointX="3" PointY="4.125" />
-        <EntityTypeShape EntityType="langson12Model.Category" Width="1.5" PointX="6" PointY="0.75" />
-        <EntityTypeShape EntityType="langson12Model.ImageProduct" Width="1.5" PointX="10.5" PointY="5.25" />
-        <EntityTypeShape EntityType="langson12Model.Local" Width="1.5" PointX="6" PointY="6.5" />
+        <EntityTypeShape EntityType="langson12Model.AspNetRole" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="langson12Model.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="12.875" />
+        <EntityTypeShape EntityType="langson12Model.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="4.375" />
+        <EntityTypeShape EntityType="langson12Model.AspNetUser" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="langson12Model.Category" Width="1.5" PointX="6" PointY="7" />
+        <EntityTypeShape EntityType="langson12Model.ImageProduct" Width="1.5" PointX="10.5" PointY="5.75" />
+        <EntityTypeShape EntityType="langson12Model.Local" Width="1.5" PointX="6" PointY="1" />
         <EntityTypeShape EntityType="langson12Model.Log" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="langson12Model.Product" Width="1.5" PointX="8.25" PointY="3.75" />
+        <EntityTypeShape EntityType="langson12Model.Product" Width="1.5" PointX="8.25" PointY="4" />
         <AssociationConnector Association="langson12Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="langson12Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="langson12Model.FK_Product_AspNetUsers" />

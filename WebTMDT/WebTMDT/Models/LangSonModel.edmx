@@ -96,10 +96,10 @@
           </Key>
           <Property Name="F1" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="F2" Type="nvarchar" MaxLength="505" />
-          <Property Name="F3" Type="int" />
+          <Property Name="F3" Type="bigint" />
           <Property Name="F4" Type="bit" />
-          <Property Name="F5" Type="nvarchar" MaxLength="256" />
-          <Property Name="F6" Type="nvarchar" MaxLength="256" />
+          <Property Name="F5" Type="nvarchar" MaxLength="505" />
+          <Property Name="F6" Type="nvarchar" MaxLength="505" />
           <Property Name="F7" Type="nvarchar" MaxLength="1010" />
           <Property Name="F8" Type="nvarchar" MaxLength="256" />
           <Property Name="F9" Type="nvarchar" MaxLength="1010" />
@@ -441,10 +441,10 @@
           </Key>
           <Property Name="F1" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="F2" Type="String" MaxLength="505" FixedLength="false" Unicode="true" />
-          <Property Name="F3" Type="Int32" />
+          <Property Name="F3" Type="Int64" />
           <Property Name="F4" Type="Boolean" />
-          <Property Name="F5" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="F6" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="F5" Type="String" MaxLength="505" FixedLength="false" Unicode="true" />
+          <Property Name="F6" Type="String" MaxLength="505" FixedLength="false" Unicode="true" />
           <Property Name="F7" Type="String" MaxLength="1010" FixedLength="false" Unicode="true" />
           <Property Name="F8" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="F9" Type="String" MaxLength="1010" FixedLength="false" Unicode="true" />
