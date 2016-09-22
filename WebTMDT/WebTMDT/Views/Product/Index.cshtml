@@ -37,17 +37,20 @@
             if (TempData["SubCatId"] != null)
             {
                 <script>
-                    (function () {
+                    function LoadCatId() {
                         $('#ProductCategoryId').val(@TempData["SubCatId"]);
-                    })();
+                    };
+                    window.onload = LoadCatId;
+
                 </script>
             }
             if (TempData["LocalId"] != null)
             {
                 <script>
-                    (function () {
+                    function LoadLocalId () {
                         $('#ProductLocalId').val(@TempData["LocalId"]);
-                    })();
+                    }
+                    window.onload = LoadCatId;
                 </script>
             }
 
