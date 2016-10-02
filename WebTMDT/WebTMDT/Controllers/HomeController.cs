@@ -123,24 +123,24 @@ namespace WebTMDT.Controllers
             {
                 if (_cat.Category1.Count > 0)
                 {
-                    //SetProducts(_cat.Category1, _products);
-                    foreach (var c1 in _cat.Category1)
-                    {
-                        if (c1.Products.Count > 0)
-                        {
-                             _products.AddRange(c1.Products);
-                        }
-                        if (c1.Category1.Count > 0)
-                        {
-                            foreach (var c2 in c1.Category1)
-                            {
-                                if (c2.Products.Count > 0)
-                                {
-                                    _products.AddRange(c2.Products);
-                                }
-                            }
-                        }
-                    }
+                    SetProducts(_cat.Category1, _products);
+                    //foreach (var c1 in _cat.Category1)
+                    //{
+                    //    if (c1.Products.Count > 0)
+                    //    {
+                    //         _products.AddRange(c1.Products);
+                    //    }
+                    //    if (c1.Category1.Count > 0)
+                    //    {
+                    //        foreach (var c2 in c1.Category1)
+                    //        {
+                    //            if (c2.Products.Count > 0)
+                    //            {
+                    //                _products.AddRange(c2.Products);
+                    //            }
+                    //        }
+                    //    }
+                    //}
                 }
                 else
                 {
