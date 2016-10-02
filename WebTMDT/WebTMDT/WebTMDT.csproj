@@ -1987,6 +1987,8 @@
     <Content Include="Views\Product\Search - Copy.cshtml" />
     <Content Include="Views\Home\ShowCat1.cshtml" />
     <Content Include="Views\Home\ShowCat2.cshtml" />
+    <Content Include="Views\Home\_DanhMucSanPhamPartial.cshtml" />
+    <Content Include="Views\Home\_ProductWithCatelog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

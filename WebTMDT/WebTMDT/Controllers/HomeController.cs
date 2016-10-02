@@ -103,6 +103,59 @@ namespace WebTMDT.Controllers
         //    return Json(data, JsonRequestBehavior.AllowGet);
         //}
 
+        [ChildActionOnly]
+        public ActionResult _DanhMucSanPhamPartial()
+        {
+            var data = db.Categories.Where(x => x.F3 == null).ToList();
+            return PartialView("_DanhMucSanPhamPartial", data);
+        }
+
+        //_ProductWithCatelog
+        [ChildActionOnly]
+        public ActionResult _ProductWithCatelog(int? id)
+        {
+            var products = GetProductOfCat(id).OrderByDescending(x => x.F10).Take(5).ToList();
+            return PartialView("_ProductWithCatelog", products);
+        }
+
+        public void SetProducts(ICollection<Category> ic, List<Product> _products)
+        {
+            foreach (var c1 in ic)
+            {
+                if (c1.Products.Count > 0)
+                {
+                    _products.AddRange(c1.Products);
+                }
+                if (c1.Category1.Count > 0)
+                {
+                    SetProducts(c1.Category1, _products);
+                }
+            }
+        }
+
+
+        public IEnumerable<Product> GetProductOfCat(int? id)
+        {
+            var _cat = db.Categories.Where(x => x.F1 == id).FirstOrDefault();
+            List<Product> _products = new List<Product>();
+            if (_cat != null)
+            {
+                if (_cat.Category1.Count > 0)
+                {
+                    SetProducts(_cat.Category1, _products);
+                }
+                else
+                {
+                    _products.AddRange(_cat.Products);
+                }
+            }
+            else
+            {
+                _products = null;
+            }
+            return _products;
+        }
+
         public string generateSiteMap()
         {
 

@@ -1,5 +1,6 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Thương mại điện tử dành riêng cho người lạng sơn";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
 }
 
 <div class="content-heading text-center">
@@ -13,3 +14,5 @@
         </div><!-- end col 10 with offset 1 to centered -->
     </div> <!-- end contact form outer row with centered text-->
 </div><!-- End Input Your Home Content Here -->
+
+@{Html.RenderAction("_DanhMucSanPhamPartial");}

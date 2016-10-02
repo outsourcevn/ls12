@@ -2134,3 +2134,15 @@ ul.img-product-n > li > a > img {
     height: 29px;
     padding: 5px 22px;
 }
+
+.product-cat2 > a:hover {
+    color: #0094ff;
+}
+
+.product-cat2 > a {
+    display: block;
+}
+
+.product-cat2 > a > img {
+
+}

@@ -4,14 +4,14 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 <script src="~/Content/Theme/1a/Plugin/jquery.number.min.js"></script>
 @{
-    ViewBag.Title = "Gian hàng";
+    ViewBag.Title = "Gian hàng " + ViewBag.TenGianHang;
     Layout = "~/Views/Shared/_LayoutProduct.cshtml";
 }
 
 <div class="row">
     <div class="col-md-12" id="user_productslist">
         <div class="page-header">
-            <h3>@ViewBag.Title @ViewBag.TenGianHang</h3>
+            <h3>@ViewBag.Title</h3>
         </div>
 
         @if (ViewBag.ProductLists != null)
