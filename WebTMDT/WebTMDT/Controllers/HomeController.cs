@@ -107,7 +107,7 @@ namespace WebTMDT.Controllers
         public ActionResult _DanhMucSanPhamPartial()
         {
             var data = db.Categories.Where(x => x.F3 == null).ToList();
-
+            
             return PartialView("_DanhMucSanPhamPartial", data);
         }
 

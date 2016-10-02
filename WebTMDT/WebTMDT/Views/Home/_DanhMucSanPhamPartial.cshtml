@@ -1,5 +1,5 @@
 ﻿@model List<WebTMDT.Models.Category>
-
+@using WebTMDT.Controllers;
 <div class="row">
     <div class="col-md-12">
         @if (Model != null)
@@ -8,14 +8,18 @@
             {
                 foreach (var item in Model)
                 {
-                    <div class="panel panel-default panel-category">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">@item.F2</h3>
+                    HomeController hc = new HomeController();
+                    if (hc.GetProductOfCat(item.F1).Count() > 0)
+                    {
+                        <div class="panel panel-default panel-category">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">@item.F2</h3>
+                            </div>
+                            <div class="panel-body">
+                                @{Html.RenderAction("_ProductWithCatelog", new { id = item.F1 });}
+                            </div>
                         </div>
-                        <div class="panel-body">
-                           @{Html.RenderAction("_ProductWithCatelog", new { id = item.F1 });}
-                        </div>
-                    </div>
+                    }
                 }
             }
         }
