@@ -107,6 +107,7 @@ namespace WebTMDT.Controllers
         public ActionResult _DanhMucSanPhamPartial()
         {
             var data = db.Categories.Where(x => x.F3 == null).ToList();
+
             return PartialView("_DanhMucSanPhamPartial", data);
         }
 
@@ -114,8 +115,43 @@ namespace WebTMDT.Controllers
         [ChildActionOnly]
         public ActionResult _ProductWithCatelog(int? id)
         {
-            var products = GetProductOfCat(id).OrderByDescending(x => x.F10).Take(5).ToList();
-            return PartialView("_ProductWithCatelog", products);
+
+            //var products = GetProductOfCat(id).OrderByDescending(x => x.F10).Take(5).ToList();
+            var _cat = db.Categories.Where(x => x.F1 == id).FirstOrDefault();
+            List<Product> _products = new List<Product>();
+            if (_cat != null)
+            {
+                if (_cat.Category1.Count > 0)
+                {
+                    //SetProducts(_cat.Category1, _products);
+                    foreach (var c1 in _cat.Category1)
+                    {
+                        if (c1.Products.Count > 0)
+                        {
+                             _products.AddRange(c1.Products);
+                        }
+                        if (c1.Category1.Count > 0)
+                        {
+                            foreach (var c2 in c1.Category1)
+                            {
+                                if (c2.Products.Count > 0)
+                                {
+                                    _products.AddRange(c2.Products);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    _products.AddRange(_cat.Products);
+                }
+            }
+            else
+            {
+                _products = null;
+            }
+            return PartialView("_ProductWithCatelog", _products.OrderByDescending(x=>x.F10).Take(5).ToList());
         }
 
         public void SetProducts(ICollection<Category> ic, List<Product> _products)
