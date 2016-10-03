@@ -51,23 +51,23 @@ namespace WebTMDT.Models
 
     public class ProductViewModel
     {
-        //[Required(ErrorMessage = "Vui lòng nhập {0}.")]
+        [Required(ErrorMessage = "Vui lòng nhập tên sản phẩm.")]
         [Display(Name = "Tên và mô tả ngắn về sản phẩm")]
         public string ProductName { get; set; }
         [Display(Name = "Giá bán")]
         //[RegularExpression("([1-9][0-9]*)", ErrorMessage = "Giá bán phải là số.")]
-        //[Required(ErrorMessage="Vui lòng nhập {0} sản phẩm")]
+        [Required(ErrorMessage = "Vui lòng nhập giá bán sản phẩm")]
         public string ProductPrice { get; set; }
         [Display(Name = "VAT")]
         public bool ProductVAT { get; set; }
         [Display(Name = "Tình trạng sản phẩm")]
-        //[Required(ErrorMessage="Vui lòng nhập {0}")]
+        [Required(ErrorMessage = "Vui lòng nhập tình trạng sản phẩm")]
         public string ProductStatus { get; set; }
         [Display(Name = "Thể loại sản phẩm")]
-        //[Required(ErrorMessage = "Vui lòng nhập {0}")]
+        [Required(ErrorMessage = "Vui lòng nhập thể loại")]
         public string ProductType { get; set; }
         [Display(Name = "Cách thức giao hàng")]
-        //[Required(ErrorMessage="Vui lòng nhập {0}")]
+        [Required(ErrorMessage="Vui lòng nhập Cách thức giao hàng")]
         public string ProductMethod { get; set; }
         [Display(Name = "Bảo hành")]
         //[Required(ErrorMessage = "Vui lòng nhập {0}")]
@@ -96,23 +96,23 @@ namespace WebTMDT.Models
     public class ProductEditViewModel
     {
         public long ProductId { get; set; }
-        //[Required(ErrorMessage = "Vui lòng nhập {0}.")]
+        [Required(ErrorMessage = "Vui lòng nhập tên sản phẩm.")]
         [Display(Name = "Tên và mô tả ngắn về sản phẩm")]
         public string ProductName { get; set; }
         [Display(Name = "Giá bán")]
         //[RegularExpression("([1-9][0-9]*)", ErrorMessage = "Giá bán phải là số.")]
-        //[Required(ErrorMessage="Vui lòng nhập {0} sản phẩm")]
+        [Required(ErrorMessage="Vui lòng nhập giá bán sản phẩm")]
         public string ProductPrice { get; set; }
         [Display(Name = "VAT")]
         public bool ProductVAT { get; set; }
         [Display(Name = "Tình trạng sản phẩm")]
-        //[Required(ErrorMessage="Vui lòng nhập {0}")]
+        [Required(ErrorMessage = "Vui lòng nhập tình trạng sản phẩm")]
         public string ProductStatus { get; set; }
         [Display(Name = "Thể loại sản phẩm")]
-        //[Required(ErrorMessage = "Vui lòng nhập {0}")]
+        [Required(ErrorMessage = "Vui lòng nhập thể loại sản phẩm")]
         public string ProductType { get; set; }
         [Display(Name = "Cách thức giao hàng")]
-        //[Required(ErrorMessage="Vui lòng nhập {0}")]
+        [Required(ErrorMessage = "Vui lòng nhập cách thức giao hàng")]
         public string ProductMethod { get; set; }
         [Display(Name = "Bảo hành")]
         //[Required(ErrorMessage = "Vui lòng nhập {0}")]

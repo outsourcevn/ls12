@@ -59,7 +59,7 @@
                 @Html.LabelFor(m => m.ProductName, new { @class = "col-md-3 control-label" })
                 <div class="col-md-5">
                     @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control", placeholder = "Tên sản phẩm và mô tả ngắn về sản phẩm", autocomplete = "off" })
-                    @*@Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "text-danger has-error" })*@
+                    @Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "text-danger has-error" })
                 </div>
                 <div class="col-md-4">
                     <p class="help-block font-itali">(Ví dụ laptop Lenovo G2310 - core i5 6200, Ram 4gb, 15.6 inch, vga 2gb, hdd 500 gb)</p>
@@ -111,7 +111,7 @@
                     {
                         @Html.DropDownListFor(m => m.ProductStatus, new SelectList(ViewBag.ProductStatus, "ProductStatusName", "ProductStatusName"), "-Chọn trạng thái sản phẩm-", new { @class = "form-control" })
                     }
-                   @* @Html.ValidationMessageFor(m => m.ProductStatus, "", new { @class = "text-danger has-error" })*@
+                    @Html.ValidationMessageFor(m => m.ProductStatus, "", new { @class = "text-danger has-error" })
                 </div>
                 <div class="col-md-4">
                     <p class="help-block font-itali">(Ví dụ: mới | cũ | mới 90%, v.v...)</p>
@@ -125,7 +125,7 @@
                     {
                         @Html.DropDownListFor(m => m.ProductType, new SelectList(ViewBag.ProductType, "ProductTypeName", "ProductTypeName"), "-Chọn thể loại sản phẩm-", new { @class = "form-control" })
                     }
-                   @* @Html.ValidationMessageFor(m => m.ProductType, "", new { @class = "text-danger has-error" })*@
+                    @Html.ValidationMessageFor(m => m.ProductType, "", new { @class = "text-danger has-error" })
                 </div>
                 <div class="col-md-4">
                     <p class="help-block font-itali">(Ví dụ: Hàng chính hãng | Hàng xách tay, v.v...)</p>
@@ -136,7 +136,7 @@
                 @Html.LabelFor(m => m.ProductMethod, new { @class = "col-md-3 control-label" })
                 <div class="col-md-5">
                     @Html.TextBoxFor(m => m.ProductMethod, new { @class = "form-control", placeholder = "Cách thức giao hàng" })
-                    @*@Html.ValidationMessageFor(m => m.ProductMethod, "", new { @class = "text-danger has-error" })*@
+                    @Html.ValidationMessageFor(m => m.ProductMethod, "", new { @class = "text-danger has-error" })
                 </div>
                 <div class="col-md-4">
                     <p class="help-block font-itali">(Ví dụ: Miễn phí giao hàng | Tiền ship 30k, sản phẩm, v.v...)</p>
