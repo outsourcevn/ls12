@@ -750,8 +750,9 @@ namespace WebTMDT.Controllers
                 ProductPromotion = product.F9,
                 ProductAvatar = product.F11,
                 ProductDescription = product.F12,
-                CategoryId = product.Category.Category2.F1,
-                SubCatId = product.Category.F1,
+                CategoryId = product.F17,                
+                SubCatId = product.F15,
+                ParentCatId = product.F18,
                 LocalId = product.F16,
                 ProductImages = product.ImageProducts.Select(x => new ProductImages() { ProductId = x.F1, UrlImage = x.F3 }).ToList()
             };
