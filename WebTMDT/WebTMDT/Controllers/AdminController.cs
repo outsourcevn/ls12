@@ -165,11 +165,13 @@ namespace WebTMDT.Controllers
                     _product.F12 = product.ProductDescription ?? null;
                     _product.F13 = null;
                     _product.F15 = product.SubCatId ?? null;
+                    //_product.F17 = product.CategoryId ?? null;
+                    //_product.F18 = product.ParentCatId ?? null;
                     var _subcat = db.Categories.Where(x => x.F1 == product.SubCatId).FirstOrDefault();
                     _product.F17 = _subcat.Category2.F1;
                     _product.F18 = _subcat.Category2.Category2.F1;
                     _product.F16 = product.LocalId ?? null;
-
+                    db.Entry(_product).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                     var _images = _product.ImageProducts;
                     if (_images.Count == 3)

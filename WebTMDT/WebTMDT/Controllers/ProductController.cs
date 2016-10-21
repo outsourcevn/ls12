@@ -788,11 +788,15 @@ namespace WebTMDT.Controllers
                     _product.F11 = product.ProductAvatar ?? null;
                     _product.F12 = product.ProductDescription ?? null;
                     _product.F13 = null;
+                    //_product.F15 = product.SubCatId ?? null;
+                    //_product.F17 = product.CategoryId ?? null;
+                    //_product.F18 = product.ParentCatId ?? null;
                     _product.F15 = product.SubCatId ?? null;
                     var _subcat = db.Categories.Where(x => x.F1 == product.SubCatId).FirstOrDefault();
                     _product.F17 = _subcat.Category2.F1;
                     _product.F18 = _subcat.Category2.Category2.F1;
                     _product.F16 = product.LocalId ?? null;
+                    db.Entry(_product).State = EntityState.Modified;
                     db.SaveChanges();
                     var _images = _product.ImageProducts;
                     if (_images.Count == 3)
@@ -955,6 +959,7 @@ namespace WebTMDT.Controllers
                 {
                     _log.Keyword = inputsearch;
                     _log.Count += 1;
+                    db.Entry(_log).State = EntityState.Modified;
                     db.SaveChanges();
                     x = "Cập nhật thành công";                    
                 }
@@ -964,6 +969,7 @@ namespace WebTMDT.Controllers
                     _logNew.Keyword = inputsearch;
                     _logNew.Count = 1;
                     db.Logs.Add(_logNew);
+                    db.Entry(_logNew).State = EntityState.Added;
                     db.SaveChanges();
                     x = "Thêm log thành công";                    
                 }
