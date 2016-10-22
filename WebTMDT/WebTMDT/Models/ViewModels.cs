@@ -66,19 +66,14 @@ namespace WebTMDT.Models
         [Display(Name = "Thể loại sản phẩm")]
         [Required(ErrorMessage = "Vui lòng nhập thể loại")]
         public string ProductType { get; set; }
-        [Display(Name = "Cách thức giao hàng")]
-        [Required(ErrorMessage="Vui lòng nhập Cách thức giao hàng")]
+        [Display(Name = "Cách thức giao hàng")]        
         public string ProductMethod { get; set; }
         [Display(Name = "Bảo hành")]
         //[Required(ErrorMessage = "Vui lòng nhập {0}")]
         public string ProductGuarantee { get; set; }
         [Display(Name = "Khuyến mại")]
         //[Required(ErrorMessage = "Vui lòng nhập {0}")]
-        public string ProductPromotion { get; set; }
-        //[Display(Name = "Ngày đăng")]
-        //[Required(ErrorMessage = "Vui lòng nhập {0}")]
-        //[DataType(DataType.Date), DisplayFormat(DataFormatString = "{dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
-        //public Nullable<System.DateTime> ProductDateCreate { get; set; }
+        public string ProductPromotion { get; set; }        
         [Display(Name = "Ảnh đại diện sản phẩm")]
         public string ProductAvatar { get; set; }
         public string ProductDescription { get; set; }
@@ -111,8 +106,7 @@ namespace WebTMDT.Models
         [Display(Name = "Thể loại sản phẩm")]
         [Required(ErrorMessage = "Vui lòng nhập thể loại sản phẩm")]
         public string ProductType { get; set; }
-        [Display(Name = "Cách thức giao hàng")]
-        [Required(ErrorMessage = "Vui lòng nhập cách thức giao hàng")]
+        [Display(Name = "Cách thức giao hàng")]        
         public string ProductMethod { get; set; }
         [Display(Name = "Bảo hành")]
         //[Required(ErrorMessage = "Vui lòng nhập {0}")]

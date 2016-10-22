@@ -44,6 +44,7 @@ namespace WebTMDT.Controllers
             return View();
         }
 
+
         // POST: /Product/AddNewProduct
         [HttpPost, ValidateInput(false)]
         [ValidateAntiForgeryToken]
@@ -53,10 +54,7 @@ namespace WebTMDT.Controllers
             {
                 return RedirectToAction("Index");
             }
-            //this.ApplicationDbContext = new ApplicationDbContext();
-            //this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
-            string userId = User.Identity.GetUserId();
-            //var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            string userId = User.Identity.GetUserId();           
             if (!string.IsNullOrEmpty(userId))
             {               
                 Product _product = new Product();
@@ -70,7 +68,7 @@ namespace WebTMDT.Controllers
                 _product.F8 = model.ProductGuarantee ?? null;
                 _product.F9 = model.ProductPromotion ?? null;
                 _product.F10 = DateTime.Now;
-                _product.F11 = model.ProductAvatar ?? null;
+                _product.F11 = model.ProductAvatar ?? "/Content/Images/no-image-available.png";
                 _product.F12 = model.ProductDescription ?? null;
                 _product.F13 = null;
                 _product.F14 = userId;
@@ -418,7 +416,14 @@ namespace WebTMDT.Controllers
 
             if (!string.IsNullOrWhiteSpace(inputsearch))
             {
-                _p = _p.Where(o => o.F2.ToLower().Contains(inputsearch));
+                inputsearch = inputsearch.Trim();
+                var aa = inputsearch.Split(' ');
+                //sentences.Any(x => x.Split(new char[] { ' ' }).Contains(test));
+                //_p = _p.Where(o => o.F2.Contains(inputsearch) ||
+                //    o.F2.ToLower().Contains(inputsearch) ||
+                //    o.F2.ToLower().Contains(inputsearch.ToLower()) ||
+                //    o.F2.Contains(inputsearch.ToLower()) || aa.Any(w => o.F2.Contains(w)) );
+                _p = _p.Where(o => aa.Any(w => o.F2.Contains(w)));
             }
 
             if (f18 == null) f18 = ""; if (f17 == null) f17 = ""; if (f15 == null) f15 = ""; if (f16 == null) f16 = ""; if (f3 == null) f3 = ""; if (f5 == null) f5 = ""; if (f6 == null) f6 = ""; if (f10 == null) f10 = "";
@@ -487,50 +492,10 @@ namespace WebTMDT.Controllers
                         break;
                     case "asc":
                         _p = _p.OrderBy(x => x.F3);
-                        break;
-                    case "1-3":
-                        _x = Configs.GetNumber("1-3");
-                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
-                        break;
-                    case "3-5":
-                        _x = Configs.GetNumber("3-5");
-                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
-                        break;
-                    case "5-7":
-                        _x = Configs.GetNumber("5-7");
-                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
-                        break;
-                    case "7-9":
-                        _x = Configs.GetNumber("7-9");
-                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
-                        break;
-                    case "9-11":
-                        _x = Configs.GetNumber("9-11");
-                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
-                        break;
-                    case "11-13":
-                        _x = Configs.GetNumber("11-13");
-                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
-                        break;
-                    case "13-15":
-                        _x = Configs.GetNumber("13-15");
-                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
-                        break;
-                    case "15-17":
-                        _x = Configs.GetNumber("15-17");
-                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
-                        break;
-                    case "17-19":
-                        _x = Configs.GetNumber("17-19");
-                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
-                        break;
-                    case "19-20":
-                        _x = Configs.GetNumber("19-20");
-                        _p = _p.Where(x => x.F3 >= _x.Number1 && x.F3 <= _x.Number2);
-                        break;
+                        break;                    
                     default: 
-                        _x = Configs.GetNumber("0-1");
-                        _p = _p.Where(x => x.F3 <= _x.Number2);
+                        _x = Configs.GetNumber(f3);
+                        _p = _p.Where(x => x.F3 <= _x.Number2 && x.F3 >= _x.Number1);
                         break;
                 }
             }
@@ -539,24 +504,8 @@ namespace WebTMDT.Controllers
             ViewBag.Category = Cat;
             var LocalData = db.Locals.ToList();
             ViewBag.LocalData = LocalData;
-            ViewBag.ProductTheLoai = new List<ProductType>() {
-                new ProductType() { ProductTypeName = "Hàng chính hãng" },
-                new ProductType() { ProductTypeName = "Hàng xách tay" },
-                new ProductType() { ProductTypeName = "Hàng lỗi" },
-                new ProductType() { ProductTypeName = "Hàng xuất khẩu" },
-                new ProductType() { ProductTypeName = "Hàng khác" },
-            };
-            ViewBag.ProductTrangThai = new List<ProductStatus>() { 
-                new ProductStatus() { ProductStatusName = "Mới 100%" },
-                new ProductStatus() { ProductStatusName = "Mới 90%" },
-                new ProductStatus() { ProductStatusName = "Mới 80%" },
-                new ProductStatus() { ProductStatusName = "Hàng like new" },
-                new ProductStatus() { ProductStatusName = "Hàng cũ" },
-                new ProductStatus() { ProductStatusName = "Hàng thanh lý" },
-                new ProductStatus() { ProductStatusName = "Hàng cho không" },
-                new ProductStatus() { ProductStatusName = "Hàng khác" }
-            };
-
+            ViewBag.ProductTheLoai = Configs.CreateListProductType();
+            ViewBag.ProductTrangThai = Configs.CreateListProductStatus();
 
             ViewBag.ProductNgayDang = new List<sortOrder>() {
                 new sortOrder() { TypeSort = "desc", NameSort = "Giảm dần" },
@@ -580,10 +529,7 @@ namespace WebTMDT.Controllers
             ViewBag.f10 = f10;
             ViewBag.f5 = f5;
             ViewBag.f6 = f6;
-            //ViewBag.f5 = f5.Replace("%20", " ");
-            //ViewBag.f6 = f6.Replace("%20", " ");
-
-
+            
             List<ProductShow> _lstProducts = new List<ProductShow>();
             foreach (var p in _p)
             {
@@ -597,7 +543,7 @@ namespace WebTMDT.Controllers
                     NgayDang = p.F10,
                     TenNguoiBan = p.AspNetUser.TenNguoiBan,
                     SDTNguoiBan = p.AspNetUser.PhoneNumber,
-                    AnhSanPham = p.F11,
+                    AnhSanPham = p.F11 ?? "/Content/Images/no-image-available.png",
                     LocalId = p.F16,
                     SlugCat = Configs.unicodeToNoMark(p.Category.Category2.F2),
                     SlugSubCat = Configs.unicodeToNoMark(p.Category.F2),
@@ -672,7 +618,8 @@ namespace WebTMDT.Controllers
                     if (!String.IsNullOrEmpty(searchQuery))
                     {
                         ViewBag.searchQuery = searchQuery.ToLower();
-                        lstProduct = lstProduct.Where(s => s.TenSp.ToLower().Contains(searchQuery.ToLower())).ToList();
+                        var word = searchQuery.Split(' ');
+                        lstProduct = lstProduct.Where(s => word.Any(w => s.TenSp.Contains(w))).ToList();
                     }
 
                     lstProduct.OrderByDescending(x => x.NgayDang).ToList();
@@ -701,29 +648,7 @@ namespace WebTMDT.Controllers
             var LocalData = db.Locals.ToList();
             ViewBag.LocalData = LocalData;
             ViewBag.ProductType = Configs.CreateListProductType(); 
-                
-            //  new List<ProductType>() {
-            //    new ProductType() { ProductTypeName = "Hàng chính hãng" },
-            //    new ProductType() { ProductTypeName = "Hàng xách tay" },
-            //    new ProductType() { ProductTypeName = "Hàng lỗi" },
-            //    new ProductType() { ProductTypeName = "Hàng xuất khẩu" },
-            //    new ProductType() { ProductTypeName = "Hàng khác" },
-            //};
             ViewBag.ProductStatus = Configs.CreateListProductStatus();
-                
-            //    new List<ProductStatus>() { 
-            //    new ProductStatus() { ProductStatusName = "Mới 100%" },
-            //    new ProductStatus() { ProductStatusName = "Mới 90%" },
-            //    new ProductStatus() { ProductStatusName = "Mới 80%" },
-            //    new ProductStatus() { ProductStatusName = "Hàng like new" },
-            //    new ProductStatus() { ProductStatusName = "Hàng cũ" },
-            //    new ProductStatus() { ProductStatusName = "Hàng thanh lý" },
-            //    new ProductStatus() { ProductStatusName = "Hàng cho không" },
-            //    new ProductStatus() { ProductStatusName = "Hàng khác" }
-            //};
-            
-           // this.ApplicationDbContext = new ApplicationDbContext();
-           // this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
             string userId = User.Identity.GetUserId();
             Product product = await db.Products.FindAsync(id);
             if (product == null)
@@ -760,8 +685,6 @@ namespace WebTMDT.Controllers
             ViewBag.CatName = db.Categories.Where(x => x.F1 == _products.CategoryId).FirstOrDefault().F2;
             ViewBag.SubCatName = db.Categories.Where(x => x.F1 == _products.SubCatId).FirstOrDefault().F2;
             ViewBag.LocalName = db.Locals.Where(x => x.F1 == _products.LocalId).FirstOrDefault().F2;
-            //ViewBag.ItemsPt = new SelectList(ViewBag.ProductType, "ProductTypeName", "ProductTypeName", _products.ProductType);
-            //ViewBag.ItemsPs = new SelectList(ViewBag.ProductStatus, "ProductStatusName", "ProductStatusName", _products.ProductStatus);
             return View(_products);
         }
 
@@ -785,7 +708,7 @@ namespace WebTMDT.Controllers
                     _product.F8 = product.ProductGuarantee ?? null;
                     _product.F9 = product.ProductPromotion ?? null;
                     _product.F10 = DateTime.Now;
-                    _product.F11 = product.ProductAvatar ?? null;
+                    _product.F11 = product.ProductAvatar ?? "/Content/Images/no-image-available.png";
                     _product.F12 = product.ProductDescription ?? null;
                     _product.F13 = null;
                     //_product.F15 = product.SubCatId ?? null;
@@ -805,18 +728,21 @@ namespace WebTMDT.Controllers
                         if (imageproduct != null)
                         {
                             imageproduct.F3 = hinh_0 ?? null;
+                            db.Entry(imageproduct).State = System.Data.Entity.EntityState.Modified;
                             db.SaveChanges();
                         }
                         ImageProduct imageproduct1 = (ImageProduct)_images.ElementAt(1);
                         if (imageproduct1 != null)
                         {
                             imageproduct1.F3 = hinh_1 ?? null;
+                            db.Entry(imageproduct1).State = System.Data.Entity.EntityState.Modified;
                             db.SaveChanges();
                         }
                         ImageProduct imageproduct2 = (ImageProduct)_images.ElementAt(2);
                         if (imageproduct2 != null)
                         {
                             imageproduct2.F3 = hinh_2 ?? null;
+                            db.Entry(imageproduct2).State = System.Data.Entity.EntityState.Modified;
                             db.SaveChanges();
                         }
                     }
@@ -827,12 +753,14 @@ namespace WebTMDT.Controllers
                         if (imageproduct != null)
                         {
                             imageproduct.F3 = hinh_0 ?? null;
+                            db.Entry(imageproduct).State = System.Data.Entity.EntityState.Modified;
                             db.SaveChanges();
                         }
                         ImageProduct imageproduct1 = (ImageProduct)_images.ElementAt(1);
                         if (imageproduct1 != null)
                         {
                             imageproduct1.F3 = hinh_1 ?? null;
+                            db.Entry(imageproduct1).State = System.Data.Entity.EntityState.Modified;
                             db.SaveChanges();
                         }                        
                         if (!string.IsNullOrWhiteSpace(hinh_2))
@@ -852,6 +780,7 @@ namespace WebTMDT.Controllers
                         if (imageproduct != null)
                         {
                             imageproduct.F3 = hinh_0 ?? null;
+                            db.Entry(imageproduct).State = System.Data.Entity.EntityState.Modified;
                             db.SaveChanges();
                         }
                         var listImage = new List<string> { hinh_1, hinh_2 };

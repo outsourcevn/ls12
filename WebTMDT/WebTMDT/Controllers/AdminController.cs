@@ -161,12 +161,10 @@ namespace WebTMDT.Controllers
                     _product.F8 = product.ProductGuarantee ?? null;
                     _product.F9 = product.ProductPromotion ?? null;
                     _product.F10 = DateTime.Now;
-                    _product.F11 = product.ProductAvatar ?? null;
+                    _product.F11 = product.ProductAvatar ?? "/Content/Images/no-image-available.png";
                     _product.F12 = product.ProductDescription ?? null;
                     _product.F13 = null;
                     _product.F15 = product.SubCatId ?? null;
-                    //_product.F17 = product.CategoryId ?? null;
-                    //_product.F18 = product.ParentCatId ?? null;
                     var _subcat = db.Categories.Where(x => x.F1 == product.SubCatId).FirstOrDefault();
                     _product.F17 = _subcat.Category2.F1;
                     _product.F18 = _subcat.Category2.Category2.F1;
@@ -180,18 +178,21 @@ namespace WebTMDT.Controllers
                         if (imageproduct != null)
                         {
                             imageproduct.F3 = hinh_0 ?? null;
+                            db.Entry(imageproduct).State = System.Data.Entity.EntityState.Modified;
                             db.SaveChanges();
                         }
                         ImageProduct imageproduct1 = (ImageProduct)_images.ElementAt(1);
                         if (imageproduct1 != null)
                         {
                             imageproduct1.F3 = hinh_1 ?? null;
+                            db.Entry(imageproduct1).State = System.Data.Entity.EntityState.Modified;
                             db.SaveChanges();
                         }
                         ImageProduct imageproduct2 = (ImageProduct)_images.ElementAt(2);
                         if (imageproduct2 != null)
                         {
                             imageproduct2.F3 = hinh_2 ?? null;
+                            db.Entry(imageproduct2).State = System.Data.Entity.EntityState.Modified;
                             db.SaveChanges();
                         }
                     }
@@ -202,12 +203,14 @@ namespace WebTMDT.Controllers
                         if (imageproduct != null)
                         {
                             imageproduct.F3 = hinh_0 ?? null;
+                            db.Entry(imageproduct).State = System.Data.Entity.EntityState.Modified;
                             db.SaveChanges();
                         }
                         ImageProduct imageproduct1 = (ImageProduct)_images.ElementAt(1);
                         if (imageproduct1 != null)
                         {
                             imageproduct1.F3 = hinh_1 ?? null;
+                            db.Entry(imageproduct1).State = System.Data.Entity.EntityState.Modified;
                             db.SaveChanges();
                         }
                         if (!string.IsNullOrWhiteSpace(hinh_2))
@@ -227,6 +230,7 @@ namespace WebTMDT.Controllers
                         if (imageproduct != null)
                         {
                             imageproduct.F3 = hinh_0 ?? null;
+                            db.Entry(imageproduct).State = System.Data.Entity.EntityState.Modified;
                             db.SaveChanges();
                         }
                         var listImage = new List<string> { hinh_1, hinh_2 };
