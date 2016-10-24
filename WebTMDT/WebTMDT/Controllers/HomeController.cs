@@ -151,7 +151,7 @@ namespace WebTMDT.Controllers
             {
                 _products = null;
             }
-            return PartialView("_ProductWithCatelog", _products.OrderByDescending(x=>x.F10).Take(5).ToList());
+            return PartialView("_ProductWithCatelog", _products.OrderByDescending(x=>x.F10).Take(4).ToList());
         }
 
         public void SetProducts(ICollection<Category> ic, List<Product> _products)
