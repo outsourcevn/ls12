@@ -75,6 +75,7 @@ namespace WebTMDT.Models
         //[Required(ErrorMessage = "Vui lòng nhập {0}")]
         public string ProductPromotion { get; set; }        
         [Display(Name = "Ảnh đại diện sản phẩm")]
+        [Required(ErrorMessage = "Vui lòng chọn ảnh đại diện sản phẩm")]
         public string ProductAvatar { get; set; }
         public string ProductDescription { get; set; }
         public string ProductMore { get; set; }
@@ -119,6 +120,7 @@ namespace WebTMDT.Models
         //[DataType(DataType.Date), DisplayFormat(DataFormatString = "{dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
         //public Nullable<System.DateTime> ProductDateCreate { get; set; }
         [Display(Name = "Ảnh đại diện sản phẩm")]
+        [Required(ErrorMessage = "Vui lòng chọn ảnh đại diện sản phẩm")]
         public string ProductAvatar { get; set; }
         public string ProductDescription { get; set; }
         public string ProductMore { get; set; }

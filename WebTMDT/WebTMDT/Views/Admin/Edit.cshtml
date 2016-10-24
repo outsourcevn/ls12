@@ -182,6 +182,7 @@
                             <input type="file" id="ProductAvatar_file" name="ProductAvatar_file" accept="image/*" class="form-control" style="display: none;" />
                         </label>
                         @Html.HiddenFor(m => m.ProductAvatar)
+                        @Html.ValidationMessageFor(m => m.ProductAvatar, "", new { @class = "text-danger has-error" })
                     </div>
 
                     <script>

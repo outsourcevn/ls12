@@ -185,6 +185,7 @@
                     </label>
                     @Html.HiddenFor(m => m.ProductAvatar)
                     @*<input type="hidden" name="ProductAvatar" id="ProductAvatar" />*@
+                    @Html.ValidationMessageFor(m => m.ProductAvatar, "", new { @class = "text-danger has-error" })
                 </div>
                 @*<div class="col-md-4">
                     <img id="ProductAvatar_img" class="img-thumbnail img-product" src="" alt="" />
